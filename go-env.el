@@ -4,7 +4,6 @@
 ; Format Go code every time it's saved.
 (add-hook 'before-save-hook 'gofmt-before-save)
 
-; enable Flymake
+; enable Flymake for Go
 (add-to-list 'load-path "~/Projects/go/src/github.com/dougm/goflymake")
 (require 'go-flymake)
-

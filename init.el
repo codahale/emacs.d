@@ -9,3 +9,5 @@
 (package-initialize)
 
 (setq default-tab-width 4)
+
+(load-file "~/.emacs.d/go-env.el")
