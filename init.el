@@ -4,3 +4,5 @@
     '("marmalade" .
       "http://marmalade-repo.org/packages/"))
 (package-initialize)
+
+(setq default-tab-width 4)
