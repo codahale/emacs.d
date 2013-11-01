@@ -11,3 +11,4 @@
 (setq default-tab-width 4)
 
 (load-file "~/.emacs.d/go-env.el")
+(load-file "~/.emacs.d/git-env.el")
