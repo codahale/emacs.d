@@ -9,7 +9,7 @@
 (package-initialize)
 
 ;;; COMMON SETTINGS
-(setq default-tab-width 4)
+(setq-default tab-width 4)
 
 ;;; GO SETTINGS
 (add-to-list 'load-path "/usr/local/Cellar/go/1.2rc3/libexec/misc/emacs/") ; use homebrew mode
