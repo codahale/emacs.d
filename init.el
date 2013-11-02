@@ -11,13 +11,20 @@
 ;;; COMMON SETTINGS
 (setq-default tab-width 4)
 
+;;; AUTOCOMPLETE SETTINGS
+(require 'auto-complete-config)
+(define-key ac-mode-map (kbd "M-TAB") 'auto-complete) ; bind M-TAB to autocomplete
+(ac-config-default)
+
 ;;; GO SETTINGS
-(add-to-list 'load-path "/usr/local/Cellar/go/1.2rc3/libexec/misc/emacs/") ; use homebrew mode
-(require 'go-mode-load)
 (add-hook 'before-save-hook 'gofmt-before-save) ; run gofmt on save
+(add-hook 'go-mode-hook 'go-eldoc-setup) ; run go-eldoc when in go-mode
 
 (add-to-list 'load-path "~/Projects/go/src/github.com/dougm/goflymake")
 (require 'go-flymake) ; enable Flymake for Go
+
+(add-to-list 'ac-modes 'go-mode) ; always autocomplete in go-mode
+(define-key go-mode-map (kbd "RET") #'go-mode-insert-and-indent) ; stop crapping up returns
 
 ;;; GIT SETTINGS
 (add-hook 'git-commit-mode-hook 'flyspell-mode-on) ; enable Flyspell in git-commit-mode
