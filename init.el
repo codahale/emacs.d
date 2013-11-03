@@ -19,6 +19,7 @@
 ;;; GO SETTINGS
 (add-hook 'before-save-hook 'gofmt-before-save) ; run gofmt on save
 (add-hook 'go-mode-hook 'go-eldoc-setup) ; run go-eldoc when in go-mode
+(add-hook 'go-mode-hook (lambda () (interactive) (column-marker-1 80))) ; mark 80 char columns in Go mode
 
 (add-to-list 'load-path "~/Projects/go/src/github.com/dougm/goflymake")
 (require 'go-flymake) ; enable Flymake for Go
