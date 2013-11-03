@@ -28,4 +28,4 @@
 (define-key go-mode-map (kbd "RET") #'go-mode-insert-and-indent) ; stop crapping up returns
 
 ;;; GIT SETTINGS
-(add-hook 'git-commit-mode-hook 'flyspell-mode-on) ; enable Flyspell in git-commit-mode
+(add-hook 'git-commit-mode-hook 'flyspell-mode) ; enable Flyspell in git-commit-mode, requires ispell
