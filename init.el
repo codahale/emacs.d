@@ -31,4 +31,5 @@
 ;;; GIT SETTINGS
 (add-hook 'git-commit-mode-hook 'flyspell-mode) ; enable Flyspell in git-commit-mode, requires ispell
 
+;;; THEME SETTINGS
 (load-theme 'wombat t)
