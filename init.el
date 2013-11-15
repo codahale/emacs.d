@@ -26,6 +26,7 @@
 
 (add-to-list 'ac-modes 'go-mode) ; always autocomplete in go-mode
 (define-key go-mode-map (kbd "RET") #'go-mode-insert-and-indent) ; stop crapping up returns
+(add-hook 'go-mode-hook 'flyspell-prog-mode) ; enable Flyspell for Go comments and strings
 
 ;;; GIT SETTINGS
 (add-hook 'git-commit-mode-hook 'flyspell-mode) ; enable Flyspell in git-commit-mode, requires ispell
