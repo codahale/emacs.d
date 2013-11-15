@@ -33,3 +33,6 @@
 
 ;;; THEME SETTINGS
 (load-theme 'wombat t)
+
+;;; KEY BINDINGS
+(global-set-key (kbd "C-x g") 'magit-status)
