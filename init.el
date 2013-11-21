@@ -17,14 +17,17 @@
 (ac-config-default)
 
 ;;; GO SETTINGS
+(add-to-list 'load-path "~/Projects/go/src/github.com/nsf/gocode") ; use gocode for autocomplete
+(require 'go-autocomplete)
+(add-to-list 'ac-modes 'go-mode)
+
 (add-hook 'before-save-hook 'gofmt-before-save) ; run gofmt on save
 (add-hook 'go-mode-hook 'go-eldoc-setup) ; run go-eldoc when in go-mode
 (add-hook 'go-mode-hook (lambda () (interactive) (column-marker-1 81))) ; mark 81 char columns in Go mode
 
-(add-to-list 'load-path "~/Projects/go/src/github.com/dougm/goflymake")
-(require 'go-flymake) ; enable Flymake for Go
+(add-to-list 'load-path "~/Projects/go/src/github.com/dougm/goflymake") ; use goflymake
+(require 'go-flymake)
 
-(add-to-list 'ac-modes 'go-mode) ; always autocomplete in go-mode
 (define-key go-mode-map (kbd "RET") #'go-mode-insert-and-indent) ; stop crapping up returns
 (add-hook 'go-mode-hook 'flyspell-prog-mode) ; enable Flyspell for Go comments and strings
 
