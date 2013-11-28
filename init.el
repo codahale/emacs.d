@@ -10,6 +10,7 @@
 
 ;;; COMMON SETTINGS
 (setq-default tab-width 4)
+(setq ring-bell-function 'ignore) ; shut up shut up shut up
 
 ;;; AUTOCOMPLETE SETTINGS
 (require 'auto-complete-config)
