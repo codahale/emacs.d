@@ -11,6 +11,8 @@
 ;;; COMMON SETTINGS
 (setq-default tab-width 4)
 (setq ring-bell-function 'ignore) ; shut up shut up shut up
+(when (memq window-system '(mac ns))
+  (exec-path-from-shell-initialize)) ; load path from shell
 
 ;;; AUTOCOMPLETE SETTINGS
 (require 'auto-complete-config)
