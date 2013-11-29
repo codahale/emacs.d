@@ -13,6 +13,8 @@
 (setq ring-bell-function 'ignore) ; shut up shut up shut up
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize)) ; load path from shell
+(setq mouse-wheel-scroll-amount '(1))
+(setq mouse-wheel-progressive-speed nil)
 
 ;;; AUTOCOMPLETE SETTINGS
 (require 'auto-complete-config)
