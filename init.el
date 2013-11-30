@@ -16,6 +16,7 @@
 (setq mouse-wheel-scroll-amount '(1))
 (setq mouse-wheel-progressive-speed nil)
 
+
 ;;; AUTOCOMPLETE SETTINGS
 (require 'auto-complete-config)
 (define-key ac-mode-map (kbd "M-TAB") 'auto-complete) ; bind M-TAB to autocomplete
@@ -44,3 +45,4 @@
 
 ;;; KEY BINDINGS
 (global-set-key (kbd "C-x g") 'magit-status)
+(global-set-key (kbd "C-x r") 'recompile)
