@@ -15,7 +15,7 @@
   (exec-path-from-shell-initialize)) ; load path from shell
 (setq mouse-wheel-scroll-amount '(1))
 (setq mouse-wheel-progressive-speed nil)
-
+(setq inhibit-splash-screen t) ; don't show the welcome message
 
 ;;; AUTOCOMPLETE SETTINGS
 (require 'auto-complete-config)
