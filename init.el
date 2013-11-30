@@ -13,6 +13,10 @@
 (setq ring-bell-function 'ignore) ; shut up shut up shut up
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize)) ; load path from shell
+(if (window-system)
+  (set-frame-height (selected-frame) 60))
+(if (window-system)
+  (set-frame-width (selected-frame) 150))
 (setq mouse-wheel-scroll-amount '(1))
 (setq mouse-wheel-progressive-speed nil)
 (setq inhibit-splash-screen t) ; don't show the welcome message
