@@ -23,6 +23,7 @@
 (ac-config-default)
 
 ;;; GO SETTINGS
+(setenv "GOROOT" "/usr/local/go") ; make sure we have a GOROOT outside of Terminal
 (add-to-list 'load-path "~/Projects/go/src/github.com/nsf/gocode") ; use gocode for autocomplete
 (require 'go-autocomplete)
 (add-to-list 'ac-modes 'go-mode)
