@@ -11,13 +11,12 @@
 ;;; COMMON SETTINGS
 (setq-default tab-width 4)
 (setq ring-bell-function 'ignore) ; shut up shut up shut up
-(when (memq window-system '(mac ns))
-  (exec-path-from-shell-initialize)) ; load path from shell
-(if (window-system)
-  (set-frame-height (selected-frame) 60))
-(if (window-system)
-  (set-frame-width (selected-frame) 150))
-(setq mouse-wheel-scroll-amount '(1))
+(when (memq window-system '(mac ns)) ; if we're running as Cocoa
+  (progn
+    (exec-path-from-shell-initialize) ; load path from shell
+    (set-frame-width (selected-frame) 150) ; open up 150x60
+    (set-frame-height (selected-frame) 60)))
+(setq mouse-wheel-scroll-amount '(1)) ; stop scrolling so damn fast
 (setq mouse-wheel-progressive-speed nil)
 (setq inhibit-splash-screen t) ; don't show the welcome message
 
