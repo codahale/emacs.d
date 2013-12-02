@@ -15,6 +15,7 @@
 (electric-pair-mode +1) ; use electric pairs
 (electric-indent-mode +1) ; use eletric indentation
 (column-number-mode +1) ; use column number mode
+(add-hook 'prog-mode-hook 'flyspell-prog-mode) ; enable ispell for comments and strings
 
 (when (memq window-system '(mac ns)) ; Cocoa-only settings
   (progn
@@ -46,7 +47,6 @@
 (require 'go-flymake)
 
 (define-key go-mode-map (kbd "RET") #'go-mode-insert-and-indent)
-(add-hook 'go-mode-hook 'flyspell-prog-mode) ; enable for comments and strings
 
 ;;; GIT SETTINGS
 (add-hook 'git-commit-mode-hook 'flyspell-mode) ; enable Flyspell
