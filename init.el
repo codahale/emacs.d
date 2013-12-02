@@ -18,7 +18,7 @@
 (when (memq window-system '(mac ns)) ; Cocoa-only settings
   (progn
     (exec-path-from-shell-initialize) ; load path from shell
-    (set-frame-width (selected-frame) 150) ; open up 150x60
+    (set-frame-width (selected-frame) 200) ; open up to 200x60
     (set-frame-height (selected-frame) 60)
     (setq mouse-wheel-scroll-amount '(1)) ; stop scrolling so damn fast
     (setq mouse-wheel-progressive-speed nil)))
