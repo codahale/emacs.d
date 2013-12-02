@@ -9,16 +9,20 @@
 (package-initialize)
 
 ;;; COMMON SETTINGS
-(setq-default tab-width 4)
+(setq-default tab-width 4) ; a tab is 4 spaces
+(setq inhibit-splash-screen t) ; don't show the welcome message
 (setq ring-bell-function 'ignore) ; shut up shut up shut up
-(when (memq window-system '(mac ns)) ; if we're running as Cocoa
+(electric-pair-mode +1) ; use electric pairs
+(electric-indent-mode +1) ; use eletric indentation
+
+(when (memq window-system '(mac ns)) ; Cocoa-only settings
   (progn
     (exec-path-from-shell-initialize) ; load path from shell
     (set-frame-width (selected-frame) 150) ; open up 150x60
-    (set-frame-height (selected-frame) 60)))
-(setq mouse-wheel-scroll-amount '(1)) ; stop scrolling so damn fast
-(setq mouse-wheel-progressive-speed nil)
-(setq inhibit-splash-screen t) ; don't show the welcome message
+    (set-frame-height (selected-frame) 60)
+    (setq mouse-wheel-scroll-amount '(1)) ; stop scrolling so damn fast
+    (setq mouse-wheel-progressive-speed nil)))
+
 
 ;;; AUTOCOMPLETE SETTINGS
 (require 'auto-complete-config)
