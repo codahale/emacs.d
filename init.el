@@ -23,10 +23,7 @@
     (set-frame-height (selected-frame) 60)
     (setq mouse-wheel-scroll-amount '(1)) ; stop scrolling so damn fast
     (setq mouse-wheel-progressive-speed nil)
-    (setenv "GOROOT" "/usr/local/go") ; use the pkg-installed GOROOT
-    )
-  )
-
+    (setenv "GOROOT" "/usr/local/go"))) ; use the pkg-installed GOROOT
 
 ;;; AUTOCOMPLETE SETTINGS
 (require 'auto-complete-config)
