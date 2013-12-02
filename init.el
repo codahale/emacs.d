@@ -22,7 +22,10 @@
     (set-frame-width (selected-frame) 200) ; open up to 200x60
     (set-frame-height (selected-frame) 60)
     (setq mouse-wheel-scroll-amount '(1)) ; stop scrolling so damn fast
-    (setq mouse-wheel-progressive-speed nil)))
+    (setq mouse-wheel-progressive-speed nil)
+    (setenv "GOROOT" "/usr/local/go") ; use the pkg-installed GOROOT
+    )
+  )
 
 
 ;;; AUTOCOMPLETE SETTINGS
