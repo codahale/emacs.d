@@ -30,27 +30,29 @@
 
 ;;; AUTOCOMPLETE SETTINGS
 (require 'auto-complete-config)
-(define-key ac-mode-map (kbd "M-TAB") 'auto-complete) ; bind M-TAB to autocomplete
+(define-key ac-mode-map (kbd "M-TAB") 'auto-complete)
 (ac-config-default)
 
 ;;; GO SETTINGS
-(setenv "GOROOT" "/usr/local/go") ; make sure we have a GOROOT outside of Terminal
-(add-to-list 'load-path "~/Projects/go/src/github.com/nsf/gocode") ; use gocode for autocomplete
+(add-to-list 'load-path "~/Projects/go/src/github.com/nsf/gocode")
 (require 'go-autocomplete)
 (add-to-list 'ac-modes 'go-mode)
 
-(add-hook 'before-save-hook 'gofmt-before-save) ; run gofmt on save
-(add-hook 'go-mode-hook 'go-eldoc-setup) ; run go-eldoc when in go-mode
-(add-hook 'go-mode-hook (lambda () (interactive) (column-marker-1 81))) ; mark 81 char columns in Go mode
+(add-hook 'before-save-hook ; run gofmt on save
+          'gofmt-before-save)
+(add-hook 'go-mode-hook ; run go-eldoc when in go-mode
+          'go-eldoc-setup)
+(add-hook 'go-mode-hook ; mark 81 char columns in Go mode
+          (lambda () (interactive) (column-marker-1 81)))
 
-(add-to-list 'load-path "~/Projects/go/src/github.com/dougm/goflymake") ; use goflymake
+(add-to-list 'load-path "~/Projects/go/src/github.com/dougm/goflymake")
 (require 'go-flymake)
 
-(define-key go-mode-map (kbd "RET") #'go-mode-insert-and-indent) ; stop crapping up returns
-(add-hook 'go-mode-hook 'flyspell-prog-mode) ; enable Flyspell for Go comments and strings
+(define-key go-mode-map (kbd "RET") #'go-mode-insert-and-indent)
+(add-hook 'go-mode-hook 'flyspell-prog-mode) ; enable for comments and strings
 
 ;;; GIT SETTINGS
-(add-hook 'git-commit-mode-hook 'flyspell-mode) ; enable Flyspell in git-commit-mode, requires ispell
+(add-hook 'git-commit-mode-hook 'flyspell-mode) ; enable Flyspell
 
 ;;; THEME SETTINGS
 (load-theme 'wombat t)
