@@ -14,6 +14,7 @@
 (setq ring-bell-function 'ignore) ; shut up shut up shut up
 (electric-pair-mode +1) ; use electric pairs
 (electric-indent-mode +1) ; use eletric indentation
+(column-number-mode +1) ; use column number mode
 
 (when (memq window-system '(mac ns)) ; Cocoa-only settings
   (progn
