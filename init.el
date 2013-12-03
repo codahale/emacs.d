@@ -16,6 +16,7 @@
 (electric-indent-mode +1) ; use eletric indentation
 (column-number-mode +1) ; use column number mode
 (add-hook 'prog-mode-hook 'flyspell-prog-mode) ; enable ispell for comments and strings
+(require 'expand-region)
 
 (when (memq window-system '(mac ns)) ; Cocoa-only settings
   (progn
@@ -57,3 +58,5 @@
 ;;; KEY BINDINGS
 (global-set-key (kbd "C-x g") 'magit-status)
 (global-set-key (kbd "C-x r") 'recompile)
+(global-set-key (kbd "C-+") 'er/expand-region)
+(global-set-key (kbd "C-=") 'er/contract-region)
