@@ -57,6 +57,6 @@
 
 ;;; KEY BINDINGS
 (global-set-key (kbd "C-x g") 'magit-status)
-(global-set-key (kbd "C-x r") 'recompile)
+(global-set-key (kbd "C-m-s-return") 'recompile)
 (global-set-key (kbd "C-+") 'er/expand-region)
 (global-set-key (kbd "C-=") 'er/contract-region)
