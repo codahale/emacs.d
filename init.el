@@ -52,6 +52,12 @@
 
 (define-key go-mode-map (kbd "RET") #'go-mode-insert-and-indent)
 
+(add-hook 'go-mode-hook '(lambda ()
+                           (setq imenu-generic-expression
+                                 '(("type" "^type *\\([^ \t\n\r\f]*\\)" 1)
+                                   ("func" "^func *\\(.*\\) {" 1)))
+                           (imenu-add-to-menubar "Index")))
+
 ;;; GIT SETTINGS
 (add-hook 'git-commit-mode-hook 'flyspell-mode) ; enable Flyspell
 
