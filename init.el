@@ -17,7 +17,8 @@
 (column-number-mode +1) ; use column number mode
 (add-hook 'prog-mode-hook 'flyspell-prog-mode) ; enable ispell for comments and strings
 (require 'expand-region)
-(setq-default show-trailing-whitespace t) ; highlight trailing whitespace b/c it's uggo
+(add-hook 'prog-mode-hook ; show trailing whitespace when in prog-mode
+          (lambda () (setq show-trailing-whitespace t)))
 (yas-global-mode +1) ; enable yasnippets everywhere
 
 (when (memq window-system '(mac ns)) ; Cocoa-only settings
