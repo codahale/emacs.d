@@ -1,6 +1,6 @@
 ;;; PACKAGES
 (require 'package)
-(add-to-list 'package-archives 
+(add-to-list 'package-archives
     '("marmalade" .
       "http://marmalade-repo.org/packages/"))
 (add-to-list 'package-archives
@@ -28,7 +28,7 @@
     (setq mouse-wheel-progressive-speed nil)
     (setenv "GOROOT" "/usr/local/go") ; use the pkg-installed GOROOT
     (setenv "GOPATH" "/Users/coda/Projects/go") ; ok no for real
-    )) 
+    ))
 
 ;;; AUTOCOMPLETE SETTINGS
 (require 'auto-complete-config)
