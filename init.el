@@ -20,6 +20,8 @@
 (add-hook 'prog-mode-hook ; show trailing whitespace when in prog-mode
           (lambda () (setq show-trailing-whitespace t)))
 (yas-global-mode +1) ; enable yasnippets everywhere
+(add-hook 'prog-mode-hook ; mark 81 char columns in prog-mode
+          (lambda () (interactive) (column-marker-1 81)))
 
 (when (memq window-system '(mac ns)) ; Cocoa-only settings
   (progn
@@ -46,8 +48,6 @@
           'gofmt-before-save)
 (add-hook 'go-mode-hook ; run go-eldoc when in go-mode
           'go-eldoc-setup)
-(add-hook 'go-mode-hook ; mark 81 char columns in Go mode
-          (lambda () (interactive) (column-marker-1 81)))
 
 (add-to-list 'load-path "~/Projects/go/src/github.com/dougm/goflymake")
 (require 'go-flymake)
