@@ -37,8 +37,9 @@
 
 ;;; AUTOCOMPLETE SETTINGS
 (require 'auto-complete-config)
-(define-key ac-mode-map (kbd "M-TAB") 'auto-complete)
 (ac-config-default)
+(ac-set-trigger-key "TAB")
+(setq ac-dwim t)
 
 ;;; GO SETTINGS
 (add-to-list 'load-path "~/Projects/go/src/github.com/nsf/gocode")
