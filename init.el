@@ -9,17 +9,18 @@
 (package-initialize)
 
 ;;; COMMON SETTINGS
-(setq-default tab-width 4) ; a tab is 4 spaces
-(setq inhibit-splash-screen t) ; don't show the welcome message
-(setq ring-bell-function 'ignore) ; shut up shut up shut up
 (electric-pair-mode +1) ; use electric pairs
 (electric-indent-mode +1) ; use eletric indentation
 (column-number-mode +1) ; use column number mode
-(add-hook 'prog-mode-hook 'flyspell-prog-mode) ; enable ispell for comments and strings
-(require 'expand-region)
+(yas-global-mode +1) ; enable yasnippets everywhere
+
+(setq-default tab-width 4) ; a tab is 4 spaces
+(setq inhibit-splash-screen t) ; don't show the welcome message
+(setq ring-bell-function 'ignore) ; shut up shut up shut up
+
+(add-hook 'prog-mode-hook 'flyspell-prog-mode) ; spell check comments and strings
 (add-hook 'prog-mode-hook ; show trailing whitespace when in prog-mode
           (lambda () (setq show-trailing-whitespace t)))
-(yas-global-mode +1) ; enable yasnippets everywhere
 (add-hook 'prog-mode-hook ; mark 81 char columns in prog-mode
           (lambda () (interactive) (column-marker-1 81)))
 
