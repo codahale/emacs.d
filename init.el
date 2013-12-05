@@ -67,5 +67,6 @@
 ;;; KEY BINDINGS
 (global-set-key (kbd "C-x g") 'magit-status)
 (global-set-key (kbd "C-x c") 'recompile)
+(global-set-key (kbd "C-x t") 'imenu-anywhere)
 (global-set-key (kbd "C-+") 'er/expand-region)
 (global-set-key (kbd "C-=") 'er/contract-region)
