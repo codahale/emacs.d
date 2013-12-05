@@ -8,23 +8,26 @@
       "http://melpa.milkbox.net/packages/"))
 (package-initialize)
 
-;;; COMMON SETTINGS
+;;; GLOBAL MODES
 (electric-pair-mode +1) ; use electric pairs
 (electric-indent-mode +1) ; use eletric indentation
 (column-number-mode +1) ; use column number mode
 (yas-global-mode +1) ; enable yasnippets everywhere
 
+;;; COMMON SETTINGS
 (setq-default tab-width 4) ; a tab is 4 spaces
 (setq inhibit-splash-screen t) ; don't show the welcome message
 (setq ring-bell-function 'ignore) ; shut up shut up shut up
 
+;;; PROGRAMMING SETTINGS
 (add-hook 'prog-mode-hook 'flyspell-prog-mode) ; spell check comments and strings
 (add-hook 'prog-mode-hook ; show trailing whitespace when in prog-mode
           (lambda () (setq show-trailing-whitespace t)))
 (add-hook 'prog-mode-hook ; mark 81 char columns in prog-mode
           (lambda () (interactive) (column-marker-1 81)))
 
-(when (memq window-system '(mac ns)) ; Cocoa-only settings
+;;; COCOA SETTINGS
+(when (memq window-system '(mac ns))
   (progn
     (exec-path-from-shell-initialize) ; load path from shell
     (set-frame-width (selected-frame) 200) ; open up to 200x60
