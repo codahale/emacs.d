@@ -53,6 +53,7 @@
 
 (define-key go-mode-map (kbd "RET") #'go-mode-insert-and-indent)
 
+; improve imenu results
 (add-hook 'go-mode-hook '(lambda ()
                            (setq imenu-generic-expression
                                  '(("type" "^type *\\([^ \t\n\r\f]*\\)" 1)
