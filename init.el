@@ -42,7 +42,7 @@
 (require 'auto-complete-config)
 (ac-config-default)
 (ac-set-trigger-key "TAB")
-(setq ac-dwim t)
+(setq ac-delay 0.5) ; wait a half-second before chipping in
 
 ;;; GO SETTINGS
 (add-to-list 'load-path "~/Projects/go/src/github.com/nsf/gocode")
