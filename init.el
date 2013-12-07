@@ -18,9 +18,6 @@
 (setq-default tab-width 4) ; a tab is 4 spaces
 (setq inhibit-splash-screen t) ; don't show the welcome message
 (setq ring-bell-function 'ignore) ; shut up shut up shut up
-
-;;; PROGRAMMING SETTINGS
-(add-hook 'prog-mode-hook 'flyspell-prog-mode) ; spell check comments and strings
 (add-hook 'prog-mode-hook ; show trailing whitespace when in prog-mode
           (lambda () (setq show-trailing-whitespace t)))
 (add-hook 'prog-mode-hook ; mark 81 char columns in prog-mode
@@ -37,6 +34,10 @@
     (setenv "GOROOT" "/usr/local/go") ; use the pkg-installed GOROOT
     (setenv "GOPATH" "/Users/coda/Projects/go") ; ok no for real
     ))
+
+;;; FLYSPELL SETTINGS
+(add-hook 'prog-mode-hook 'flyspell-prog-mode) ; spell check comments and strings
+(add-hook 'text-mode-hook 'flyspell-mode) ; enable Flyspell for text
 
 ;;; AUTOCOMPLETE SETTINGS
 (require 'auto-complete-config)
