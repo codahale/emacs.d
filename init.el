@@ -46,6 +46,7 @@
 (setq ac-delay 0.5) ; wait a half-second before chipping in
 
 ;;; GO SETTINGS
+(setq gofmt-command "goimports") ; use goimports to auto-import/trim
 (add-to-list 'load-path "~/Projects/go/src/github.com/nsf/gocode")
 (require 'go-autocomplete)
 (add-to-list 'ac-modes 'go-mode)
