@@ -74,9 +74,18 @@
 ;;; THEME SETTINGS
 (load-theme 'wombat t)
 
+;;; CUSTOM FUNCTIONS
+(defun confirm-exit-emacs ()
+  "ask for confirmation before exiting emacs"
+  (interactive)
+  (if (yes-or-no-p "Are you sure you want to exit? ")
+      (save-buffers-kill-emacs)))
+
 ;;; KEY BINDINGS
 (global-set-key (kbd "C-x g") 'magit-status)
 (global-set-key (kbd "C-x c") 'recompile)
 (global-set-key (kbd "C-x t") 'imenu-anywhere)
 (global-set-key (kbd "C-+") 'er/expand-region)
 (global-set-key (kbd "C-=") 'er/contract-region)
+(global-unset-key "\C-x\C-c")
+(global-set-key "\C-x\C-c" 'confirm-exit-emacs)
