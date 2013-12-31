@@ -75,9 +75,11 @@
 (load-theme 'wombat t)
 
 ;;; KEY BINDINGS
-(global-set-key (kbd "C-c C-g") 'magit-status)
-(global-set-key (kbd "C-c C-c") 'recompile)
-(global-set-key (kbd "C-c C-t") 'imenu-anywhere)
+(global-set-key (kbd "C-c g") 'magit-status)
+(global-set-key (kbd "C-c c") 'compile)
+(global-set-key (kbd "C-c r") 'recompile)
+(global-set-key (kbd "C-c m") 'imenu-anywhere)
+(global-set-key (kbd "C-c p") 'package-list-packages)
 (global-set-key (kbd "C-c <up>") 'er/expand-region)
 (global-set-key (kbd "C-c <down>") 'er/contract-region)
 
