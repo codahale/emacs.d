@@ -80,6 +80,7 @@
 (global-set-key (kbd "C-c r") 'recompile)
 (global-set-key (kbd "C-c m") 'imenu-anywhere)
 (global-set-key (kbd "C-c p") 'package-list-packages)
+(global-set-key (kbd "C-c n") 'flymake-goto-next-error)
 (global-set-key (kbd "C-c <up>") 'er/expand-region)
 (global-set-key (kbd "C-c <down>") 'er/contract-region)
 
