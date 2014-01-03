@@ -83,4 +83,4 @@
 (global-set-key (kbd "C-c n") 'flymake-goto-next-error)
 (global-set-key (kbd "C-c <up>") 'er/expand-region)
 (global-set-key (kbd "C-c <down>") 'er/contract-region)
-
+(global-set-key (kbd "C-c s") 'ag-project)
