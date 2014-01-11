@@ -18,8 +18,7 @@
 (setq-default tab-width 4) ; a tab is 4 spaces
 (setq inhibit-splash-screen t) ; don't show the welcome message
 (setq ring-bell-function 'ignore) ; shut up shut up shut up
-(add-hook 'prog-mode-hook ; show trailing whitespace when in prog-mode
-          (lambda () (setq show-trailing-whitespace t)))
+(add-hook 'before-save-hook 'delete-trailing-whitespace) ; trim everything
 (add-hook 'prog-mode-hook ; mark 81 char columns in prog-mode
           (lambda () (interactive) (column-marker-1 81)))
 
