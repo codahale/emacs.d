@@ -10,7 +10,6 @@
 
 ;;; GLOBAL MODES
 (electric-pair-mode +1) ; use electric pairs
-(electric-indent-mode +1) ; use eletric indentation
 (column-number-mode +1) ; use column number mode
 (yas-global-mode +1) ; enable yasnippets everywhere
 
