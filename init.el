@@ -20,6 +20,7 @@
 (add-hook 'before-save-hook 'delete-trailing-whitespace) ; trim everything
 (add-hook 'prog-mode-hook ; mark 81 char columns in prog-mode
           (lambda () (interactive) (column-marker-1 81)))
+(setq ido-ignore-extensions t)
 
 ;;; COCOA SETTINGS
 (when (memq window-system '(mac ns))
