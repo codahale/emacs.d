@@ -12,6 +12,7 @@
 (electric-pair-mode +1) ; use electric pairs
 (column-number-mode +1) ; use column number mode
 (yas-global-mode +1) ; enable yasnippets everywhere
+(delete-selection-mode t) ; overwrite selections
 
 ;;; COMMON SETTINGS
 (setq-default tab-width 4) ; a tab is 4 spaces
