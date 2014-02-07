@@ -23,12 +23,6 @@
           (lambda () (interactive) (column-marker-1 81)))
 (setq ido-ignore-extensions t)
 
-;;; SPEEDBAR
-(sr-speedbar-open) ; automatically open sr-speedbar
-(speedbar-add-supported-extension ".go")
-(speedbar-add-supported-extension ".md")
-
-
 ;;; COCOA SETTINGS
 (when (memq window-system '(mac ns))
   (progn
@@ -90,7 +84,7 @@
 (global-set-key (kbd "C-c <up>") 'er/expand-region)
 (global-set-key (kbd "C-c <down>") 'er/contract-region)
 (global-set-key (kbd "C-c s") 'ag-project)
-(global-set-key (kbd "C-c m") 'sr-speedbar-toggle)
+
 
 ;;; CUSTOMIZED CRAP
 (custom-set-variables
