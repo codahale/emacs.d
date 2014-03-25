@@ -87,6 +87,9 @@
 (global-set-key (kbd "C-c <up>") 'er/expand-region)
 (global-set-key (kbd "C-c <down>") 'er/contract-region)
 (global-set-key (kbd "C-c s") 'ag-project)
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+(global-set-key (kbd "C-c M-x") 'execute-extended-command) ; old M-x
 
 ;;; CUSTOMIZATIONS
 (setq custom-file "~/.emacs.d/custom.el")
