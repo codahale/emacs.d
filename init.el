@@ -13,6 +13,9 @@
 (column-number-mode +1) ; use column number mode
 (yas-global-mode +1) ; enable yasnippets everywhere
 (delete-selection-mode t) ; overwrite selections
+(projectile-global-mode) ; use projectile everywhere
+(flx-ido-mode 1) ; use flx-ido
+(ido-vertical-mode 1) ; use ido vertically
 
 ;;; COMMON SETTINGS
 (setq-default tab-width 4) ; a tab is 4 spaces
@@ -22,10 +25,7 @@
 (add-hook 'prog-mode-hook ; mark 81 char columns in prog-mode
           (lambda () (interactive) (column-marker-1 81)))
 (setq ido-ignore-extensions t)
-(projectile-global-mode)
-(flx-ido-mode 1)
-;; disable ido faces to see flx highlights.
-(setq ido-use-faces nil)
+(setq ido-use-faces nil) ; disable ido faces to see flx highlights.
 
 ;;; COCOA SETTINGS
 (when (memq window-system '(mac ns))
