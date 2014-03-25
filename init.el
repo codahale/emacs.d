@@ -16,6 +16,7 @@
 (projectile-global-mode) ; use projectile everywhere
 (flx-ido-mode 1) ; use flx-ido
 (ido-vertical-mode 1) ; use ido vertically
+(add-hook 'after-init-hook #'global-flycheck-mode) ; use flycheck everywhere
 
 ;;; COMMON SETTINGS
 (setq-default tab-width 4) ; a tab is 4 spaces
@@ -60,17 +61,14 @@
 (add-hook 'go-mode-hook ; run go-eldoc when in go-mode
           'go-eldoc-setup)
 
-(add-to-list 'load-path "~/Projects/go/src/github.com/dougm/goflymake")
-(require 'go-flymake)
-
-(define-key go-mode-map (kbd "RET") #'go-mode-insert-and-indent)
-
-; improve imenu results
 (add-hook 'go-mode-hook '(lambda ()
+                           ; improve imenu results
                            (setq imenu-generic-expression
                                  '(("type" "^type *\\([^ \t\n\r\f]*\\)" 1)
                                    ("func" "^func *\\(.*\\) {" 1)))
-                           (imenu-add-to-menubar "Index")))
+                           (imenu-add-to-menubar "Index")
+                           (define-key go-mode-map (kbd "RET") #'go-mode-insert-and-indent)
+))
 
 ;;; GIT SETTINGS
 (add-hook 'git-commit-mode-hook 'flyspell-mode) ; enable Flyspell
@@ -83,7 +81,7 @@
 (global-set-key (kbd "C-c c") 'compile)
 (global-set-key (kbd "C-c r") 'recompile)
 (global-set-key (kbd "C-c i") 'imenu-anywhere)
-(global-set-key (kbd "C-c n") 'flymake-goto-next-error)
+(global-set-key (kbd "C-c n") 'flycheck-next-error)
 (global-set-key (kbd "C-c <up>") 'er/expand-region)
 (global-set-key (kbd "C-c <down>") 'er/contract-region)
 (global-set-key (kbd "C-c s") 'ag-project)
