@@ -89,7 +89,6 @@
 (global-set-key (kbd "C-c c") 'compile)
 (global-set-key (kbd "C-c r") 'recompile)
 (global-set-key (kbd "C-c i") 'imenu-anywhere)
-(global-set-key (kbd "C-c n") 'flycheck-next-error)
 (global-set-key (kbd "C-c <up>") 'er/expand-region)
 (global-set-key (kbd "C-c <down>") 'er/contract-region)
 (global-set-key (kbd "C-c s") 'ag-project)
