@@ -43,28 +43,37 @@
     (setq mouse-wheel-progressive-speed nil)
     (setenv "GOROOT" "/usr/local/go") ; use the pkg-installed GOROOT
     (setenv "GOPATH" "/Users/coda/Projects/go") ; ok no for real
-    ))
+))
 
 ;;; FLYSPELL SETTINGS
 (add-hook 'prog-mode-hook 'flyspell-prog-mode) ; spell check comments and strings
 (add-hook 'text-mode-hook 'flyspell-mode) ; enable Flyspell for text
 
-;;; AUTOCOMPLETE SETTINGS
-(require 'auto-complete-config)
-(ac-config-default)
-(ac-set-trigger-key "TAB")
-(setq ac-delay 0.5) ; wait a half-second before chipping in
+;;; COMPANY SETTINGS
+(require 'company) ; load company mode
+(setq company-tooltip-limit 20) ; bigger popup window
+(setq company-minimum-prefix-length 0) ; autocomplete right after '.'
+(setq company-idle-delay .3) ; shorter delay before autocompletion popup
+(setq company-echo-delay 0) ; removes annoying blinking
+(setq company-begin-commands '(self-insert-command)) ; start autocompletion only after typing
+(custom-set-faces ; make company a little less ugly
+ '(company-preview
+   ((t (:foreground "darkgray" :underline t))))
+ '(company-preview-common
+   ((t (:inherit company-preview))))
+ '(company-tooltip
+   ((t (:background "lightgray" :foreground "black"))))
+ '(company-tooltip-selection
+   ((t (:background "steelblue" :foreground "white"))))
+ '(company-tooltip-common
+   ((((type x)) (:inherit company-tooltip :weight bold))
+    (t (:inherit company-tooltip))))
+ '(company-tooltip-common-selection
+   ((((type x)) (:inherit company-tooltip-selection :weight bold))
+    (t (:inherit company-tooltip-selection)))))
 
 ;;; GO SETTINGS
-(add-to-list 'load-path "~/Projects/go/src/github.com/nsf/gocode")
-(require 'go-autocomplete)
-(add-to-list 'ac-modes 'go-mode)
-
-(add-hook 'before-save-hook ; run gofmt on save
-          'gofmt-before-save)
-(add-hook 'go-mode-hook ; run go-eldoc when in go-mode
-          'go-eldoc-setup)
-
+(add-hook 'before-save-hook 'gofmt-before-save) ; run gofmt on save
 (add-hook 'go-mode-hook
           '(lambda ()
              ; improve imenu results
@@ -76,6 +85,12 @@
              (define-key go-mode-map (kbd "RET") #'go-mode-insert-and-indent)
              ; use goimports to auto-import/trim
              (setq gofmt-command "goimports")
+             ; use go-eldoc
+             (go-eldoc-setup)
+             ; only use gocode as company backend
+             (set (make-local-variable 'company-backends) '(company-go))
+             ; enable company-mode
+             (company-mode)
 ))
 
 ;;; GIT SETTINGS
