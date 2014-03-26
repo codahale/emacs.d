@@ -56,7 +56,6 @@
 (setq ac-delay 0.5) ; wait a half-second before chipping in
 
 ;;; GO SETTINGS
-(setq gofmt-command "goimports") ; use goimports to auto-import/trim
 (add-to-list 'load-path "~/Projects/go/src/github.com/nsf/gocode")
 (require 'go-autocomplete)
 (add-to-list 'ac-modes 'go-mode)
@@ -66,13 +65,17 @@
 (add-hook 'go-mode-hook ; run go-eldoc when in go-mode
           'go-eldoc-setup)
 
-(add-hook 'go-mode-hook '(lambda ()
-                           ; improve imenu results
-                           (setq imenu-generic-expression
-                                 '(("type" "^type *\\([^ \t\n\r\f]*\\)" 1)
-                                   ("func" "^func *\\(.*\\) {" 1)))
-                           (imenu-add-to-menubar "Index")
-                           (define-key go-mode-map (kbd "RET") #'go-mode-insert-and-indent)
+(add-hook 'go-mode-hook
+          '(lambda ()
+             ; improve imenu results
+             (setq imenu-generic-expression
+                   '(("type" "^type *\\([^ \t\n\r\f]*\\)" 1)
+                     ("func" "^func *\\(.*\\) {" 1)))
+             (imenu-add-to-menubar "Index")
+             ; always indent after a return
+             (define-key go-mode-map (kbd "RET") #'go-mode-insert-and-indent)
+             ; use goimports to auto-import/trim
+             (setq gofmt-command "goimports")
 ))
 
 ;;; GIT SETTINGS
