@@ -73,6 +73,13 @@
    ((((type x)) (:inherit company-tooltip-selection :weight bold))
     (t (:inherit company-tooltip-selection)))))
 
+(defun complete-or-indent ()
+  "Complete or indent depending on context."
+  (interactive)
+  (if (company-manual-begin)
+      (company-complete-common)
+      (indent-according-to-mode)))
+
 ;;; GO SETTINGS
 (add-hook 'before-save-hook 'gofmt-before-save) ; run gofmt on save
 (add-hook 'go-mode-hook
@@ -110,6 +117,7 @@
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 (global-set-key (kbd "C-c M-x") 'execute-extended-command) ; old M-x
+(global-set-key (kbd "TAB") 'complete-or-indent)
 
 ;;; CUSTOMIZATIONS
 (setq custom-file "~/.emacs.d/custom.el")
