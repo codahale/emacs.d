@@ -1,4 +1,4 @@
-(electric-pair-mode t) ; use electric pairs
+(autopair-global-mode) ; use autopair everywhere
 (column-number-mode t) ; use column number mode
 (yas-global-mode t) ; enable yasnippets everywhere
 (delete-selection-mode t) ; overwrite selections
