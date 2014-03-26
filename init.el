@@ -27,6 +27,7 @@
           (lambda () (interactive) (column-marker-1 81)))
 (setq ido-ignore-extensions t)
 (setq ido-use-faces nil) ; disable ido faces to see flx highlights.
+(setq insert-directory-program "gls") ; use core-utils for dired
 
 ;;; COCOA SETTINGS
 (when (memq window-system '(mac ns))
