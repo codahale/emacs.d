@@ -1,3 +1,7 @@
+;;; init.el -- Coda Hale's special sauce
+;;; Commentary:
+;;; Code:
+
 ;;; PACKAGES
 (require 'package)
 (add-to-list 'package-archives
@@ -93,3 +97,6 @@
 ;;; CUSTOMIZATIONS
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file 'noerror)
+
+(provide 'init)
+;;; init.el ends here
