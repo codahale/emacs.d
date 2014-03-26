@@ -51,6 +51,7 @@
 
 ;;; COMPANY SETTINGS
 (require 'company) ; load company mode
+(add-hook 'after-init-hook 'global-company-mode) ; use it everywhere
 (setq company-tooltip-limit 20) ; bigger popup window
 (setq company-minimum-prefix-length 0) ; autocomplete right after '.'
 (setq company-idle-delay .3) ; shorter delay before autocompletion popup
@@ -89,12 +90,11 @@
              (go-eldoc-setup)
              ; only use gocode as company backend
              (set (make-local-variable 'company-backends) '(company-go))
-             ; enable company-mode
-             (company-mode)
 ))
 
 ;;; GIT SETTINGS
 (add-hook 'git-commit-mode-hook 'flyspell-mode) ; enable Flyspell
+(add-hook 'git-commit-mode-hook '(lambda () (company-mode 0)))
 
 ;;; THEME SETTINGS
 (load-theme 'wombat t)
