@@ -1,19 +1,200 @@
-(defconst dotfiles-dir
-  (file-name-directory
-   (or (buffer-file-name) load-file-name)))
-(add-to-list 'load-path dotfiles-dir)
+;;;; CASK
 
-(require 'init-packages)
-(require 'init-common)
-(require 'init-cocoa)
-(require 'init-company)
-(require 'init-flyspell)
-(require 'init-go)
-(require 'init-keybindings)
+(require 'cask "/usr/local/Cellar/cask/0.6.0/cask.el")
+(cask-initialize)
+(require 'pallet)
 
+;;;; GLOBAL
+
+;; use a nice dark theme
 (load-theme 'wombat t)
+
+;; use autopair everywhere
+(autopair-global-mode)
+
+;; use column number mode, and mark lines longer than 80 characters
+(column-number-mode t)
+(add-hook 'prog-mode-hook
+          (lambda () (interactive) (column-marker-1 81)))
+
+; use line numbers in prog-mode
+(add-hook 'prog-mode-hook 'linum-mode)
+
+;; enable yasnippet everywhere
+(yas-global-mode t)
+
+;; overwrite selections
+(delete-selection-mode t)
+
+;; use projectile everywhere
+(projectile-global-mode t)
+
+;; enable flycheck everywhere
+(add-hook 'after-init-hook #'global-flycheck-mode)
+
+;; a tab is 4 spaces wide
+(setq-default tab-width 4)
+
+;; don't show the welcome message
+(setq inhibit-splash-screen t)
+
+;; shut up shut up shut up
+(setq ring-bell-function 'ignore)
+
+;; always delete trailing whitespace
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+;; use core-utils for dired
+(setq insert-directory-program "gls")
+
+;; always prefer UTF-8
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+(prefer-coding-system 'utf-8)
+
+;; always add a trailing newline - POSIX
+(setq require-final-newline t)
+
+;; Don't clobber things in the system clipboard when killing
+(setq save-interprogram-paste-before-kill t)
+
+;;;; IDO
+
+;; use flx-ido
+(flx-ido-mode t)
+
+;; use ido vertically
+(ido-vertical-mode t)
+
+;; don't complete on extensions with ido
+(setq ido-ignore-extensions t)
+
+;; disable ido faces to see flx highlights
+(setq ido-use-faces nil)
+
+;;;; ELISP
+
+;; surface Elisp sections in imenu
+(defun imenu-elisp-sections ()
+  (setq imenu-generic-expression '(("Sections" "^;;;; \\(.+\\)" 1)))
+  (imenu-add-to-menubar "Index")
+)
+(add-hook 'emacs-lisp-mode-hook 'imenu-elisp-sections)
+
+;;;; COCOA
+
+(when (memq window-system '(mac ns))
+  (progn
+    ;; load PATH variable from shell, since setting env bars in Maces
+    ;; is crazy painful
+    (exec-path-from-shell-initialize)
+
+    ;; open up to 200x60
+    (add-to-list 'default-frame-alist '(width . 200))
+    (add-to-list 'default-frame-alist '(height . 60))
+
+    ;; don't scroll like a maniac
+    (setq mouse-wheel-scroll-amount '(1))
+    (setq mouse-wheel-progressive-speed nil)
+
+))
+
+;;;; COMPANY
+
+(require 'company)
+
+;; use a bigger popup window
+(setq company-tooltip-limit 20)
+
+;; shorten the delay before showing the popup
+(setq company-idle-delay .3)
+
+;; eliminate weird blinking
+(setq company-echo-delay 0)
+
+;; only start autocompletion after typing
+(setq company-begin-commands '(self-insert-command))
+
+;; take over hippie-expand
+(defun coda/enable-company-mode ()
+  (company-mode 1)
+  (define-key (current-local-map) [remap hippie-expand] 'company-complete))
+(add-hook 'prog-mode-hook 'coda/enable-company-mode)
+
+;; disable in git-commit-mode since it's crazy annoying
+(setq company-global-modes '(not git-commit-mode))
+
+;; strictly limit completion in Go, since it's totally accurate
+(defadvice company-go (around fix-company-go-prefix activate)
+      ad-do-it
+      (when (eql (ad-get-arg 0) 'prefix)
+        (setq ad-return-value (company-grab-word))))
+
+;;;; SPELLING
+
+(require 'ispell)
+
+;; use aspell instead of ispell
+(setq ispell-program-name "ispell")
+
+;; automatically check spelling for text
+(add-hook 'text-mode-hook 'flyspell-mode)
+
+;; spell check comments and strings when programming
+(add-hook 'prog-mode-hook 'flyspell-prog-mode)
+
+;; spell check git commit messages
+(add-hook 'git-commit-mode-hook 'flyspell-mode)
+
+;;;; GO
+
+;; hard-code GOROOT and GOPATH for now
+(setenv "GOROOT" "/usr/local/go")
+(setenv "GOPATH" "/Users/coda/Projects/go")
+
+(require 'go-mode)
+
+;; use goimports instead of gofmt
+(setq gofmt-command "goimports")
+
+;; always run goimports before saving .go files
+(add-hook 'before-save-hook 'gofmt-before-save)
+
+(add-hook 'go-mode-hook
+          '(lambda ()
+             ;; improve imenu results
+             (setq imenu-generic-expression
+                   '(("type" "^type *\\([^ \t\n\r\f]*\\)" 1)
+                     ("func" "^func *\\(.*\\) {" 1)))
+             (imenu-add-to-menubar "Index")
+
+             ;; always indent after a return
+             (define-key go-mode-map (kbd "RET") #'go-mode-insert-and-indent)
+
+             ;; use go-eldoc
+             (go-eldoc-setup)
+
+             ;; only use gocode as company backend
+             (set (make-local-variable 'company-backends) '(company-go))
+))
+
+;;;; KEYBINDINGS
+
+(global-set-key (kbd "C-c g") 'magit-status)
+(global-set-key (kbd "C-c c") 'compile)
+(global-set-key (kbd "C-c r") 'recompile)
+(global-set-key (kbd "C-c i") 'imenu-anywhere)
+(global-set-key (kbd "C-c <up>") 'er/expand-region)
+(global-set-key (kbd "C-c <down>") 'er/contract-region)
+(global-set-key (kbd "C-c s") 'ag-project)
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+(global-set-key (kbd "C-c M-x") 'execute-extended-command) ; old M-x
+
+;; unmap upcase-region, since it always screws with undo
+(global-unset-key (kbd "C-x C-u"))
+
+;;;; CUSTOM
 
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file 'noerror)
-
-(provide 'init)
