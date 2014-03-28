@@ -13,7 +13,7 @@
 (add-hook 'before-save-hook 'delete-trailing-whitespace) ; trim everything
 (add-hook 'prog-mode-hook ; mark 81 char columns in prog-mode
           (lambda () (interactive) (column-marker-1 81)))
-(add-hook 'prog-mode-hook 'nlinum-mode) ; use line numbers in prog-mode
+(add-hook 'prog-mode-hook 'linum-mode) ; use line numbers in prog-mode
 (setq ido-ignore-extensions t)
 (setq ido-use-faces nil) ; disable ido faces to see flx highlights.
 (setq insert-directory-program "gls") ; use core-utils for dired
