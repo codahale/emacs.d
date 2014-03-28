@@ -1,10 +1,5 @@
-(require 'package)
-(add-to-list 'package-archives
-    '("marmalade" .
-      "http://marmalade-repo.org/packages/"))
-(add-to-list 'package-archives
-    '("melpa" .
-      "http://melpa.milkbox.net/packages/"))
-(package-initialize)
+(require 'cask "/usr/local/Cellar/cask/0.6.0/cask.el")
+(cask-initialize)
+(require 'pallet)
 
 (provide 'init-packages)

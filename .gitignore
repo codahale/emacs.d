@@ -6,3 +6,5 @@ backups
 url
 eshell
 projectile-bookmarks.eld
+*.elc
+.cask
