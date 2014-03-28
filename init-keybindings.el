@@ -9,4 +9,8 @@
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 (global-set-key (kbd "C-c M-x") 'execute-extended-command) ; old M-x
 
+;; unmap upcase-region, since it always screws with undo
+(global-unset-key (kbd "C-x C-u"))
+
+
 (provide 'init-keybindings)
