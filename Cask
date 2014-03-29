@@ -31,6 +31,7 @@
 (depends-on "pallet")
 (depends-on "projectile")
 (depends-on "puppet-mode")
+(depends-on "rust-mode")
 (depends-on "smex")
 (depends-on "yaml-mode")
 (depends-on "yasnippet")
