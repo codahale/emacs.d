@@ -77,11 +77,6 @@
 ;; prompt when vcs state is dirty on exit
 (vc-check-status-activate 1)
 
-;; bug me when I use un-Emacs-y keys
-(require 'guru-mode)
-(guru-global-mode +1)
-(setq guru-warn-only t)
-
 ;;;; IDO
 
 ;; use flx-ido
