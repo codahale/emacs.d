@@ -5,6 +5,7 @@
 (depends-on "autopair")
 (depends-on "better-defaults")
 (depends-on "cask")
+(depends-on "coffee-mode")
 (depends-on "column-marker")
 (depends-on "company")
 (depends-on "company-go")
