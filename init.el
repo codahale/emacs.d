@@ -17,7 +17,8 @@
 ;;;; GLOBAL
 
 ;; use a nice dark theme
-(load-theme 'wombat t)
+(load-theme 'solarized-dark t)
+(powerline-default-theme)
 
 ;; use autopair everywhere
 (autopair-global-mode)
@@ -47,6 +48,7 @@
 
 ;; enable flycheck everywhere
 (add-hook 'after-init-hook #'global-flycheck-mode)
+(add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode)
 
 ;; a tab is 4 spaces wide
 (setq-default tab-width 4)
