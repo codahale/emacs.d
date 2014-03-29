@@ -65,7 +65,7 @@
 ;; always add a trailing newline - POSIX
 (setq require-final-newline t)
 
-;; Don't clobber things in the system clipboard when killing
+;; don't clobber things in the system clipboard when killing
 (setq save-interprogram-paste-before-kill t)
 
 ;; prompt when vcs state is dirty on exit
