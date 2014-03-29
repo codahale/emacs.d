@@ -15,6 +15,7 @@
 (depends-on "expand-region")
 (depends-on "flx-ido")
 (depends-on "flycheck")
+(depends-on "flycheck-cask")
 (depends-on "flyspell-lazy")
 (depends-on "git-commit-mode")
 (depends-on "git-rebase-mode")

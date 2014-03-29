@@ -91,6 +91,13 @@
 )
 (add-hook 'emacs-lisp-mode-hook 'imenu-elisp-sections)
 
+;; open Cask files in elisp-mode
+(add-to-list 'auto-mode-alist '("Cask\\'" . emacs-lisp-mode))
+
+;; add support for flychecking Cask files
+(eval-after-load 'flycheck
+  '(add-hook 'flycheck-mode-hook #'flycheck-cask-setup))
+
 ;;;; COCOA
 
 (when (memq window-system '(mac ns))
