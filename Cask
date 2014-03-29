@@ -39,6 +39,7 @@
 (depends-on "thrift")
 (depends-on "tuareg")
 (depends-on "vc-check-status")
+(depends-on "web-mode")
 (depends-on "yaml-mode")
 (depends-on "yard-mode")
 (depends-on "yasnippet")
