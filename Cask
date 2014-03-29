@@ -34,6 +34,7 @@
 (depends-on "projectile")
 (depends-on "puppet-mode")
 (depends-on "rust-mode")
+(depends-on "scala-mode")
 (depends-on "smex")
 (depends-on "vc-check-status")
 (depends-on "yaml-mode")
