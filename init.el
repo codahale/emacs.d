@@ -201,6 +201,10 @@
              (set (make-local-variable 'company-backends) '(company-go))
 ))
 
+;;;; JAVASCRIPT
+
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+
 ;;;; KEYBINDINGS
 
 (global-set-key (kbd "C-c c")      'compile)
