@@ -5,7 +5,6 @@
 (depends-on "autopair")
 (depends-on "better-defaults")
 (depends-on "cask")
-(depends-on "color-theme-wombat+")
 (depends-on "column-marker")
 (depends-on "company")
 (depends-on "company-go")
