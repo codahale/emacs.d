@@ -1,5 +1,5 @@
-(source melpa)
 (source marmalade)
+(source melpa)
 
 (depends-on "ag")
 (depends-on "autopair")
@@ -35,6 +35,7 @@
 (depends-on "pallet")
 (depends-on "projectile")
 (depends-on "puppet-mode")
+(depends-on "python-mode")
 (depends-on "rust-mode")
 (depends-on "scala-mode")
 (depends-on "smex")
