@@ -34,4 +34,5 @@
 (depends-on "smex")
 (depends-on "vc-check-status")
 (depends-on "yaml-mode")
+(depends-on "yard-mode")
 (depends-on "yasnippet")
