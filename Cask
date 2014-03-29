@@ -1,5 +1,5 @@
-(source melpa)
 (source marmalade)
+(source melpa)
 
 (depends-on "ag")
 (depends-on "autopair")
@@ -30,5 +30,6 @@
 (depends-on "puppet-mode")
 (depends-on "rust-mode")
 (depends-on "smex")
+(depends-on "vc-check-status")
 (depends-on "yaml-mode")
 (depends-on "yasnippet")

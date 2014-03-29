@@ -68,6 +68,9 @@
 ;; Don't clobber things in the system clipboard when killing
 (setq save-interprogram-paste-before-kill t)
 
+;; prompt when vcs state is dirty on exit
+(vc-check-status-activate 1)
+
 ;;;; IDO
 
 ;; use flx-ido
