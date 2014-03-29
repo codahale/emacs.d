@@ -26,6 +26,7 @@
 (depends-on "ido-vertical-mode")
 (depends-on "imenu-anywhere")
 (depends-on "js2-mode")
+(depends-on "json-mode")
 (depends-on "magit")
 (depends-on "markdown-mode")
 (depends-on "pallet")
