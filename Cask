@@ -37,6 +37,7 @@
 (depends-on "scala-mode")
 (depends-on "smex")
 (depends-on "thrift")
+(depends-on "tuareg")
 (depends-on "vc-check-status")
 (depends-on "yaml-mode")
 (depends-on "yard-mode")
