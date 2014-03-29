@@ -27,8 +27,11 @@
 (add-hook 'prog-mode-hook
           (lambda () (interactive) (column-marker-1 81)))
 
-; use line numbers in prog-mode
+;; use line numbers in prog-mode
 (add-hook 'prog-mode-hook 'linum-mode)
+
+;; highlight the current line number
+(add-hook 'prog-mode-hook 'hlinum-activate)
 
 ;; enable yasnippet everywhere
 (yas-global-mode t)

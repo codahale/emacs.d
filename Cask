@@ -22,6 +22,7 @@
 (depends-on "go-eldoc")
 (depends-on "go-mode")
 (depends-on "go-snippets")
+(depends-on "hlinum")
 (depends-on "ido-vertical-mode")
 (depends-on "imenu-anywhere")
 (depends-on "magit")
