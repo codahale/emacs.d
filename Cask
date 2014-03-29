@@ -1,10 +1,11 @@
-(source marmalade)
 (source melpa)
+(source marmalade)
 
 (depends-on "ag")
 (depends-on "autopair")
 (depends-on "better-defaults")
 (depends-on "cask")
+(depends-on "color-theme-wombat+")
 (depends-on "column-marker")
 (depends-on "company")
 (depends-on "company-go")
@@ -33,3 +34,4 @@
 (depends-on "vc-check-status")
 (depends-on "yaml-mode")
 (depends-on "yasnippet")
+(depends-on "zenburn-theme")
