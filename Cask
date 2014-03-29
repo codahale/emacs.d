@@ -13,6 +13,7 @@
 (depends-on "enh-ruby-mode")
 (depends-on "exec-path-from-shell")
 (depends-on "expand-region")
+(depends-on "fic-mode")
 (depends-on "flx-ido")
 (depends-on "flycheck")
 (depends-on "flycheck-cask")

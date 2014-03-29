@@ -33,6 +33,9 @@
 ;; highlight the current line number
 (add-hook 'prog-mode-hook 'hlinum-activate)
 
+;; highlight fixme comments
+(add-hook 'prog-mode-hook 'fic-mode)
+
 ;; enable yasnippet everywhere
 (yas-global-mode t)
 
