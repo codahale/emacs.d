@@ -23,10 +23,11 @@
 ;; use autopair everywhere
 (autopair-global-mode)
 
-;; use column number mode, and mark lines longer than 80 characters
-(column-number-mode t)
-(add-hook 'prog-mode-hook
-          (lambda () (interactive) (column-marker-1 81)))
+;; use whitespace mode, and mark lines longer than 80 characters
+(require 'whitespace)
+(global-whitespace-mode)
+(setq whitespace-style '(face empty lines-tail trailing))
+(setq whitespace-line-column 81)
 
 ;; use line numbers in prog-mode
 (add-hook 'prog-mode-hook 'linum-mode)
