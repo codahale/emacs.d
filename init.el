@@ -17,8 +17,8 @@
 ;;;; GLOBAL
 
 ;; use a nice dark theme
-(load-theme 'solarized-dark t)
-(powerline-default-theme)
+(require 'moe-theme)
+(moe-dark)
 
 ;; use autopair everywhere
 (autopair-global-mode)

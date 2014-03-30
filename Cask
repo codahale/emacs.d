@@ -1,5 +1,5 @@
-(source melpa)
 (source marmalade)
+(source melpa)
 
 (depends-on "ag")
 (depends-on "autopair")
@@ -32,6 +32,7 @@
 (depends-on "lua-mode")
 (depends-on "magit")
 (depends-on "markdown-mode")
+(depends-on "moe-theme")
 (depends-on "pallet")
 (depends-on "powerline")
 (depends-on "projectile")
