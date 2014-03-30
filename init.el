@@ -94,6 +94,11 @@
 ;; prompt when vcs state is dirty on exit
 (vc-check-status-activate t)
 
+;;;; C/C++
+
+(add-hook 'c-mode-hook 'cppcm-reload-all)
+(add-hook 'c++-mode-hook 'cppcm-reload-all)
+
 ;;;; LEGALESE
 
 (require 'legalese)
