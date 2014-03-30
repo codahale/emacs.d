@@ -1,6 +1,7 @@
-(source melpa)
 (source marmalade)
+(source melpa)
 
+(depends-on "ace-jump-mode")
 (depends-on "ag")
 (depends-on "autopair")
 (depends-on "better-defaults")
