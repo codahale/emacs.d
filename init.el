@@ -212,6 +212,8 @@
 
 ;;;; KEYBINDINGS
 
+(global-set-key (kbd "C-w")        'backward-kill-word)
+
 (global-set-key (kbd "C-c c")      'compile)
 (global-set-key (kbd "C-c g")      'magit-status)
 (global-set-key (kbd "C-c i")      'imenu-anywhere)
