@@ -21,6 +21,9 @@
 (load-theme 'wombat t)
 (powerline-default-theme)
 
+;; use Consolas, if available
+(set-frame-font "Consolas-12" nil t)
+
 ;; use autopair everywhere
 (autopair-global-mode)
 
