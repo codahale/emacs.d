@@ -5,8 +5,9 @@
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 
-;; No splash screen please ... jeez
+;; chill Winston
 (setq inhibit-startup-message t)
+(setq inhibit-startup-echo-area-message t)
 
 ;;;; CASK
 
