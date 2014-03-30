@@ -15,6 +15,9 @@
 (cask-initialize)
 (require 'pallet)
 
+;; don't re-load packages
+(setq package-enable-at-startup nil)
+
 ;;;; GLOBAL
 
 ;; use a nice dark theme
