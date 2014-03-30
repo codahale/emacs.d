@@ -29,6 +29,7 @@
 (global-whitespace-mode)
 (setq whitespace-style '(face empty lines-tail trailing))
 (setq whitespace-line-column 81)
+(setq whitespace-global-modes '(not git-commit-mode))
 
 ;; use line numbers in prog-mode
 (add-hook 'prog-mode-hook 'linum-mode)
