@@ -1,5 +1,5 @@
-(source marmalade)
 (source melpa)
+(source marmalade)
 
 (depends-on "ag")
 (depends-on "autopair")
@@ -29,6 +29,7 @@
 (depends-on "imenu-anywhere")
 (depends-on "js2-mode")
 (depends-on "json-mode")
+(depends-on "legalese")
 (depends-on "lua-mode")
 (depends-on "magit")
 (depends-on "markdown-mode")

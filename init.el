@@ -79,6 +79,13 @@
 ;; prompt when vcs state is dirty on exit
 (vc-check-status-activate 1)
 
+;;;; LEGALESE
+
+(require 'legalese)
+(custom-set-variables
+  '(legalese-default-author "Coda Hale")
+  '(legalese-default-copyright "coda.hale@gmail.com"))
+
 ;;;; IDO
 
 ;; use flx-ido
