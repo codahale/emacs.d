@@ -1,5 +1,5 @@
-(source marmalade)
 (source melpa)
+(source marmalade)
 
 (depends-on "ag")
 (depends-on "autopair")
@@ -8,6 +8,7 @@
 (depends-on "coffee-mode")
 (depends-on "company")
 (depends-on "company-go")
+(depends-on "discover")
 (depends-on "dockerfile-mode")
 (depends-on "enh-ruby-mode")
 (depends-on "exec-path-from-shell")

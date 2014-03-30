@@ -31,6 +31,9 @@
 (setq whitespace-line-column 81)
 (setq whitespace-global-modes '(not git-commit-mode))
 
+;; add context menus for things
+(global-discover-mode 1)
+
 ;; use line numbers in prog-mode
 (add-hook 'prog-mode-hook 'linum-mode)
 
