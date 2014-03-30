@@ -113,11 +113,10 @@
 ;;;; ELISP
 
 ;; surface Elisp sections in imenu
-(defun imenu-elisp-sections ()
+(defun coda/imenu-elisp-sections ()
   (setq imenu-generic-expression '(("Sections" "^;;;; \\(.+\\)" 1)))
-  (imenu-add-to-menubar "Index")
-)
-(add-hook 'emacs-lisp-mode-hook 'imenu-elisp-sections)
+  (imenu-add-to-menubar "Index"))
+(add-hook 'emacs-lisp-mode-hook 'coda/imenu-elisp-sections)
 
 ;; open Cask files in elisp-mode
 (add-to-list 'auto-mode-alist '("Cask\\'" . emacs-lisp-mode))
@@ -128,21 +127,20 @@
 
 ;;;; COCOA
 
-(when (memq window-system '(mac ns))
-  (progn
-    ;; load PATH variable from shell, since setting env bars in Maces
-    ;; is crazy painful
-    (exec-path-from-shell-initialize)
+(defun coda/configure-cocoa ()
+  ;; load PATH variable from shell, since setting env bars in Maces
+  ;; is crazy painful
+  (exec-path-from-shell-initialize)
 
-    ;; open up to 200x60
-    (add-to-list 'default-frame-alist '(width . 200))
-    (add-to-list 'default-frame-alist '(height . 60))
+  ;; open up to 200x60
+  (add-to-list 'default-frame-alist '(width . 200))
+  (add-to-list 'default-frame-alist '(height . 60))
 
-    ;; don't scroll like a maniac
-    (setq mouse-wheel-scroll-amount '(1))
-    (setq mouse-wheel-progressive-speed nil)
-
-))
+  ;; don't scroll like a maniac
+  (setq mouse-wheel-scroll-amount '(1))
+  (setq mouse-wheel-progressive-speed nil)
+)
+(if (memq window-system '(mac ns)) (coda/configure-cocoa))
 
 ;;;; COMPANY
 
@@ -216,23 +214,23 @@
 ;; always run goimports before saving .go files
 (add-hook 'before-save-hook 'gofmt-before-save)
 
-(add-hook 'go-mode-hook
-          '(lambda ()
-             ;; improve imenu results
-             (setq imenu-generic-expression
-                   '(("type" "^type *\\([^ \t\n\r\f]*\\)" 1)
-                     ("func" "^func *\\(.*\\) {" 1)))
-             (imenu-add-to-menubar "Index")
+(defun coda/configure-go-mode ()
+  ;; improve imenu results
+  (setq imenu-generic-expression
+        '(("type" "^type *\\([^ \t\n\r\f]*\\)" 1)
+          ("func" "^func *\\(.*\\) {" 1)))
+  (imenu-add-to-menubar "Index")
 
-             ;; always indent after a return
-             (define-key go-mode-map (kbd "RET") #'go-mode-insert-and-indent)
+  ;; always indent after a return
+  (define-key go-mode-map (kbd "RET") #'go-mode-insert-and-indent)
 
-             ;; use go-eldoc
-             (go-eldoc-setup)
+  ;; use go-eldoc
+  (go-eldoc-setup)
 
-             ;; only use gocode as company backend
-             (set (make-local-variable 'company-backends) '(company-go))
-))
+  ;; only use gocode as company backend
+  (set (make-local-variable 'company-backends) '(company-go)))
+
+(add-hook 'go-mode-hook 'coda/configure-go-mode)
 
 ;;;; JAVASCRIPT
 
