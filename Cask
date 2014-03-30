@@ -41,7 +41,6 @@
 (depends-on "rust-mode")
 (depends-on "scala-mode")
 (depends-on "smex")
-(depends-on "solarized-theme")
 (depends-on "thrift")
 (depends-on "tuareg")
 (depends-on "vc-check-status")
