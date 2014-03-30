@@ -21,7 +21,7 @@
 ;;;; GLOBAL
 
 ;; use a nice dark theme
-(load-theme 'wombat t)
+(load-theme 'zenburn t)
 (powerline-default-theme)
 
 ;; use Consolas, if available

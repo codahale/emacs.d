@@ -1,5 +1,5 @@
-(source marmalade)
 (source melpa)
+(source marmalade)
 
 (depends-on "ace-jump-mode")
 (depends-on "ag")
@@ -54,3 +54,4 @@
 (depends-on "yaml-mode")
 (depends-on "yard-mode")
 (depends-on "yasnippet")
+(depends-on "zenburn-theme")
