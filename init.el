@@ -97,10 +97,7 @@
 ;;;; C/C++
 
 (add-hook 'c-mode-hook 'cppcm-reload-all)
-(add-hook 'c-mode-hook 'semantic-mode)
-
 (add-hook 'c++-mode-hook 'cppcm-reload-all)
-(add-hook 'c++-mode-hook 'semantic-mode)
 
 ;;;; LEGALESE
 

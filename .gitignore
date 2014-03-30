@@ -9,4 +9,3 @@ projectile-bookmarks.eld
 *.elc
 .cask
 custom.el
-semanticdb
