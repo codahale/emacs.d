@@ -24,6 +24,9 @@
 ;; use autopair everywhere
 (autopair-global-mode)
 
+;; rely on electric indents, since they're improving
+(electric-indent-mode t)
+
 ;; use whitespace mode, and mark lines longer than 80 characters
 (require 'whitespace)
 (global-whitespace-mode)
@@ -225,9 +228,6 @@
         '(("type" "^type *\\([^ \t\n\r\f]*\\)" 1)
           ("func" "^func *\\(.*\\) {" 1)))
   (imenu-add-to-menubar "Index")
-
-  ;; always indent after a return
-  (define-key go-mode-map (kbd "RET") #'go-mode-insert-and-indent)
 
   ;; use go-eldoc
   (go-eldoc-setup)
