@@ -1,5 +1,5 @@
-(source marmalade)
 (source melpa)
+(source marmalade)
 
 (depends-on "ace-jump-mode")
 (depends-on "ag")
@@ -36,6 +36,7 @@
 (depends-on "lua-mode")
 (depends-on "magit")
 (depends-on "markdown-mode")
+(depends-on "multiple-cursors")
 (depends-on "pallet")
 (depends-on "powerline")
 (depends-on "projectile")

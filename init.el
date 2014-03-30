@@ -257,6 +257,11 @@
 (global-set-key (kbd "M-x")        'smex)
 (global-set-key (kbd "M-X")        'smex-major-mode-commands)
 
+(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+(global-set-key (kbd "C->")         'mc/mark-next-like-this)
+(global-set-key (kbd "C-<")         'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c C-<")     'mc/mark-all-like-this)
+
 ;; unmap upcase-region, since it always screws with undo
 (global-unset-key (kbd "C-x C-u"))
 
