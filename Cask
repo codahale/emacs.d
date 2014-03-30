@@ -1,5 +1,5 @@
-(source melpa)
 (source marmalade)
+(source melpa)
 
 (depends-on "ag")
 (depends-on "autopair")
@@ -40,6 +40,7 @@
 (depends-on "rust-mode")
 (depends-on "scala-mode")
 (depends-on "smex")
+(depends-on "smooth-scrolling")
 (depends-on "thrift")
 (depends-on "tuareg")
 (depends-on "vc-check-status")
