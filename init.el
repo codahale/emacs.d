@@ -25,7 +25,7 @@
 (set-frame-font "Consolas-12" nil t)
 
 ;; use autopair everywhere
-(autopair-global-mode)
+(autopair-global-mode t)
 
 ;; rely on electric indents, since they're improving
 (electric-indent-mode t)
@@ -38,7 +38,7 @@
 (setq whitespace-global-modes '(not git-commit-mode))
 
 ;; add context menus for things
-(global-discover-mode 1)
+(global-discover-mode t)
 
 ;; use line numbers in prog-mode
 (add-hook 'prog-mode-hook 'linum-mode)
@@ -89,7 +89,7 @@
 (setq save-interprogram-paste-before-kill t)
 
 ;; prompt when vcs state is dirty on exit
-(vc-check-status-activate 1)
+(vc-check-status-activate t)
 
 ;;;; LEGALESE
 
