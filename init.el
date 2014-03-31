@@ -29,6 +29,7 @@
 
 ;; use autopair everywhere
 (autopair-global-mode t)
+(diminish 'autopair-mode)
 
 ;; rely on electric indents, since they're improving
 (electric-indent-mode t)
@@ -36,6 +37,7 @@
 ;; use whitespace mode, and mark lines longer than 80 characters
 (require 'whitespace)
 (global-whitespace-mode)
+(diminish 'global-whitespace-mode)
 (setq whitespace-style '(face empty lines-tail trailing))
 (setq whitespace-line-column 81)
 (setq whitespace-global-modes '(not git-commit-mode))
@@ -51,9 +53,12 @@
 
 ;; highlight fixme comments
 (add-hook 'prog-mode-hook 'fic-mode)
+(eval-after-load "fic-mode"
+      '(diminish 'fic-mode))
 
 ;; enable yasnippet everywhere
 (yas-global-mode t)
+(diminish 'yas-minor-mode)
 
 ;; overwrite selections
 (delete-selection-mode t)
@@ -183,6 +188,9 @@
   (define-key (current-local-map) [remap hippie-expand] 'company-complete))
 (add-hook 'prog-mode-hook 'coda/enable-company-mode)
 
+(eval-after-load "company"
+  '(diminish 'company-mode))
+
 ;; disable in git-commit-mode since it's crazy annoying
 (setq company-global-modes '(not git-commit-mode))
 
@@ -218,6 +226,9 @@
 
 ;; spell check git commit messages
 (add-hook 'git-commit-mode-hook 'flyspell-mode)
+
+(eval-after-load "flyspell"
+      '(diminish 'flyspell-mode))
 
 ;;;; GO
 

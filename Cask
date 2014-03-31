@@ -12,6 +12,7 @@
 (depends-on "company-go")
 (depends-on "company-inf-ruby")
 (depends-on "cpputils-cmake")
+(depends-on "diminish")
 (depends-on "discover")
 (depends-on "dockerfile-mode")
 (depends-on "enh-ruby-mode")
