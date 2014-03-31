@@ -279,6 +279,8 @@
 
 (define-key magit-status-mode-map (kbd "q") 'magit-quit-session)
 
+(diminish 'magit-auto-revert-mode)
+
 ;;;; JAVASCRIPT
 
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
