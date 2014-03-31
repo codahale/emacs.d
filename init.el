@@ -157,6 +157,10 @@
 (eval-after-load 'flycheck
   '(add-hook 'flycheck-mode-hook #'flycheck-cask-setup))
 
+(add-hook 'emacs-lisp-mode-hook 'eldoc-mode)
+(eval-after-load 'eldoc
+      '(diminish 'eldoc-mode))
+
 ;;;; COCOA
 
 (defun coda/configure-cocoa ()
