@@ -55,7 +55,7 @@
 
 ;; highlight fixme comments
 (add-hook 'prog-mode-hook 'fic-mode)
-(eval-after-load "fic-mode"
+(eval-after-load 'fic-mode
       '(diminish 'fic-mode))
 
 ;; enable yasnippet everywhere
@@ -104,7 +104,7 @@
 ;; no need to be so verbose
 (defalias 'yes-or-no-p 'y-or-n-p)
 
-(eval-after-load "abbrev"
+(eval-after-load 'abbrev
       '(diminish 'abbrev-mode))
 
 ;;;; C/C++
@@ -200,7 +200,7 @@
   (define-key (current-local-map) [remap hippie-expand] 'company-complete))
 (add-hook 'prog-mode-hook 'coda/enable-company-mode)
 
-(eval-after-load "company"
+(eval-after-load 'company
   '(diminish 'company-mode))
 
 ;; disable in git-commit-mode since it's crazy annoying
@@ -239,7 +239,7 @@
 ;; spell check git commit messages
 (add-hook 'git-commit-mode-hook 'flyspell-mode)
 
-(eval-after-load "flyspell"
+(eval-after-load 'flyspell
       '(diminish 'flyspell-mode))
 
 ;;;; GO
