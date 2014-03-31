@@ -56,7 +56,12 @@
 ;; highlight fixme comments
 (add-hook 'prog-mode-hook 'fic-mode)
 (eval-after-load 'fic-mode
-      '(diminish 'fic-mode))
+  '(diminish 'fic-mode))
+
+;; always use ElDoc in prog-mode
+(add-hook 'prog-mode-hook 'eldoc-mode)
+(eval-after-load 'eldoc
+      '(diminish 'eldoc-mode))
 
 ;; enable yasnippet everywhere
 (yas-global-mode t)
@@ -156,10 +161,6 @@
 ;; add support for flychecking Cask files
 (eval-after-load 'flycheck
   '(add-hook 'flycheck-mode-hook #'flycheck-cask-setup))
-
-(add-hook 'emacs-lisp-mode-hook 'eldoc-mode)
-(eval-after-load 'eldoc
-      '(diminish 'eldoc-mode))
 
 ;;;; COCOA
 
