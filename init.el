@@ -22,7 +22,9 @@
 
 ;; use a nice dark theme
 (load-theme 'zenburn t)
-(powerline-default-theme)
+(require 'smart-mode-line)
+(setq sml/theme 'respectful)
+(sml/setup)
 
 ;; use Consolas, if available
 (set-frame-font "Consolas-12" nil t)
