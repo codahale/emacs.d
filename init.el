@@ -306,6 +306,24 @@
   (join-line -1))
 (global-set-key (kbd "M-j")         'coda/join-lines)
 
+(defun coda/move-line-down ()
+  (interactive)
+  (let ((col (current-column)))
+    (save-excursion
+      (forward-line)
+      (transpose-lines 1))
+    (forward-line)
+    (move-to-column col)))
+(global-set-key (kbd "<C-S-down>")  'coda/move-line-down)
+
+(defun coda/move-line-up ()
+  (interactive)
+  (let ((col (current-column)))
+    (save-excursion
+      (forward-line)
+      (transpose-lines -1))
+    (move-to-column col)))
+(global-set-key (kbd "<C-S-up>")    'coda/move-line-up)
 
 ;; unmap upcase-region, since it always screws with undo
 (global-unset-key (kbd "C-x C-u"))
