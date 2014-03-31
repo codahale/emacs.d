@@ -273,6 +273,12 @@
 (global-set-key (kbd "C-<")         'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-<")     'mc/mark-all-like-this)
 
+(defun coda/join-lines ()
+  (interactive)
+  (join-line -1))
+(global-set-key (kbd "M-j")         'coda/join-lines)
+
+
 ;; unmap upcase-region, since it always screws with undo
 (global-unset-key (kbd "C-x C-u"))
 
