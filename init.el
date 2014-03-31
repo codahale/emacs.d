@@ -102,6 +102,9 @@
 ;; no need to be so verbose
 (defalias 'yes-or-no-p 'y-or-n-p)
 
+(eval-after-load "abbrev"
+      '(diminish 'abbrev-mode))
+
 ;;;; C/C++
 
 (add-hook 'c-mode-hook 'cppcm-reload-all)
