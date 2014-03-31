@@ -229,7 +229,7 @@
 (require 'ispell)
 
 ;; use aspell instead of ispell
-(setq ispell-program-name "ispell")
+(setq ispell-program-name "aspell")
 
 ;; automatically check spelling for text
 (add-hook 'text-mode-hook 'flyspell-mode)
