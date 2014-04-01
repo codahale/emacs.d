@@ -1,6 +1,6 @@
-(source melpa)
-(source marmalade)
 (source gnu)
+(source marmalade)
+(source melpa)
 
 (depends-on "ace-jump-mode")
 (depends-on "ag")
@@ -17,6 +17,7 @@
 (depends-on "dockerfile-mode")
 (depends-on "enh-ruby-mode")
 (depends-on "erlang")
+(depends-on "evil")
 (depends-on "exec-path-from-shell")
 (depends-on "expand-region")
 (depends-on "fic-mode")
