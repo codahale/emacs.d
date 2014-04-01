@@ -52,6 +52,7 @@
 (depends-on "smooth-scrolling")
 (depends-on "thrift")
 (depends-on "tuareg")
+(depends-on "undo-tree")
 (depends-on "vc-check-status")
 (depends-on "web-mode")
 (depends-on "yaml-mode")

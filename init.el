@@ -110,7 +110,10 @@
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 (eval-after-load 'abbrev
-      '(diminish 'abbrev-mode))
+  '(diminish 'abbrev-mode))
+
+(undo-tree-mode)
+(diminish 'undo-tree-mode)
 
 ;;;; C/C++
 
