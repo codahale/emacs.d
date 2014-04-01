@@ -303,6 +303,7 @@
 (global-set-key (kbd "C-c c")      'compile)
 (global-set-key (kbd "C-c g")      'magit-status)
 (global-set-key (kbd "C-c i")      'imenu-anywhere)
+(global-set-key (kbd "C-c l p")    'list-packages)
 (global-set-key (kbd "C-c r")      'recompile)
 (global-set-key (kbd "C-c s")      'projectile-ag)
 (global-set-key (kbd "C-c t")      'eshell)
