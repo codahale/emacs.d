@@ -117,6 +117,9 @@
 (undo-tree-mode)
 (diminish 'undo-tree-mode)
 
+;; bind windmove to super-arrows
+(windmove-default-keybindings 'super)
+
 ;;;; C/C++
 
 (add-hook 'c-mode-hook 'cppcm-reload-all)
