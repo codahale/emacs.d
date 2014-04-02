@@ -109,9 +109,11 @@
 ;; no need to be so verbose
 (defalias 'yes-or-no-p 'y-or-n-p)
 
+;; don't display abbrev-mode
 (eval-after-load 'abbrev
   '(diminish 'abbrev-mode))
 
+;; use undo-tree
 (undo-tree-mode)
 (diminish 'undo-tree-mode)
 
