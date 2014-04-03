@@ -122,13 +122,6 @@
 (add-hook 'c-mode-hook 'cppcm-reload-all)
 (add-hook 'c++-mode-hook 'cppcm-reload-all)
 
-;;;; LEGALESE
-
-(require 'legalese)
-(custom-set-variables
-  '(legalese-default-author "Coda Hale")
-  '(legalese-default-copyright "coda.hale@gmail.com"))
-
 ;;;; IDO
 
 ;; use flx-ido
@@ -142,15 +135,6 @@
 
 ;; disable ido faces to see flx highlights
 (setq ido-use-faces nil)
-
-;;;; FLYCHECK
-
-;; make sure the flycheck errors are visible
-(custom-set-faces '(flycheck-fringe-error ((t (:background "dark red")))))
-
-;; ignore all the elisp doc linting
-(custom-set-variables
- '(flycheck-disabled-checkers (quote (emacs-lisp-checkdoc ruby-rubylint))))
 
 ;;;; ELISP
 
