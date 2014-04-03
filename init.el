@@ -269,21 +269,21 @@
 
 ;;;; KEYBINDINGS
 
-(global-set-key (kbd "C-c c")      'compile)
-(global-set-key (kbd "C-c g")      'magit-status)
-(global-set-key (kbd "C-c i")      'imenu-anywhere)
-(global-set-key (kbd "C-c l p")    'list-packages)
-(global-set-key (kbd "C-c r")      'recompile)
-(global-set-key (kbd "C-c s")      'projectile-ag)
-(global-set-key (kbd "C-c t")      'eshell)
-(global-set-key (kbd "C-c +")      'er/expand-region)
-(global-set-key (kbd "C-c -")      'er/contract-region)
-(global-set-key (kbd "C-c SPC")    'ace-jump-mode)
+(global-set-key (kbd "C-c c")       'compile)
+(global-set-key (kbd "C-c g")       'magit-status)
+(global-set-key (kbd "C-c i")       'imenu-anywhere)
+(global-set-key (kbd "C-c l p")     'list-packages)
+(global-set-key (kbd "C-c r")       'recompile)
+(global-set-key (kbd "C-c s")       'projectile-ag)
+(global-set-key (kbd "C-c t")       'eshell)
+(global-set-key (kbd "C-c +")       'er/expand-region)
+(global-set-key (kbd "C-c -")       'er/contract-region)
+(global-set-key (kbd "C-c SPC")     'ace-jump-mode)
 
-(global-set-key (kbd "C-c M-x")    'execute-extended-command) ; old M-x
+(global-set-key (kbd "C-c M-x")     'execute-extended-command) ; old M-x
 
-(global-set-key (kbd "M-x")        'smex)
-(global-set-key (kbd "M-X")        'smex-major-mode-commands)
+(global-set-key (kbd "M-x")         'smex)
+(global-set-key (kbd "M-X")         'smex-major-mode-commands)
 
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
 (global-set-key (kbd "C->")         'mc/mark-next-like-this)
