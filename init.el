@@ -66,8 +66,8 @@
 ;; always use ElDoc in prog-mode
 (add-hook 'prog-mode-hook 'eldoc-mode)
 
-;; enable yasnippet everywhere
-(yas-global-mode t)
+;; enable yasnippet when programming
+(add-hook 'prog-mode-hook 'yas-minor-mode)
 
 ;; overwrite selections
 (delete-selection-mode t)
