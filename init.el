@@ -221,17 +221,6 @@
       (when (eql (ad-get-arg 0) 'prefix)
         (setq ad-return-value (company-grab-word))))
 
-;; make company not look like hammered shit
-(custom-set-faces
- '(company-preview ((t (:foreground "darkgray" :underline t))))
- '(company-preview-common ((t (:inherit company-preview))))
- '(company-tooltip ((t (:background "lightgray" :foreground "black"))))
- '(company-tooltip-common ((((type x)) (:inherit company-tooltip :weight bold)) (t (:inherit company-tooltip))))
- '(company-tooltip-common-selection ((((type x)) (:inherit company-tooltip-selection :weight bold)) (t (:inherit company-tooltip-selection))))
- '(company-tooltip-selection ((t (:background "steelblue" :foreground "white"))))
- '(company-scrollbar-bg ((t (:foreground "darkgray" :background "lightgray"))))
- '(company-scrollbar-fg ((t (:background "darkgray" :foreground "lightgray")))))
-
 ;;;; SPELLING
 
 (require 'ispell)
