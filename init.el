@@ -276,8 +276,8 @@
 (global-set-key (kbd "C-c r")      'recompile)
 (global-set-key (kbd "C-c s")      'projectile-ag)
 (global-set-key (kbd "C-c t")      'eshell)
-(global-set-key (kbd "C-c <up>")   'er/expand-region)
-(global-set-key (kbd "C-c <down>") 'er/contract-region)
+(global-set-key (kbd "C-c +")      'er/expand-region)
+(global-set-key (kbd "C-c -")      'er/contract-region)
 (global-set-key (kbd "C-c SPC")    'ace-jump-mode)
 
 (global-set-key (kbd "C-c M-x")    'execute-extended-command) ; old M-x
