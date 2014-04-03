@@ -23,6 +23,15 @@
 ;; use a nice dark theme
 (load-theme 'zenburn t)
 (require 'smart-mode-line)
+(add-to-list 'sml/hidden-modes " WS")
+(add-to-list 'sml/hidden-modes " FIC")
+(add-to-list 'sml/hidden-modes " pair")
+(add-to-list 'sml/hidden-modes " ElDoc")
+(add-to-list 'sml/hidden-modes " yas")
+(add-to-list 'sml/hidden-modes " Projectile")
+(add-to-list 'sml/hidden-modes " MRev")
+(add-to-list 'sml/hidden-modes " company")
+(add-to-list 'sml/hidden-modes " Fly")
 (setq sml/theme 'respectful)
 (sml/setup)
 
@@ -31,7 +40,6 @@
 
 ;; use autopair everywhere
 (autopair-global-mode t)
-(diminish 'autopair-mode)
 
 ;; rely on electric indents, since they're improving
 (electric-indent-mode t)
@@ -39,7 +47,6 @@
 ;; use whitespace mode, and mark lines longer than 80 characters
 (require 'whitespace)
 (global-whitespace-mode)
-(diminish 'global-whitespace-mode)
 (setq whitespace-style '(face empty lines-tail trailing))
 (setq whitespace-line-column 81)
 (setq whitespace-global-modes '(not git-commit-mode))
@@ -55,17 +62,12 @@
 
 ;; highlight fixme comments
 (add-hook 'prog-mode-hook 'fic-mode)
-(eval-after-load 'fic-mode
-  '(diminish 'fic-mode))
 
 ;; always use ElDoc in prog-mode
 (add-hook 'prog-mode-hook 'eldoc-mode)
-(eval-after-load 'eldoc
-      '(diminish 'eldoc-mode))
 
 ;; enable yasnippet everywhere
 (yas-global-mode t)
-(diminish 'yas-minor-mode)
 
 ;; overwrite selections
 (delete-selection-mode t)
@@ -109,13 +111,8 @@
 ;; no need to be so verbose
 (defalias 'yes-or-no-p 'y-or-n-p)
 
-;; don't display abbrev-mode
-(eval-after-load 'abbrev
-  '(diminish 'abbrev-mode))
-
 ;; use undo-tree
 (undo-tree-mode)
-(diminish 'undo-tree-mode)
 
 ;; bind windmove to super-arrows
 (windmove-default-keybindings 'super)
@@ -209,9 +206,6 @@
   (define-key (current-local-map) [remap hippie-expand] 'company-complete))
 (add-hook 'prog-mode-hook 'coda/enable-company-mode)
 
-(eval-after-load 'company
-  '(diminish 'company-mode))
-
 ;; disable in git-commit-mode since it's crazy annoying
 (setq company-global-modes '(not git-commit-mode))
 
@@ -236,9 +230,6 @@
 
 ;; spell check git commit messages
 (add-hook 'git-commit-mode-hook 'flyspell-mode)
-
-(eval-after-load 'flyspell
-      '(diminish 'flyspell-mode))
 
 ;;;; GO
 
@@ -285,8 +276,6 @@
   (jump-to-register :magit-fullscreen))
 
 (define-key magit-status-mode-map (kbd "q") 'magit-quit-session)
-
-(diminish 'magit-auto-revert-mode)
 
 ;;;; JAVASCRIPT
 

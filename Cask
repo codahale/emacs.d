@@ -1,6 +1,6 @@
-(source gnu)
-(source marmalade)
 (source melpa)
+(source marmalade)
+(source gnu)
 
 (depends-on "ace-jump-mode")
 (depends-on "ag")
@@ -12,7 +12,6 @@
 (depends-on "company-go")
 (depends-on "company-inf-ruby")
 (depends-on "cpputils-cmake")
-(depends-on "diminish")
 (depends-on "discover")
 (depends-on "dockerfile-mode")
 (depends-on "enh-ruby-mode")
