@@ -22,6 +22,8 @@
 
 ;; use a nice dark theme
 (load-theme 'zenburn t)
+
+;; use smart-mode-line
 (require 'smart-mode-line)
 (add-to-list 'sml/hidden-modes " WS")
 (add-to-list 'sml/hidden-modes " FIC")
