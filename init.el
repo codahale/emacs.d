@@ -177,15 +177,6 @@
 ;; use a bigger popup window
 (setq company-tooltip-limit 20)
 
-;; shorten the delay before showing the popup
-(setq company-idle-delay .3)
-
-;; eliminate weird blinking
-(setq company-echo-delay 0)
-
-;; only start autocompletion after typing
-(setq company-begin-commands '(self-insert-command))
-
 ;; take over hippie-expand
 (defun coda/enable-company-mode ()
   (company-mode 1)
