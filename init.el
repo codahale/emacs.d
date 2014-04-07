@@ -138,6 +138,9 @@
 ;; disable ido faces to see flx highlights
 (setq ido-use-faces nil)
 
+;; autoload idomenu
+(autoload 'idomenu "idomenu" nil t)
+
 ;;;; ELISP
 
 ;; surface Elisp sections in imenu
@@ -262,7 +265,7 @@
 
 (global-set-key (kbd "C-c c")       'compile)
 (global-set-key (kbd "C-c g")       'magit-status)
-(global-set-key (kbd "C-c i")       'imenu-anywhere)
+(global-set-key (kbd "C-c i")       'idomenu)
 (global-set-key (kbd "C-c l p")     'list-packages)
 (global-set-key (kbd "C-c r")       'recompile)
 (global-set-key (kbd "C-c s")       'projectile-ag)

@@ -1,6 +1,6 @@
-(source melpa)
-(source marmalade)
 (source gnu)
+(source marmalade)
+(source melpa)
 
 (depends-on "ace-jump-mode")
 (depends-on "ag")
@@ -32,6 +32,7 @@
 (depends-on "go-snippets")
 (depends-on "hlinum")
 (depends-on "ido-vertical-mode")
+(depends-on "idomenu")
 (depends-on "imenu-anywhere")
 (depends-on "inf-ruby")
 (depends-on "js2-mode")
