@@ -293,7 +293,7 @@
 (defun coda/join-lines ()
   (interactive)
   (join-line -1))
-(global-set-key (kbd "M-j")         'coda/join-lines)
+(global-set-key (kbd "C-M-j")         'coda/join-lines)
 
 (defun coda/move-line-down ()
   (interactive)
