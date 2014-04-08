@@ -1,6 +1,6 @@
-(source gnu)
-(source marmalade)
 (source melpa)
+(source marmalade)
+(source gnu)
 
 (depends-on "ace-jump-mode")
 (depends-on "ag")
@@ -32,6 +32,7 @@
 (depends-on "go-mode")
 (depends-on "go-snippets")
 (depends-on "hlinum")
+(depends-on "ibuffer-vc")
 (depends-on "ido-vertical-mode")
 (depends-on "idomenu")
 (depends-on "imenu-anywhere")

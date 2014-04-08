@@ -77,6 +77,9 @@
 ;; use projectile everywhere
 (projectile-global-mode t)
 
+;; group ibuffer by vc root
+(add-hook 'ibuffer-hook 'ibuffer-vc-set-filter-groups-by-vc-root)
+
 ;; enable flycheck everywhere
 (add-hook 'after-init-hook #'global-flycheck-mode)
 (add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode)
