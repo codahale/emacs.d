@@ -1,6 +1,6 @@
-(source gnu)
-(source marmalade)
 (source melpa)
+(source marmalade)
+(source gnu)
 
 (depends-on "ace-jump-mode")
 (depends-on "ag")
@@ -46,6 +46,7 @@
 (depends-on "markdown-mode")
 (depends-on "multiple-cursors")
 (depends-on "pallet")
+(depends-on "paredit")
 (depends-on "projectile")
 (depends-on "puppet-mode")
 (depends-on "python-mode")

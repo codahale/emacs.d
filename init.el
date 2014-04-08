@@ -35,6 +35,7 @@
 (add-to-list 'sml/hidden-modes " company")
 (add-to-list 'sml/hidden-modes " Fly")
 (add-to-list 'sml/hidden-modes " GitGutter")
+(add-to-list 'sml/hidden-modes " Paredit")
 (setq sml/theme 'respectful)
 (sml/setup)
 
@@ -159,6 +160,9 @@
 ;; add support for flychecking Cask files
 (eval-after-load 'flycheck
   '(add-hook 'flycheck-mode-hook #'flycheck-cask-setup))
+
+;; use paredit
+(add-hook 'lisp-mode-hook 'paredit-mode)
 
 ;;;; COCOA
 
