@@ -21,7 +21,7 @@
 ;;;; GLOBAL
 
 ;; use a nice dark theme
-(load-theme 'zenburn t)
+(load-theme 'ir-black t)
 
 ;; use smart-mode-line
 (require 'smart-mode-line)

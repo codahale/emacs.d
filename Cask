@@ -1,6 +1,6 @@
-(source melpa)
-(source marmalade)
 (source gnu)
+(source marmalade)
+(source melpa)
 
 (depends-on "ace-jump-mode")
 (depends-on "ag")
@@ -37,6 +37,7 @@
 (depends-on "idomenu")
 (depends-on "imenu-anywhere")
 (depends-on "inf-ruby")
+(depends-on "ir-black-theme")
 (depends-on "js2-mode")
 (depends-on "json-mode")
 (depends-on "legalese")
