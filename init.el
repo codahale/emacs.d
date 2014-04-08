@@ -34,6 +34,7 @@
 (add-to-list 'sml/hidden-modes " MRev")
 (add-to-list 'sml/hidden-modes " company")
 (add-to-list 'sml/hidden-modes " Fly")
+(add-to-list 'sml/hidden-modes " GitGutter")
 (setq sml/theme 'respectful)
 (sml/setup)
 
@@ -59,8 +60,8 @@
 ;; use line numbers in prog-mode
 (add-hook 'prog-mode-hook 'linum-mode)
 
-;; highlight the current line number
-(add-hook 'prog-mode-hook 'hlinum-activate)
+;; highlight the current line
+(global-hl-line-mode)
 
 ;; highlight fixme comments
 (add-hook 'prog-mode-hook 'fic-mode)
@@ -244,6 +245,9 @@
 (add-hook 'go-mode-hook 'coda/configure-go-mode)
 
 ;;;; MAGIT
+
+;; highlight git changes in the fringe
+(global-git-gutter-mode t)
 
 (require 'magit)
 
