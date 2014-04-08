@@ -36,6 +36,7 @@
 (add-to-list 'sml/hidden-modes " Fly")
 (add-to-list 'sml/hidden-modes " GitGutter")
 (add-to-list 'sml/hidden-modes " Paredit")
+(add-to-list 'sml/hidden-modes " Undo-Tree")
 (setq sml/theme 'respectful)
 (sml/setup)
 
