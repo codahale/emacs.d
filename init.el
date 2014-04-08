@@ -118,7 +118,7 @@
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 ;; use undo-tree
-(undo-tree-mode)
+(global-undo-tree-mode)
 
 ;; bind windmove to super-arrows
 (windmove-default-keybindings 'super)
