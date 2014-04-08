@@ -113,9 +113,6 @@
 ;; don't clobber things in the system clipboard when killing
 (setq save-interprogram-paste-before-kill t)
 
-;; prompt when vcs state is dirty on exit
-(vc-check-status-activate t)
-
 ;; no need to be so verbose
 (defalias 'yes-or-no-p 'y-or-n-p)
 
