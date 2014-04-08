@@ -25,6 +25,7 @@
 (depends-on "flycheck-cask")
 (depends-on "flycheck-color-mode-line")
 (depends-on "flyspell-lazy")
+(depends-on "gist")
 (depends-on "git-commit-mode")
 (depends-on "git-rebase-mode")
 (depends-on "go-eldoc")
