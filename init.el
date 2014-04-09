@@ -291,6 +291,9 @@
 
 (global-set-key (kbd "C-c c")       'compile)
 (global-set-key (kbd "C-c g")       'magit-status)
+(global-set-key (kbd "C-c h n")     'git-gutter:next-hunk)
+(global-set-key (kbd "C-c h p")     'git-gutter:previous-hunk)
+(global-set-key (kbd "C-c h r")     'git-gutter:revert-hunk)
 (global-set-key (kbd "C-c i")       'idomenu)
 (global-set-key (kbd "C-c l p")     'list-packages)
 (global-set-key (kbd "C-c r")       'recompile)
