@@ -251,7 +251,15 @@
 
 ;;;; DIREX
 
-(global-set-key (kbd "C-c l d") 'direx:jump-to-directory)
+(require 'popwin)
+(popwin-mode 1)
+
+(push '(direx:direx-mode :position left :width 25 :dedicated t)
+      popwin:special-display-config)
+(global-set-key (kbd "C-c l d") 'direx:jump-to-directory-other-window)
+
+(push '("^\*go-direx:" :regexp t :position left :width 0.4 :dedicated t)
+      popwin:special-display-config)
 (define-key go-mode-map (kbd "C-c l g") 'go-direx-pop-to-buffer)
 
 ;;;; MAGIT
