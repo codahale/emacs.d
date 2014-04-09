@@ -249,6 +249,11 @@
 
 (add-hook 'go-mode-hook 'coda/configure-go-mode)
 
+;;;; DIREX
+
+(global-set-key (kbd "C-c l d") 'direx:jump-to-directory)
+(define-key go-mode-map (kbd "C-c l g") 'go-direx-pop-to-buffer)
+
 ;;;; MAGIT
 
 ;; highlight git changes in the fringe
