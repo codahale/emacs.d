@@ -122,6 +122,9 @@
 ;; bind windmove to super-arrows
 (windmove-default-keybindings 'super)
 
+;; enable rainbow delimiters
+(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
+
 ;;;; C/C++
 
 (add-hook 'c-mode-hook 'cppcm-reload-all)

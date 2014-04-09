@@ -1,6 +1,6 @@
-(source melpa)
-(source marmalade)
 (source gnu)
+(source marmalade)
+(source melpa)
 
 (depends-on "ace-jump-mode")
 (depends-on "ag")
@@ -50,6 +50,7 @@
 (depends-on "projectile")
 (depends-on "puppet-mode")
 (depends-on "python-mode")
+(depends-on "rainbow-delimiters")
 (depends-on "rust-mode")
 (depends-on "scala-mode")
 (depends-on "smart-mode-line")
