@@ -25,21 +25,21 @@
 
 ;; use smart-mode-line
 (require 'smart-mode-line)
-(add-to-list 'sml/hidden-modes " WS")
-(add-to-list 'sml/hidden-modes " FIC")
-(add-to-list 'sml/hidden-modes " pair")
-(add-to-list 'sml/hidden-modes " ElDoc")
-(add-to-list 'sml/hidden-modes " yas")
-(add-to-list 'sml/hidden-modes " Projectile")
-(add-to-list 'sml/hidden-modes " MRev")
-(add-to-list 'sml/hidden-modes " company")
-(add-to-list 'sml/hidden-modes " Fly")
-(add-to-list 'sml/hidden-modes " GitGutter")
-(add-to-list 'sml/hidden-modes " Paredit")
-(add-to-list 'sml/hidden-modes " Undo-Tree")
-(add-to-list 'sml/hidden-modes " Anzu")
-(add-to-list 'sml/hidden-modes " hl-s")
-(add-to-list 'sml/hidden-modes " VHl")
+(setq sml/hidden-modes (quote (" WS"
+                               " FIC"
+                               " pair"
+                               " ElDoc"
+                               " yas"
+                               " Projectile"
+                               " MRev"
+                               " company"
+                               " Fly"
+                               " GitGutter"
+                               " Paredit"
+                               " Undo-Tree"
+                               " Anzu"
+                               " hl-s"
+                               " VHl")))
 (setq sml/theme 'respectful)
 (sml/setup)
 
