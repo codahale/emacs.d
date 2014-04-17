@@ -38,11 +38,15 @@
 (add-to-list 'sml/hidden-modes " Paredit")
 (add-to-list 'sml/hidden-modes " Undo-Tree")
 (add-to-list 'sml/hidden-modes " Anzu")
+(add-to-list 'sml/hidden-modes " hl-s")
 (setq sml/theme 'respectful)
 (sml/setup)
 
 ;; show total matches in modeline
 (global-anzu-mode t)
+
+;; highlight current symbol in prog-mode
+(add-hook 'prog-mode-hook 'highlight-symbol-mode)
 
 ;; use Consolas, if available
 (set-frame-font "Consolas-12" nil t)

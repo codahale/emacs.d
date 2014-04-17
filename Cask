@@ -36,6 +36,7 @@
 (depends-on "go-eldoc")
 (depends-on "go-mode")
 (depends-on "go-snippets")
+(depends-on "highlight-symbol")
 (depends-on "ibuffer-vc")
 (depends-on "ido-vertical-mode")
 (depends-on "idomenu")
