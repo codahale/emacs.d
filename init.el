@@ -46,6 +46,7 @@
 ;; it's cool if yasnippet doesn't say everything it's thinking
 (require 'yasnippet)
 (setq yas-verbosity 1)
+(yas-global-mode)
 
 ;; show total matches in modeline
 (global-anzu-mode t)
@@ -87,9 +88,6 @@
 
 ;; always use ElDoc in prog-mode
 (add-hook 'prog-mode-hook 'eldoc-mode)
-
-;; enable yasnippet when programming
-(add-hook 'prog-mode-hook 'yas-minor-mode)
 
 ;; overwrite selections
 (delete-selection-mode t)
