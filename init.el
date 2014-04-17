@@ -39,6 +39,7 @@
 (add-to-list 'sml/hidden-modes " Undo-Tree")
 (add-to-list 'sml/hidden-modes " Anzu")
 (add-to-list 'sml/hidden-modes " hl-s")
+(add-to-list 'sml/hidden-modes " VHl")
 (setq sml/theme 'respectful)
 (sml/setup)
 
@@ -56,6 +57,10 @@
 
 ;; rely on electric indents, since they're improving
 (electric-indent-mode t)
+
+;; add volatile highlights to edit actions
+(require 'volatile-highlights)
+(volatile-highlights-mode t)
 
 ;; use whitespace mode, and mark lines longer than 80 characters
 (require 'whitespace)
