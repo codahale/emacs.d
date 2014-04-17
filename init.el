@@ -43,6 +43,10 @@
 (setq sml/theme 'respectful)
 (sml/setup)
 
+;; it's cool if yasnippet doesn't say everything it's thinking
+(require 'yasnippet)
+(setq yas-verbosity 1)
+
 ;; show total matches in modeline
 (global-anzu-mode t)
 
