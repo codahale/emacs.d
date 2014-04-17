@@ -37,8 +37,12 @@
 (add-to-list 'sml/hidden-modes " GitGutter")
 (add-to-list 'sml/hidden-modes " Paredit")
 (add-to-list 'sml/hidden-modes " Undo-Tree")
+(add-to-list 'sml/hidden-modes " Anzu")
 (setq sml/theme 'respectful)
 (sml/setup)
+
+;; show total matches in modeline
+(global-anzu-mode t)
 
 ;; use Consolas, if available
 (set-frame-font "Consolas-12" nil t)

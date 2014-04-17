@@ -4,6 +4,7 @@
 
 (depends-on "ace-jump-mode")
 (depends-on "ag")
+(depends-on "anzu")
 (depends-on "autopair")
 (depends-on "better-defaults")
 (depends-on "cask")
