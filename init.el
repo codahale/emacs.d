@@ -125,9 +125,6 @@
 ;; always add a trailing newline - POSIX
 (setq require-final-newline t)
 
-;; don't clobber things in the system clipboard when killing
-(setq save-interprogram-paste-before-kill t)
-
 ;; no need to be so verbose
 (defalias 'yes-or-no-p 'y-or-n-p)
 
