@@ -20,8 +20,8 @@
 
 ;;;; GLOBAL
 
-;; use a nice dark theme
-(load-theme 'ir-black t)
+(require 'zenburn-theme)
+(load-theme 'zenburn t)
 
 ;; use smart-mode-line
 (require 'smart-mode-line)
