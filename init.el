@@ -64,8 +64,8 @@
 (electric-indent-mode t)
 
 ;; add volatile highlights to edit actions
-(require 'volatile-highlights)
-(volatile-highlights-mode t)
+;(require 'volatile-highlights)
+;(volatile-highlights-mode t)
 
 ;; use whitespace mode, and mark lines longer than 80 characters
 (require 'whitespace)

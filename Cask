@@ -65,7 +65,6 @@
 (depends-on "thrift")
 (depends-on "tuareg")
 (depends-on "undo-tree")
-(depends-on "volatile-highlights")
 (depends-on "web-mode")
 (depends-on "yaml-mode")
 (depends-on "yard-mode")
