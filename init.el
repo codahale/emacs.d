@@ -201,6 +201,9 @@
 ;; use a bigger popup window
 (setq company-tooltip-limit 20)
 
+;; start auto completing just after idle
+(setq company-idle-delay 0.2)
+
 ;; take over hippie-expand
 (defun coda/enable-company-mode ()
   (company-mode 1)
