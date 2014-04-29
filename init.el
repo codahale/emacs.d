@@ -39,7 +39,8 @@
                                " Undo-Tree"
                                " Anzu"
                                " hl-s"
-                               " VHl")))
+                               " VHl"
+                               " Abbrev")))
 (setq sml/theme 'respectful)
 (sml/setup)
 
