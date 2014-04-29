@@ -208,7 +208,6 @@
 ;; take over hippie-expand
 (defun coda/enable-company-mode ()
   (company-mode 1)
-  (add-to-list 'company-backends 'company-capf)
   (define-key (current-local-map) [remap hippie-expand] 'company-complete))
 (add-hook 'prog-mode-hook 'coda/enable-company-mode)
 
