@@ -202,8 +202,8 @@
 ;; use a bigger popup window
 (setq company-tooltip-limit 20)
 
-;; start auto completing just after idle
-(setq company-idle-delay 0.2)
+;; only auto-complete on key binding
+(setq company-idle-delay nil)
 
 ;; take over hippie-expand
 (defun coda/enable-company-mode ()
@@ -211,9 +211,6 @@
   (add-to-list 'company-backends 'company-capf)
   (define-key (current-local-map) [remap hippie-expand] 'company-complete))
 (add-hook 'prog-mode-hook 'coda/enable-company-mode)
-
-;; disable in git-commit-mode since it's crazy annoying
-(setq company-global-modes '(not git-commit-mode))
 
 ;; strictly limit completion in Go, since it's totally accurate
 (defadvice company-go (around fix-company-go-prefix activate)
