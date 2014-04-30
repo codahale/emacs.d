@@ -72,7 +72,7 @@
 (require 'whitespace)
 (global-whitespace-mode)
 (setq whitespace-style '(face empty lines-tail trailing))
-(setq whitespace-line-column 81)
+(setq whitespace-line-column 80)
 (setq whitespace-global-modes '(not git-commit-mode))
 
 ;; add context menus for things
