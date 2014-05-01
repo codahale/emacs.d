@@ -75,6 +75,9 @@
 (setq whitespace-line-column 80)
 (setq whitespace-global-modes '(not git-commit-mode))
 
+;; also fill paragraphs to 80 characters
+(setq-default fill-column 80)
+
 ;; add context menus for things
 (global-discover-mode t)
 
