@@ -236,6 +236,25 @@
 ;; spell check git commit messages
 (add-hook 'git-commit-mode-hook 'flyspell-mode)
 
+;;;; TERMINAL
+
+(defadvice ansi-term (after advise-ansi-term-coding-system)
+    (set-buffer-process-coding-system 'utf-8-unix 'utf-8-unix))
+(ad-activate 'ansi-term)
+
+(defun coda/visit-term-buffer ()
+  "Create or visit a terminal buffer."
+  (interactive)
+  (if (not (get-buffer "*ansi-term*"))
+      (progn
+        (split-window-sensibly (selected-window))
+        (other-window 1)
+        (ansi-term "/usr/local/bin/bash"))
+    (switch-to-buffer-other-window "*ansi-term*")))
+
+(add-hook 'term-mode-hook (lambda()
+                            (setq yas-dont-activate t)))
+
 ;;;; GO
 
 ;; hard-code GOROOT and GOPATH for now
@@ -313,7 +332,7 @@
 (global-set-key (kbd "C-c i")       'idomenu)
 (global-set-key (kbd "C-c l p")     'list-packages)
 (global-set-key (kbd "C-c r")       'recompile)
-(global-set-key (kbd "C-c t")       'eshell)
+(global-set-key (kbd "C-c t")       'coda/visit-term-buffer)
 (global-set-key (kbd "C-c +")       'er/expand-region)
 (global-set-key (kbd "C-c -")       'er/contract-region)
 (global-set-key (kbd "C-c SPC")     'ace-jump-mode)
