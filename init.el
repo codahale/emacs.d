@@ -257,16 +257,12 @@
           ("func" "^func *\\(.*\\) {" 1)))
   (imenu-add-to-menubar "Index")
 
-  ;; use go-oracle
-  (go-oracle-mode)
-
   ;; use go-eldoc
   (go-eldoc-setup)
 
   ;; only use gocode as company backend
   (set (make-local-variable 'company-backends) '(company-go)))
 
-(load "~/Projects/go/src/code.google.com/p/go.tools/cmd/oracle/oracle.el")
 (add-hook 'go-mode-hook 'coda/configure-go-mode)
 
 ;;;; DIREX
