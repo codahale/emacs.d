@@ -184,7 +184,7 @@
 ;;;; COCOA
 
 (defun coda/configure-cocoa ()
-  ;; load PATH variable from shell, since setting env bars in Maces
+  ;; load PATH variable from shell, since setting env bars in Emacs
   ;; is crazy painful
   (exec-path-from-shell-initialize)
 
