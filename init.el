@@ -55,9 +55,6 @@
 ;; highlight current symbol in prog-mode
 (add-hook 'prog-mode-hook 'highlight-symbol-mode)
 
-;; use Consolas, if available
-(set-frame-font "Consolas-12" nil t)
-
 ;; use autopair everywhere
 (autopair-global-mode t)
 
