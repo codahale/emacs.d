@@ -185,9 +185,17 @@
   ;; is crazy painful
   (exec-path-from-shell-initialize)
 
-  ;; open up to 200x60
-  (add-to-list 'default-frame-alist '(width . 200))
-  (add-to-list 'default-frame-alist '(height . 60))
+  ;; open up maximized-ish
+  (let ((px (display-pixel-width))
+        (py (display-pixel-height))
+        (fx (frame-char-width))
+        (fy (frame-char-height))
+        tx ty)
+    (setq tx (- (/ px fx) 7))
+    (setq ty (- (/ py fy) 4))
+    (setq initial-frame-alist '((top . 2) (left . 2)))
+    (add-to-list 'initial-frame-alist (cons 'width tx))
+    (add-to-list 'initial-frame-alist (cons 'height ty)))
 
   ;; don't scroll like a maniac
   (setq mouse-wheel-scroll-amount '(1))
