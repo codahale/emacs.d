@@ -1,3 +1,8 @@
+;;;; CUSTOM
+
+(setq custom-file "~/.emacs.d/custom.el")
+(load custom-file 'noerror)
+
 ;;;; INITIAL
 
 ;; Turn off mouse interface early in startup to avoid momentary display
@@ -20,11 +25,7 @@
 
 ;;;; GLOBAL
 
-(require 'zenburn-theme)
-(load-theme 'zenburn t)
-
 ;; use smart-mode-line
-(require 'smart-mode-line)
 (setq sml/hidden-modes (quote (" WS"
                                " FIC"
                                " pair"
@@ -43,6 +44,8 @@
                                " Abbrev")))
 (setq sml/theme 'respectful)
 (sml/setup)
+
+(load-theme 'zenburn t)
 
 ;; it's cool if yasnippet doesn't say everything it's thinking
 (require 'yasnippet)
@@ -378,8 +381,3 @@
 
 ;; unmap upcase-region, since it always screws with undo
 (global-unset-key (kbd "C-x C-u"))
-
-;;;; CUSTOM
-
-(setq custom-file "~/.emacs.d/custom.el")
-(load custom-file 'noerror)
