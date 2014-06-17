@@ -197,8 +197,8 @@
     (setq tx (- (/ px fx) 7))
     (setq ty (- (/ py fy) 4))
     (setq initial-frame-alist '((top . 2) (left . 2)))
-    (add-to-list 'initial-frame-alist (cons 'width tx))
-    (add-to-list 'initial-frame-alist (cons 'height ty)))
+    (add-to-list 'default-frame-alist (cons 'width tx))
+    (add-to-list 'default-frame-alist (cons 'height ty)))
 
   ;; don't scroll like a maniac
   (setq mouse-wheel-scroll-amount '(1))
