@@ -30,7 +30,6 @@
 (depends-on "flyspell-lazy")
 (depends-on "gist")
 (depends-on "git-commit-mode")
-(depends-on "git-gutter-fringe")
 (depends-on "git-rebase-mode")
 (depends-on "go-direx")
 (depends-on "go-eldoc")
