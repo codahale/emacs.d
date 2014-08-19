@@ -56,6 +56,7 @@
 (depends-on "paredit")
 (depends-on "popwin")
 (depends-on "projectile")
+(depends-on "protobuf-mode")
 (depends-on "pt")
 (depends-on "puppet-mode")
 (depends-on "python-mode")
