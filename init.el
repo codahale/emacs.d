@@ -25,23 +25,27 @@
 
 ;;;; GLOBAL
 
+;; don't show all the damn modes
+(require 'rich-minority)
+(setq rm-blacklist (quote (" WS"
+                           " FIC"
+                           " pair"
+                           " ElDoc"
+                           " yas"
+                           " Projectile"
+                           " MRev"
+                           " company"
+                           " Fly"
+                           " GitGutter"
+                           " Paredit"
+                           " Undo-Tree"
+                           " Anzu"
+                           " hl-s"
+                           " VHl"
+                           " Abbrev")))
+
 ;; use smart-mode-line
-(setq sml/hidden-modes (quote (" WS"
-                               " FIC"
-                               " pair"
-                               " ElDoc"
-                               " yas"
-                               " Projectile"
-                               " MRev"
-                               " company"
-                               " Fly"
-                               " GitGutter"
-                               " Paredit"
-                               " Undo-Tree"
-                               " Anzu"
-                               " hl-s"
-                               " VHl"
-                               " Abbrev")))
+(require 'smart-mode-line)
 (setq sml/theme 'respectful)
 (sml/setup)
 
