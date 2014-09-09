@@ -68,6 +68,7 @@
 (depends-on "smex")
 (depends-on "smooth-scrolling")
 (depends-on "thrift")
+(depends-on "toml-mode")
 (depends-on "tuareg")
 (depends-on "undo-tree")
 (depends-on "web-mode")
