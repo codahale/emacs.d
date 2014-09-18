@@ -1,5 +1,4 @@
 (source gnu)
-(source marmalade)
 (source melpa)
 
 (depends-on "ace-jump-mode")
@@ -59,7 +58,6 @@
 (depends-on "protobuf-mode")
 (depends-on "pt")
 (depends-on "puppet-mode")
-(depends-on "python-mode")
 (depends-on "rainbow-delimiters")
 (depends-on "rust-mode")
 (depends-on "scala-mode")
