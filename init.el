@@ -1,5 +1,4 @@
 ;;;; CUSTOM
-
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file 'noerror)
 
@@ -15,11 +14,46 @@
 (setq inhibit-startup-message t)
 (setq inhibit-startup-echo-area-message t)
 
-;;;; CASK
+;;;; PACKAGES
+(require 'package)
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(package-initialize)
 
-(require 'cask)
-(cask-initialize)
-(require 'pallet)
+(require 'cl)
+(defvar prelude-packages '(
+
+   ag anzu autopair better-defaults coffee-mode company
+  company-go company-inf-ruby cpputils-cmake csv-mode direx
+  discover dockerfile-mode enh-ruby-mode erlang
+  exec-path-from-shell expand-region fic-mode flx-ido flycheck
+  flycheck-color-mode-line flycheck-haskell flyspell-lazy gist
+  git-commit-mode git-rebase-mode git-timemachine go-direx
+  go-eldoc go-mode go-snippets haskell-mode highlight-symbol
+  ibuffer-vc ido-vertical-mode idomenu imenu-anywhere inf-ruby
+  ir-black-theme js2-mode json-mode legalese lua-mode magit
+  markdown-mode paredit popwin projectile protobuf-mode
+  puppet-mode rainbow-delimiters rust-mode scala-mode shm
+  smart-mode-line smex smooth-scrolling thrift toml-mode tuareg
+  undo-tree web-mode yaml-mode yard-mode yasnippet zenburn-theme
+
+    )
+  "A list of packages to ensure are installed at launch.")
+
+(defun prelude-packages-installed-p ()
+  (loop for p in prelude-packages
+        when (not (package-installed-p p)) do (return nil)
+        finally (return t)))
+
+(unless (prelude-packages-installed-p)
+  ;; check for new packages (package versions)
+  (message "%s" "Emacs is now refreshing its package database...")
+  (package-refresh-contents)
+  (message "%s" " done.")
+  ;; install the missing packages
+  (dolist (p prelude-packages)
+    (when (not (package-installed-p p))
+      (package-install p))))
 
 ;; don't re-load packages
 (setq package-enable-at-startup nil)
@@ -175,13 +209,6 @@
   (setq imenu-generic-expression '(("Sections" "^;;;; \\(.+\\)" 1)))
   (imenu-add-to-menubar "Index"))
 (add-hook 'emacs-lisp-mode-hook 'coda/imenu-elisp-sections)
-
-;; open Cask files in elisp-mode
-(add-to-list 'auto-mode-alist '("Cask\\'" . emacs-lisp-mode))
-
-;; add support for flychecking Cask files
-(eval-after-load 'flycheck
-  '(add-hook 'flycheck-mode-hook #'flycheck-cask-setup))
 
 ;; use paredit
 (add-hook 'lisp-mode-hook 'paredit-mode)

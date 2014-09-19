@@ -1,10 +1,9 @@
 places
-elpa/archives
-elpa/*readme.txt
+elpa/*
 ac-comphist.dat
 backups
 url
 eshell
 projectile-bookmarks.eld
 *.elc
-.cask
+abbrev_defs
