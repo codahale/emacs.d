@@ -23,7 +23,7 @@
 (require 'cl)
 (defvar prelude-packages '(
 
-   ag anzu autopair better-defaults coffee-mode company
+  ag ansible anzu autopair better-defaults coffee-mode company
   company-go company-inf-ruby cpputils-cmake csv-mode direx
   discover dockerfile-mode enh-ruby-mode erlang
   exec-path-from-shell expand-region fic-mode flx-ido flycheck
