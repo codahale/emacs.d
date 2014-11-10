@@ -23,19 +23,18 @@
 (require 'cl)
 (defvar prelude-packages '(
 
-  ag ansible anzu autopair better-defaults coffee-mode company
-  company-go company-inf-ruby cpputils-cmake csv-mode direx
-  discover dockerfile-mode enh-ruby-mode erlang
-  exec-path-from-shell expand-region fic-mode flx-ido flycheck
-  flycheck-color-mode-line flycheck-haskell flyspell-lazy gist
-  git-commit-mode git-rebase-mode git-timemachine go-direx
-  go-eldoc go-mode go-snippets haskell-mode highlight-symbol
-  ibuffer-vc ido-vertical-mode idomenu imenu-anywhere inf-ruby
-  ir-black-theme js2-mode json-mode legalese lua-mode magit
-  markdown-mode paredit popwin projectile protobuf-mode
-  puppet-mode rainbow-delimiters rust-mode scala-mode shm
-  smart-mode-line smex smooth-scrolling thrift toml-mode tuareg
-  undo-tree web-mode yaml-mode yard-mode yasnippet zenburn-theme
+  ag ansible anzu autopair better-defaults company company-go
+  company-inf-ruby cpputils-cmake csv-mode direx discover
+  dockerfile-mode enh-ruby-mode exec-path-from-shell evil
+  expand-region fic-mode flx-ido flycheck
+  flycheck-color-mode-line flyspell-lazy gist git-commit-mode
+  git-rebase-mode git-timemachine go-direx go-eldoc go-mode
+  go-snippets highlight-symbol ibuffer-vc ido-vertical-mode
+  idomenu imenu-anywhere inf-ruby ir-black-theme js2-mode
+  json-mode magit markdown-mode paredit popwin projectile
+  protobuf-mode puppet-mode rainbow-delimiters rust-mode
+  scala-mode smart-mode-line smex smooth-scrolling thrift
+  toml-mode undo-tree web-mode yaml-mode yasnippet zenburn-theme
 
     )
   "A list of packages to ensure are installed at launch.")
