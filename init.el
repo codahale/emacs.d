@@ -115,6 +115,9 @@
 
 ;; also fill paragraphs to 80 characters
 (setq-default fill-column 80)
+(defun coda/set-markdown-fill-column ()
+  (setq fill-column 72))
+(add-hook 'markdown-mode-hook 'coda/set-markdown-fill-column)
 
 ;; add context menus for things
 (global-discover-mode t)
