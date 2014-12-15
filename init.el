@@ -119,8 +119,9 @@
 ;; add context menus for things
 (global-discover-mode t)
 
-;; use line numbers in prog-mode
+;; use line and column numbers in prog-mode
 (add-hook 'prog-mode-hook 'linum-mode)
+(add-hook 'prog-mode-hook 'column-number-mode)
 
 ;; highlight the current line
 (global-hl-line-mode)
