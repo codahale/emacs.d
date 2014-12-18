@@ -25,6 +25,7 @@
                            ag
                            ansible
                            anzu
+                           auto-package-update
                            autopair
                            better-defaults
                            company
