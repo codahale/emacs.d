@@ -7,3 +7,4 @@ eshell
 projectile-bookmarks.eld
 *.elc
 abbrev_defs
+.last-package-update-day

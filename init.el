@@ -100,8 +100,10 @@
     (when (not (package-installed-p p))
       (package-install p))))
 
-;; don't re-load packages
-(setq package-enable-at-startup nil)
+;; update weekly
+(require 'auto-package-update)
+(setq auto-package-update-interval 7)
+(auto-package-update-maybe)
 
 ;;;; GLOBAL
 
