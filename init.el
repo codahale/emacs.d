@@ -67,6 +67,7 @@
                            markdown-mode
                            paredit
                            popwin
+                           processing-mode
                            projectile
                            protobuf-mode
                            puppet-mode
