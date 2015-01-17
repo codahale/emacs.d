@@ -44,6 +44,7 @@
                            flx-ido
                            flycheck
                            flycheck-color-mode-line
+                           flycheck-rust
                            flyspell-lazy
                            gist
                            git-commit-mode
@@ -374,6 +375,11 @@
   (set (make-local-variable 'company-backends) '(company-go)))
 
 (add-hook 'go-mode-hook 'coda/configure-go-mode)
+
+;;;; RUST
+
+(eval-after-load 'flycheck
+  '(add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
 
 ;;;; DIREX
 
