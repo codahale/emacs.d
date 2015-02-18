@@ -37,7 +37,6 @@
                            discover
                            dockerfile-mode
                            enh-ruby-mode
-                           evil
                            exec-path-from-shell
                            expand-region
                            fic-mode
@@ -55,7 +54,6 @@
                            go-mode
                            go-snippets
                            highlight-symbol
-                           ibuffer-vc
                            ido-vertical-mode
                            idomenu
                            imenu-anywhere
@@ -77,7 +75,6 @@
                            smart-mode-line
                            smex
                            smooth-scrolling
-                           thrift
                            toml-mode
                            undo-tree
                            web-mode
