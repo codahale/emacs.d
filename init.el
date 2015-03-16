@@ -476,7 +476,7 @@
   str)
 
 (defconst coda/github-remote-url-re
-  "^\\(?:git@github.com:\\|https?://github.com/\\)\\([^/]+\\)/\\([^/.]+\\)\\(\\.git\\)?$"
+  "^\\(?:git@github.com:\\|https?://github.com/\\)\\([^/]+\\)/\\(.+?\\)\\(\\.git\\)?$"
   "Regular expression to parse a github git URL")
 
 (defun github-permalink ()
