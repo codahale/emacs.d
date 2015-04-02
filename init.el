@@ -409,6 +409,8 @@
 
 (define-key magit-status-mode-map (kbd "q") 'magit-quit-session)
 
+(setq magit-last-seen-setup-instructions "1.4.0")
+
 ;;;; JAVASCRIPT
 
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
