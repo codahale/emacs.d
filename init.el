@@ -67,7 +67,6 @@
                            popwin
                            processing-mode
                            projectile
-                           protobuf-mode
                            puppet-mode
                            rainbow-delimiters
                            rust-mode
