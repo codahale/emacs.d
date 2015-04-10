@@ -162,8 +162,15 @@
 ;; also fill paragraphs to 80 characters
 (setq-default fill-column 80)
 (defun coda/set-markdown-fill-column ()
-  (setq fill-column 72))
+  (setq fill-column 72)
+  (setq whitespace-line-column 72))
 (add-hook 'markdown-mode-hook 'coda/set-markdown-fill-column)
+
+(defun coda/set-rust-fill-column ()
+  (setq fill-column 100)
+  (setq whitespace-line-column 100))
+(add-hook 'rust-mode-hook 'coda/set-rust-fill-column)
+
 
 ;; add context menus for things
 (global-discover-mode t)
