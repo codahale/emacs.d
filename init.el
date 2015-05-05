@@ -161,6 +161,8 @@
 
 ;; also fill paragraphs to 80 characters
 (setq-default fill-column 80)
+(setq-default whitespace-line-column 80)
+
 (defun coda/set-markdown-fill-column ()
   (setq fill-column 72)
   (setq whitespace-line-column 72))
