@@ -76,6 +76,7 @@
                            rainbow-delimiters
                            rust-mode
                            scala-mode
+                           shm
                            smart-mode-line
                            smex
                            smooth-scrolling
