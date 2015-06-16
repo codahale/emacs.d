@@ -44,6 +44,7 @@
                            flx-ido
                            flycheck
                            flycheck-color-mode-line
+                           flycheck-haskell
                            flycheck-rust
                            flyspell-lazy
                            ghc
@@ -537,6 +538,8 @@
 (autoload 'ghc-init "ghc" nil t)
 (autoload 'ghc-debug "ghc" nil t)
 (add-hook 'haskell-mode-hook (lambda () (ghc-init)))
+(eval-after-load 'flycheck
+  '(add-hook 'flycheck-mode-hook #'flycheck-haskell-setup))
 
 (custom-set-variables
   '(haskell-process-suggest-remove-import-lines t)
@@ -544,6 +547,7 @@
   '(haskell-process-log t)
   '(haskell-tags-on-save t)
   '(haskell-process-type 'cabal-repl))
+
 (eval-after-load 'haskell-mode '(progn
   (define-key haskell-mode-map (kbd "C-c C-l") 'haskell-process-load-or-reload)
   (define-key haskell-mode-map (kbd "C-c C-z") 'haskell-interactive-switch)
