@@ -59,6 +59,7 @@
                            haskell-mode
                            hi2
                            highlight-symbol
+                           hindent
                            ido-vertical-mode
                            idomenu
                            imenu-anywhere
@@ -531,6 +532,7 @@
 ;;;; HASKELL
 
 (add-hook 'haskell-mode-hook 'turn-on-hi2)
+(add-hook 'haskell-mode-hook #'hindent-mode)
 
 (let ((my-cabal-path (expand-file-name "~/.cabal/bin")))
   (setenv "PATH" (concat my-cabal-path path-separator (getenv "PATH")))
