@@ -534,10 +534,6 @@
   (setenv "PATH" (concat my-cabal-path path-separator (getenv "PATH")))
   (add-to-list 'exec-path my-cabal-path))
 
-(custom-set-variables '(haskell-tags-on-save t)) ; uses `hasktags`
-
-(custom-set-variables '(haskell-process-type 'cabal-repl)) ; uses Cabal's repl
-
 (autoload 'ghc-init "ghc" nil t)
 (autoload 'ghc-debug "ghc" nil t)
 (add-hook 'haskell-mode-hook (lambda () (ghc-init)))
@@ -545,7 +541,9 @@
 (custom-set-variables
   '(haskell-process-suggest-remove-import-lines t)
   '(haskell-process-auto-import-loaded-modules t)
-  '(haskell-process-log t))
+  '(haskell-process-log t)
+  '(haskell-tags-on-save t)
+  '(haskell-process-type 'cabal-repl))
 (eval-after-load 'haskell-mode '(progn
   (define-key haskell-mode-map (kbd "C-c C-l") 'haskell-process-load-or-reload)
   (define-key haskell-mode-map (kbd "C-c C-z") 'haskell-interactive-switch)
