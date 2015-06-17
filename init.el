@@ -129,6 +129,8 @@
                            " Anzu"
                            " hl-s"
                            " VHl"
+                           " HI"
+                           " HI2"
                            " Abbrev")))
 
 ;; use smart-mode-line
