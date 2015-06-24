@@ -23,7 +23,6 @@
 (require 'cl)
 (defvar prelude-packages '(
                            ag
-                           ansible
                            anzu
                            auto-package-update
                            autopair
@@ -33,10 +32,8 @@
                            company-ghc
                            company-inf-ruby
                            cpputils-cmake
-                           csv-mode
                            direx
                            discover
-                           dockerfile-mode
                            enh-ruby-mode
                            exec-path-from-shell
                            expand-region
@@ -48,11 +45,8 @@
                            flycheck-rust
                            flyspell-lazy
                            ghc
-                           gist
                            git-commit-mode
                            git-rebase-mode
-                           git-timemachine
-                           go-direx
                            go-eldoc
                            go-mode
                            go-snippets
@@ -64,14 +58,11 @@
                            idomenu
                            imenu-anywhere
                            inf-ruby
-                           ir-black-theme
                            js2-mode
                            json-mode
                            magit
                            markdown-mode
-                           paredit
                            popwin
-                           processing-mode
                            projectile
                            puppet-mode
                            rainbow-delimiters
