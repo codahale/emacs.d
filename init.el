@@ -550,6 +550,9 @@
   '(haskell-tags-on-save t)
   '(haskell-process-type 'cabal-repl))
 
+(require 'haskell-mode)
+(require 'haskell-cabal)
+
 (eval-after-load 'haskell-mode '(progn
   (define-key haskell-mode-map (kbd "C-c C-l") 'haskell-process-load-or-reload)
   (define-key haskell-mode-map (kbd "C-c C-z") 'haskell-interactive-switch)
@@ -557,8 +560,8 @@
   (define-key haskell-mode-map (kbd "C-c C-n C-i") 'haskell-process-do-info)
   (define-key haskell-mode-map (kbd "C-c C-n C-c") 'haskell-process-cabal-build)
   (define-key haskell-mode-map (kbd "C-c C-n c") 'haskell-process-cabal)
-  (define-key haskell-mode-map (kbd "SPC") 'haskell-mode-contextual-space))
-  (define-key haskell-mode-map (kbd "C-c C-p") 'coda-haskell-pointfree-region))
+  (define-key haskell-mode-map (kbd "SPC") 'haskell-mode-contextual-space)
+  (define-key haskell-mode-map (kbd "C-c C-p") 'coda-haskell-pointfree-region)))
 (eval-after-load 'haskell-cabal '(progn
   (define-key haskell-cabal-mode-map (kbd "C-c C-z") 'haskell-interactive-switch)
   (define-key haskell-cabal-mode-map (kbd "C-c C-k") 'haskell-interactive-mode-clear)
