@@ -528,6 +528,15 @@
 (add-hook 'haskell-mode-hook #'hindent-mode)
 (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
 
+(defun coda-haskell-pointfree-region ()
+  "Executes the Haskell pointfree too on the marked region."
+  (interactive)
+  (let ((pfcmd (format "pointfree %s"
+                       (shell-quote-argument (buffer-substring-no-properties
+                                              (region-beginning)
+                                              (region-end))))))
+    (message (format "%s" (shell-command-to-string pfcmd)))))
+
 (autoload 'ghc-init "ghc" nil t)
 (autoload 'ghc-debug "ghc" nil t)
 (add-hook 'haskell-mode-hook (lambda () (ghc-init)))
@@ -548,7 +557,8 @@
   (define-key haskell-mode-map (kbd "C-c C-n C-i") 'haskell-process-do-info)
   (define-key haskell-mode-map (kbd "C-c C-n C-c") 'haskell-process-cabal-build)
   (define-key haskell-mode-map (kbd "C-c C-n c") 'haskell-process-cabal)
-  (define-key haskell-mode-map (kbd "SPC") 'haskell-mode-contextual-space)))
+  (define-key haskell-mode-map (kbd "SPC") 'haskell-mode-contextual-space))
+  (define-key haskell-mode-map (kbd "C-c C-p") 'coda-haskell-pointfree-region))
 (eval-after-load 'haskell-cabal '(progn
   (define-key haskell-cabal-mode-map (kbd "C-c C-z") 'haskell-interactive-switch)
   (define-key haskell-cabal-mode-map (kbd "C-c C-k") 'haskell-interactive-mode-clear)
