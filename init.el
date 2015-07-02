@@ -45,8 +45,6 @@
                            flycheck-rust
                            flyspell-lazy
                            ghc
-                           git-commit-mode
-                           git-rebase-mode
                            go-eldoc
                            go-mode
                            go-snippets
