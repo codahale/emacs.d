@@ -114,15 +114,14 @@
                            " MRev"
                            " company"
                            " Fly"
-                           " GitGutter"
-                           " Paredit"
                            " Undo-Tree"
                            " Anzu"
                            " hl-s"
                            " VHl"
                            " HI"
                            " HI2"
-                           " Abbrev")))
+                           " Abbrev"
+                           " Interactive")))
 
 ;; use smart-mode-line
 (require 'smart-mode-line)
