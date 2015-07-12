@@ -38,7 +38,6 @@
                            exec-path-from-shell
                            expand-region
                            fic-mode
-                           flx-ido
                            flycheck
                            flycheck-color-mode-line
                            flycheck-haskell
@@ -242,17 +241,11 @@
 
 ;;;; IDO
 
-;; use flx-ido
-(flx-ido-mode t)
-
 ;; use ido vertically
 (ido-vertical-mode t)
 
 ;; don't complete on extensions with ido
 (setq ido-ignore-extensions t)
-
-;; disable ido faces to see flx highlights
-(setq ido-use-faces nil)
 
 ;; autoload idomenu
 (autoload 'idomenu "idomenu" nil t)
