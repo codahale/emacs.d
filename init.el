@@ -24,7 +24,6 @@
 (defvar prelude-packages '(
                            ag
                            anzu
-                           auto-package-update
                            autopair
                            better-defaults
                            company
@@ -92,11 +91,6 @@
   (dolist (p prelude-packages)
     (when (not (package-installed-p p))
       (package-install p))))
-
-;; update weekly
-(require 'auto-package-update)
-(setq auto-package-update-interval 7)
-(auto-package-update-maybe)
 
 ;;;; GLOBAL
 
