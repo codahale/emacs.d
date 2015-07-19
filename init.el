@@ -71,6 +71,7 @@
                            toml-mode
                            undo-tree
                            web-mode
+                           which-key
                            yaml-mode
                            yasnippet
                            zenburn-theme
@@ -119,6 +120,10 @@
 (setq sml/theme 'respectful)
 (sml/setup)
 
+;; enable which-key
+(which-key-mode)
+
+;; use Zenburn theme
 (load-theme 'zenburn t)
 
 ;; it's cool if yasnippet doesn't say everything it's thinking
