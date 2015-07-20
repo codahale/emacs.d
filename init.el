@@ -97,7 +97,8 @@
 
 ;; don't show all the damn modes
 (require 'rich-minority)
-(setq rm-blacklist (quote (" WS"
+(setq rm-blacklist (quote (
+                           " WS"
                            " FIC"
                            " pair"
                            " ElDoc"
@@ -113,7 +114,9 @@
                            " HI"
                            " HI2"
                            " Abbrev"
-                           " Interactive")))
+                           " Interactive"
+                           " WK"
+                           )))
 
 ;; use smart-mode-line
 (require 'smart-mode-line)
