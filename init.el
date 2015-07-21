@@ -52,9 +52,6 @@
                            hi2
                            highlight-symbol
                            hindent
-                           ido-vertical-mode
-                           idomenu
-                           imenu-anywhere
                            inf-ruby
                            js2-mode
                            json-mode
@@ -250,17 +247,6 @@
 
 (add-hook 'c-mode-hook 'cppcm-reload-all)
 (add-hook 'c++-mode-hook 'cppcm-reload-all)
-
-;;;; IDO
-
-;; use ido vertically
-(ido-vertical-mode t)
-
-;; don't complete on extensions with ido
-(setq ido-ignore-extensions t)
-
-;; autoload idomenu
-(autoload 'idomenu "idomenu" nil t)
 
 ;;;; ELISP
 
