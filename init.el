@@ -60,6 +60,7 @@
                            json-mode
                            magit
                            markdown-mode
+                           move-text
                            popwin
                            projectile
                            puppet-mode
@@ -483,6 +484,9 @@
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 
 ;;;; KEYBINDINGS
+
+;; M-up and M-down
+(move-text-default-bindings)
 
 (global-set-key (kbd "C-c c")       'compile)
 (global-set-key (kbd "C-c g")       'magit-status)
