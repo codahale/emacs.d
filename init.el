@@ -46,6 +46,8 @@
                            go-mode
                            go-snippets
                            haskell-mode
+                           helm
+                           helm-projectile
                            hi2
                            highlight-symbol
                            hindent
@@ -65,7 +67,6 @@
                            scala-mode
                            shm
                            smart-mode-line
-                           smex
                            smooth-scrolling
                            toml-mode
                            undo-tree
@@ -454,16 +455,13 @@
 
 (global-set-key (kbd "C-c c")       'compile)
 (global-set-key (kbd "C-c g")       'magit-status)
-(global-set-key (kbd "C-c i")       'idomenu)
+(global-set-key (kbd "C-c i")       'helm-imenu)
 (global-set-key (kbd "C-c l p")     'list-packages)
 (global-set-key (kbd "C-c r")       'recompile)
 (global-set-key (kbd "C-c t")       'coda/visit-term-buffer)
 
 (global-set-key (kbd "C-c M-x")     'execute-extended-command) ; old M-x
-
-(global-set-key (kbd "M-x")         'smex)
-(global-set-key (kbd "M-X")         'smex-major-mode-commands)
-
+(global-set-key (kbd "M-x")         'helm-M-x)
 
 ;; unmap upcase-region, since it always screws with undo
 (global-unset-key (kbd "C-x C-u"))

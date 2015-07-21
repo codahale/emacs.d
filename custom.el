@@ -26,6 +26,7 @@
  '(js-indent-level 2)
  '(legalese-default-author "Coda Hale")
  '(legalese-default-copyright "coda.hale@gmail.com")
+ '(projectile-completion-system (quote helm))
  '(projectile-globally-ignored-directories
    (quote
     (".idea" ".eunit" ".git" ".hg" ".fslckout" ".bzr" "_darcs" ".tox" ".svn" "build" "Godeps")))
