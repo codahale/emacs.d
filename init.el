@@ -243,6 +243,9 @@
 ;; enable rainbow delimiters
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
+;; silence warnings about ad-handle-definition
+(setq ad-redefinition-action 'accept)
+
 ;;;; C/C++
 
 (add-hook 'c-mode-hook 'cppcm-reload-all)
