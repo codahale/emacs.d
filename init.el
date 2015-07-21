@@ -31,6 +31,7 @@
                            company-ghc
                            company-inf-ruby
                            cpputils-cmake
+                           diff-hl
                            discover
                            enh-ruby-mode
                            exec-path-from-shell
@@ -123,6 +124,9 @@
 (require 'smart-mode-line)
 (setq sml/theme 'respectful)
 (sml/setup)
+
+;; highlight uncommitted changed
+(diff-hl-mode 1)
 
 ;; enable which-key
 (which-key-mode)
