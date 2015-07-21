@@ -153,10 +153,6 @@
 ;; rely on electric indents, since they're improving
 (electric-indent-mode t)
 
-;; add volatile highlights to edit actions
-;(require 'volatile-highlights)
-;(volatile-highlights-mode t)
-
 ;; use whitespace mode, and mark lines longer than 80 characters
 (require 'whitespace)
 (global-whitespace-mode)
