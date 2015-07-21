@@ -273,7 +273,6 @@
 (setq projectile-completion-system 'helm)
 (helm-projectile-on)
 
-
 ;; The default "C-x c" is quite close to "C-x C-c", which quits Emacs.
 ;; Changed to "C-c h". Note: We must set "C-c h" globally, because we
 ;; cannot change `helm-command-prefix-key' once `helm-config' is loaded.
