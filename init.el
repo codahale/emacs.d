@@ -49,6 +49,7 @@
                            haskell-mode
                            helm
                            helm-ag
+                           helm-company
                            helm-projectile
                            hi2
                            highlight-symbol
@@ -328,7 +329,7 @@
 ;; take over hippie-expand
 (defun coda/enable-company-mode ()
   (company-mode 1)
-  (define-key (current-local-map) [remap hippie-expand] 'company-complete))
+  (define-key (current-local-map) [remap hippie-expand] 'helm-company))
 (add-hook 'prog-mode-hook 'coda/enable-company-mode)
 
 ;; strictly limit completion in Go, since it's totally accurate
