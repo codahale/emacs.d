@@ -48,6 +48,7 @@
                            go-snippets
                            haskell-mode
                            helm
+                           helm-ag
                            helm-projectile
                            hi2
                            highlight-symbol
@@ -262,6 +263,11 @@
 
 (require 'helm)
 (require 'helm-config)
+(require 'projectile)
+
+(setq projectile-completion-system 'helm)
+(helm-projectile-on)
+
 
 ;; The default "C-x c" is quite close to "C-x C-c", which quits Emacs.
 ;; Changed to "C-c h". Note: We must set "C-c h" globally, because we
