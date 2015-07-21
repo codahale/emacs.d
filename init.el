@@ -51,6 +51,7 @@
                            helm-ag
                            helm-company
                            helm-projectile
+                           helm-flycheck
                            hi2
                            highlight-symbol
                            hindent
@@ -203,8 +204,11 @@
 (add-hook 'ibuffer-hook 'ibuffer-vc-set-filter-groups-by-vc-root)
 
 ;; enable flycheck everywhere
+(require 'flycheck)
 (add-hook 'after-init-hook #'global-flycheck-mode)
 (add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode)
+(eval-after-load 'flycheck
+  '(define-key flycheck-mode-map (kbd "C-c ! h") 'helm-flycheck))
 
 ;; a tab is 4 spaces wide
 (setq-default tab-width 4)
