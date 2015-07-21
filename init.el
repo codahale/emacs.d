@@ -446,8 +446,6 @@
 
 (define-key magit-status-mode-map (kbd "q") 'magit-quit-session)
 
-(setq magit-last-seen-setup-instructions "1.4.0")
-
 ;;;; JAVASCRIPT
 
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
@@ -456,50 +454,16 @@
 
 (global-set-key (kbd "C-c c")       'compile)
 (global-set-key (kbd "C-c g")       'magit-status)
-(global-set-key (kbd "C-c h n")     'git-gutter:next-hunk)
-(global-set-key (kbd "C-c h p")     'git-gutter:previous-hunk)
-(global-set-key (kbd "C-c h r")     'git-gutter:revert-hunk)
 (global-set-key (kbd "C-c i")       'idomenu)
 (global-set-key (kbd "C-c l p")     'list-packages)
 (global-set-key (kbd "C-c r")       'recompile)
 (global-set-key (kbd "C-c t")       'coda/visit-term-buffer)
-(global-set-key (kbd "C-c +")       'er/expand-region)
-(global-set-key (kbd "C-c -")       'er/contract-region)
-(global-set-key (kbd "C-c SPC")     'ace-jump-mode)
 
 (global-set-key (kbd "C-c M-x")     'execute-extended-command) ; old M-x
 
 (global-set-key (kbd "M-x")         'smex)
 (global-set-key (kbd "M-X")         'smex-major-mode-commands)
 
-(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
-(global-set-key (kbd "C->")         'mc/mark-next-like-this)
-(global-set-key (kbd "C-<")         'mc/mark-previous-like-this)
-(global-set-key (kbd "C-c C-<")     'mc/mark-all-like-this)
-
-(defun coda/join-lines ()
-  (interactive)
-  (join-line -1))
-(global-set-key (kbd "C-M-j")         'coda/join-lines)
-
-(defun coda/move-line-down ()
-  (interactive)
-  (let ((col (current-column)))
-    (save-excursion
-      (forward-line)
-      (transpose-lines 1))
-    (forward-line)
-    (move-to-column col)))
-(global-set-key (kbd "<C-S-down>")  'coda/move-line-down)
-
-(defun coda/move-line-up ()
-  (interactive)
-  (let ((col (current-column)))
-    (save-excursion
-      (forward-line)
-      (transpose-lines -1))
-    (move-to-column col)))
-(global-set-key (kbd "<C-S-up>")    'coda/move-line-up)
 
 ;; unmap upcase-region, since it always screws with undo
 (global-unset-key (kbd "C-x C-u"))
