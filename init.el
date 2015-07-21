@@ -31,7 +31,6 @@
                            company-ghc
                            company-inf-ruby
                            cpputils-cmake
-                           direx
                            discover
                            enh-ruby-mode
                            exec-path-from-shell
@@ -125,6 +124,10 @@
 
 ;; enable which-key
 (which-key-mode)
+
+;; use popwin
+(require 'popwin)
+(popwin-mode 1)
 
 ;; use Zenburn theme
 (load-theme 'zenburn t)
@@ -425,19 +428,6 @@
 
 (eval-after-load 'flycheck
   '(add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
-
-;;;; DIREX
-
-(require 'popwin)
-(popwin-mode 1)
-
-(push '(direx:direx-mode :position left :width 25 :dedicated t)
-      popwin:special-display-config)
-(global-set-key (kbd "C-c l d") 'direx:jump-to-directory-other-window)
-
-(push '("^\*go-direx:" :regexp t :position left :width 0.4 :dedicated t)
-      popwin:special-display-config)
-(define-key go-mode-map (kbd "C-c l g") 'go-direx-pop-to-buffer)
 
 ;;;; MAGIT
 
