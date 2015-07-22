@@ -195,10 +195,11 @@
 
 (require 'helm)
 (require 'helm-config)
+(require 'helm-files)
+(require 'helm-net)
 (require 'projectile)
 
 (setq projectile-completion-system 'helm)
-(helm-projectile-on)
 
 ;; The default "C-x c" is quite close to "C-x C-c", which quits Emacs.
 ;; Changed to "C-c h". Note: We must set "C-c h" globally, because we
@@ -213,12 +214,18 @@
 (when (executable-find "curl")
   (setq helm-google-suggest-use-curl-p t))
 
-(setq helm-split-window-in-side-p           t ; open helm buffer inside current window, not occupy whole other window
-      helm-move-to-line-cycle-in-source     t ; move to end or beginning of source when reaching top or bottom of source.
-      helm-ff-search-library-in-sexp        t ; search for library in `require' and `declare-function' sexp.
-      helm-scroll-amount                    8 ; scroll 8 lines other window using M-<next>/M-<prior>
-      helm-ff-file-name-history-use-recentf t)
+(setq helm-split-window-in-side-p            t ; open helm buffer inside current window, not occupy whole other window
+      helm-move-to-line-cycle-in-source      t ; move to end or beginning of source when reaching top or bottom of source.
+      helm-ff-search-library-in-sexp         t ; search for library in `require' and `declare-function' sexp.
+      helm-scroll-amount                     8 ; scroll 8 lines other window using M-<next>/M-<prior>
+      helm-ff-file-name-history-use-recentf  t
+      helm-ff-transformer-show-only-basename nil
+      helm-adaptive-history-file             "~/.emacs.d/helm-history"
+      helm-yank-symbol-first                 t
+      )
 
+(helm-projectile-on)
+(helm-adaptive-mode t)
 (helm-mode 1)
 
 ;;;; COCOA
@@ -417,6 +424,9 @@
 (global-set-key (kbd "C-c t")       'coda/visit-term-buffer)
 
 ;; helm bindings
+(global-set-key (kbd "C-x C-b")     'helm-buffers-list)
+(global-set-key (kbd "C-x C-r")     'helm-recentf)
+(global-set-key (kbd "C-x r l")     'helm-filtered-bookmarks)
 (global-set-key (kbd "C-c M-x")     'execute-extended-command) ; old M-x
 (global-set-key (kbd "M-x")         'helm-M-x)
 (global-set-key (kbd "M-y")         'helm-show-kill-ring)
