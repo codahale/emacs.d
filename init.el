@@ -54,7 +54,7 @@
 (sml/setup)
 
 ;; highlight uncommitted changed
-(diff-hl-mode 1)
+(global-diff-hl-mode)
 
 ;; enable which-key
 (which-key-mode)
