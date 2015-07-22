@@ -2,6 +2,14 @@
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file 'noerror)
 
+;;;; CASK
+(require 'cask)
+(cask-initialize)
+(package-initialize)
+
+(require 'pallet)
+(pallet-mode t)
+
 ;;;; INITIAL
 (setq ns-use-srgb-colorspace t)
 
@@ -13,87 +21,6 @@
 ;; chill Winston
 (setq inhibit-startup-message t)
 (setq inhibit-startup-echo-area-message t)
-
-;;;; PACKAGES
-(require 'package)
-(add-to-list 'package-archives
-             '("melpa" . "http://melpa.milkbox.net/packages/") t)
-(package-initialize)
-
-(require 'cl)
-(defvar prelude-packages '(
-                           ag
-                           anzu
-                           autopair
-                           better-defaults
-                           company
-                           company-go
-                           company-ghc
-                           company-inf-ruby
-                           cpputils-cmake
-                           diff-hl
-                           discover
-                           enh-ruby-mode
-                           exec-path-from-shell
-                           expand-region
-                           fic-mode
-                           flycheck
-                           flycheck-color-mode-line
-                           flycheck-haskell
-                           flycheck-rust
-                           flyspell-lazy
-                           ghc
-                           go-eldoc
-                           go-mode
-                           go-snippets
-                           haskell-mode
-                           helm
-                           helm-ag
-                           helm-company
-                           helm-projectile
-                           helm-flycheck
-                           hi2
-                           highlight-symbol
-                           hindent
-                           inf-ruby
-                           js2-mode
-                           json-mode
-                           magit
-                           markdown-mode
-                           move-text
-                           popwin
-                           projectile
-                           puppet-mode
-                           rainbow-delimiters
-                           rust-mode
-                           scala-mode
-                           shm
-                           smart-mode-line
-                           smooth-scrolling
-                           toml-mode
-                           undo-tree
-                           web-mode
-                           which-key
-                           yaml-mode
-                           yasnippet
-                           zenburn-theme
-    )
-  "A list of packages to ensure are installed at launch.")
-
-(defun prelude-packages-installed-p ()
-  (loop for p in prelude-packages
-        when (not (package-installed-p p)) do (return nil)
-        finally (return t)))
-
-(unless (prelude-packages-installed-p)
-  ;; check for new packages (package versions)
-  (message "%s" "Emacs is now refreshing its package database...")
-  (package-refresh-contents)
-  (message "%s" " done.")
-  ;; install the missing packages
-  (dolist (p prelude-packages)
-    (when (not (package-installed-p p))
-      (package-install p))))
 
 ;;;; GLOBAL
 
