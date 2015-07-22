@@ -220,6 +220,7 @@
       helm-yank-symbol-first                 t
       )
 
+(helm-descbinds-install)
 (helm-projectile-on)
 (helm-adaptive-mode t)
 (helm-mode 1)

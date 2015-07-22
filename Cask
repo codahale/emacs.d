@@ -33,6 +33,7 @@
 (depends-on "helm")
 (depends-on "helm-ag")
 (depends-on "helm-company")
+(depends-on "helm-descbinds")
 (depends-on "helm-flycheck")
 (depends-on "helm-projectile")
 (depends-on "hi2")
