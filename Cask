@@ -8,6 +8,7 @@
 (depends-on "better-defaults")
 (depends-on "cask")
 (depends-on "company")
+(depends-on "company-cabal")
 (depends-on "company-ghc")
 (depends-on "company-go")
 (depends-on "company-inf-ruby")
