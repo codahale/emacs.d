@@ -37,6 +37,7 @@
 (depends-on "helm-flycheck")
 (depends-on "helm-hoogle")
 (depends-on "helm-projectile")
+(depends-on "helm-swoop")
 (depends-on "hi2")
 (depends-on "highlight-symbol")
 (depends-on "hindent")
