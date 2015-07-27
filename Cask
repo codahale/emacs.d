@@ -35,6 +35,7 @@
 (depends-on "helm-company")
 (depends-on "helm-descbinds")
 (depends-on "helm-flycheck")
+(depends-on "helm-hoogle")
 (depends-on "helm-projectile")
 (depends-on "hi2")
 (depends-on "highlight-symbol")
