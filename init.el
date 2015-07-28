@@ -77,8 +77,8 @@
 ;; highlight current symbol in prog-mode
 (add-hook 'prog-mode-hook 'highlight-symbol-mode)
 
-;; use autopair everywhere
-(autopair-global-mode t)
+;; use smartparens everywhere
+(smartparens-global-mode t)
 
 ;; rely on electric indents, since they're improving
 (electric-indent-mode t)
