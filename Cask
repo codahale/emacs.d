@@ -7,6 +7,7 @@
 (depends-on "autopair")
 (depends-on "better-defaults")
 (depends-on "cask")
+(depends-on "comment-dwim-2")
 (depends-on "company")
 (depends-on "company-cabal")
 (depends-on "company-ghc")

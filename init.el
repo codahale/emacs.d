@@ -417,6 +417,8 @@
 ;; M-up and M-down
 (move-text-default-bindings)
 
+(global-set-key (kbd "M-;")         'comment-dwim-2)
+
 (global-set-key (kbd "C-c c")       'compile)
 (global-set-key (kbd "C-c g")       'magit-status)
 (global-set-key (kbd "C-c l p")     'list-packages)
