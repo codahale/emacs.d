@@ -104,7 +104,6 @@
   (setq whitespace-line-column 100))
 (add-hook 'rust-mode-hook 'coda/set-rust-fill-column)
 
-
 ;; add context menus for things
 (global-discover-mode t)
 
