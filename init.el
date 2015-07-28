@@ -223,6 +223,7 @@
 (define-key helm-buffer-map (kbd "C-d")     'helm-buffer-run-kill-persistent)
 
 (helm-descbinds-install)
+(require 'grep)                         ; fix a projectile bug
 (helm-projectile-on)
 (helm-adaptive-mode t)
 (helm-mode 1)
