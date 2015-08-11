@@ -6,6 +6,7 @@
 (depends-on "async")
 (depends-on "better-defaults")
 (depends-on "cask")
+(depends-on "coffee-mode")
 (depends-on "comment-dwim-2")
 (depends-on "company")
 (depends-on "company-cabal")
