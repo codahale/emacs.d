@@ -24,6 +24,9 @@
 
 ;;;; GLOBAL
 
+(require 'aggressive-indent)
+(global-aggressive-indent-mode t)
+
 ;; don't show all the damn modes
 (require 'rich-minority)
 (setq rm-blacklist (quote (

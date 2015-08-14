@@ -2,6 +2,7 @@
 (source melpa)
 
 (depends-on "ag")
+(depends-on "aggressive-indent")
 (depends-on "anzu")
 (depends-on "async")
 (depends-on "better-defaults")
