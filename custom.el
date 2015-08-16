@@ -26,6 +26,7 @@
  '(js-indent-level 2)
  '(legalese-default-author "Coda Hale")
  '(legalese-default-copyright "coda.hale@gmail.com")
+ '(magit-push-always-verify nil)
  '(projectile-completion-system (quote helm))
  '(projectile-globally-ignored-directories
    (quote
