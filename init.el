@@ -49,6 +49,8 @@
                            " Interactive"
                            " Helm"
                            " WK"
+                           " SP"
+                           " =>"
                            )))
 
 ;; use smart-mode-line
