@@ -11,7 +11,9 @@
 (pallet-mode t)
 
 ;;;; INITIAL
-(setq ns-use-srgb-colorspace t)
+
+(setq-default gc-cons-threshold 10000000) ; speed up startup
+(setq ns-use-srgb-colorspace t)           ; don't look like crap on Mac
 
 ;; Turn off mouse interface early in startup to avoid momentary display
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
