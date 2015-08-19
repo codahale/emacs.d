@@ -14,6 +14,7 @@
 
 (setq-default gc-cons-threshold 10000000) ; speed up startup
 (setq ns-use-srgb-colorspace t)           ; don't look like crap on Mac
+(load-theme 'zenburn t)                   ; use zenburn theme
 
 ;; Turn off mouse interface early in startup to avoid momentary display
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
@@ -69,9 +70,6 @@
 ;; use popwin
 (require 'popwin)
 (popwin-mode 1)
-
-;; use Zenburn theme
-(load-theme 'zenburn t)
 
 ;; it's cool if yasnippet doesn't say everything it's thinking
 (require 'yasnippet)
