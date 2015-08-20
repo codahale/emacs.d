@@ -212,7 +212,7 @@
 (global-unset-key (kbd "C-x c"))
 
 (when (executable-find "curl")
-  (setq helm-google-suggest-use-curl-p t))
+  (setq helm-net-prefer-curl t))
 
 (setq helm-split-window-in-side-p            t ; open helm buffer inside current window, not occupy whole other window
       helm-move-to-line-cycle-in-source      t ; move to end or beginning of source when reaching top or bottom of source.
@@ -221,7 +221,6 @@
       helm-ff-file-name-history-use-recentf  t
       helm-ff-transformer-show-only-basename nil
       helm-adaptive-history-file             "~/.emacs.d/helm-history"
-      helm-yank-symbol-first                 t
       )
 
 (define-key helm-find-files-map (kbd "C-d") 'helm-ff-persistent-delete)
