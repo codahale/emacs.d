@@ -1,17 +1,16 @@
-;; trade memory for speed
-(setq-default gc-cons-threshold 10000000)
+;;;; INITIALIZATION
 
-;;;; CUSTOM
-(setq custom-file "~/.emacs.d/custom.el")
-(load custom-file 'noerror)
+(setq-default gc-cons-threshold 10000000) ; trade memory for speed
 
-;;;; CASK
-(require 'cask)
+(require 'cask)                         ; load cask & initialize packages
 (cask-initialize)
 (package-initialize)
 
 (require 'pallet)
-(pallet-mode t)
+(pallet-mode t)                         ; manage all packages via cask
+
+(setq custom-file "~/.emacs.d/custom.el") ; load custom settings
+(load custom-file 'noerror)
 
 ;;;; GLOBAL
 
