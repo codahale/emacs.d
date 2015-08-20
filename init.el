@@ -116,12 +116,18 @@
 (eval-after-load 'flycheck
   '(define-key flycheck-mode-map (kbd "C-c ! h") 'helm-flycheck))
 
+;; fiddles with smartparens defaults
+(require 'smartparens)
+(sp-pair "'" nil :unless '(sp-point-after-word-p))
+
 ;;;; C/C++
 
 (add-hook 'c-mode-hook 'cppcm-reload-all)
 (add-hook 'c++-mode-hook 'cppcm-reload-all)
 
 ;;;; ELISP
+
+(sp-local-pair 'emacs-lisp-mode "'" nil :actions nil)
 
 ;; surface Elisp sections in imenu
 (defun coda/imenu-elisp-sections ()
