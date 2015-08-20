@@ -1,3 +1,6 @@
+;; trade memory for speed
+(setq-default gc-cons-threshold 10000000)
+
 ;;;; CUSTOM
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file 'noerror)
@@ -12,7 +15,6 @@
 
 ;;;; GLOBAL
 
-(setq-default gc-cons-threshold 10000000) ; speed up startup
 (setq ns-use-srgb-colorspace t)           ; don't look like crap on Mac
 (load-theme 'zenburn t)                   ; use zenburn theme
 
@@ -116,9 +118,9 @@
 (eval-after-load 'flycheck
   '(define-key flycheck-mode-map (kbd "C-c ! h") 'helm-flycheck))
 
-;; fiddles with smartparens defaults
 (require 'smartparens)
-(sp-pair "'" nil :unless '(sp-point-after-word-p))
+(sp-pair "'" nil
+         :unless '(sp-point-after-word-p)) ; don't pair mid-word apostrophes
 
 ;;;; C/C++
 
@@ -127,7 +129,7 @@
 
 ;;;; ELISP
 
-(sp-local-pair 'emacs-lisp-mode "'" nil :actions nil)
+(sp-local-pair 'emacs-lisp-mode "'" nil :actions nil) ; fix smartparen symbols
 
 ;; surface Elisp sections in imenu
 (defun coda/imenu-elisp-sections ()
@@ -135,8 +137,7 @@
   (imenu-add-to-menubar "Index"))
 (add-hook 'emacs-lisp-mode-hook 'coda/imenu-elisp-sections)
 
-;; use paredit
-(add-hook 'lisp-mode-hook 'paredit-mode)
+(add-hook 'lisp-mode-hook 'paredit-mode) ; use paredit
 
 ;;;; HELM
 
@@ -145,8 +146,6 @@
 (require 'helm-files)
 (require 'helm-net)
 (require 'projectile)
-
-(setq projectile-completion-system 'helm)
 
 ;; The default "C-x c" is quite close to "C-x C-c", which quits Emacs.
 ;; Changed to "C-c h". Note: We must set "C-c h" globally, because we
@@ -169,18 +168,15 @@
 (define-key helm-find-files-map (kbd "C-d") 'helm-ff-persistent-delete)
 (define-key helm-buffer-map (kbd "C-d")     'helm-buffer-run-kill-persistent)
 
-(helm-descbinds-install)
-(require 'grep)                         ; fix a projectile bug
-(helm-projectile-on)
-(helm-adaptive-mode t)
-(helm-mode 1)
+(helm-descbinds-install)                ; integrate w/ describe-bindings
+(helm-projectile-on)                    ; integrate w/ projectile
+(helm-adaptive-mode t)                  ; use adaptive mode to rank common items
+(helm-mode 1)                           ; enable helm!
 
 ;;;; COCOA
 
 (defun coda/configure-cocoa ()
-  ;; load PATH variable from shell, since setting env bars in Emacs
-  ;; is crazy painful
-  (exec-path-from-shell-initialize)
+  (exec-path-from-shell-initialize)     ; pull PATH from shell environment
 
   ;; open up maximized-ish
   (let ((px (display-pixel-width))
@@ -204,11 +200,9 @@
 
 (require 'company)
 
-;; use a bigger popup window
-(setq company-tooltip-limit 20)
 
-;; only auto-complete on key binding
-(setq company-idle-delay nil)
+(setq company-tooltip-limit 20)         ; use a bigger popup window
+(setq company-idle-delay nil)           ; only auto-complete on key binding
 
 ;; take over hippie-expand
 (defun coda/enable-company-mode ()
@@ -245,15 +239,16 @@
   (setq ispell-program-name "aspell"))
  ((executable-find "hunspell")
   (setq ispell-program-name "hunspell")
-  ;; just reset dictionary to the safe one "en_US" for hunspell.
-  ;; if we need use different dictionary, we specify it in command line arguments
+  ;; just reset dictionary to the safe one "en_US" for hunspell.  if we need use
+  ;; different dictionary, we specify it in command line arguments
   (setq ispell-local-dictionary "en_US")
   (setq ispell-local-dictionary-alist
         '(("en_US" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil nil nil utf-8))))
  (t (setq ispell-program-name nil)))
 
-;; ispell-cmd-args is useless, it's the list of *extra* arguments we will append to the ispell process when "ispell-word" is called.
-;; ispell-extra-args is the command arguments which will *always* be used when start ispell process
+;; ispell-cmd-args is useless, it's the list of *extra* arguments we will append
+;; to the ispell process when "ispell-word" is called.  ispell-extra-args is the
+;; command arguments which will *always* be used when start ispell process
 (setq ispell-extra-args (flyspell-detect-ispell-args t))
 ;; (setq ispell-cmd-args (flyspell-detect-ispell-args))
 (defadvice ispell-word (around my-ispell-word activate)
@@ -276,14 +271,11 @@
     (ispell-kill-ispell t)
     ))
 
-;; automatically check spelling for text
-(add-hook 'text-mode-hook 'flyspell-mode)
-
-;; spell check comments and strings when programming
-(add-hook 'prog-mode-hook 'flyspell-prog-mode)
-
-;; spell check git commit messages
-(add-hook 'git-commit-mode-hook 'flyspell-mode)
+(add-hook 'text-mode-hook 'flyspell-mode) ; automatically check spelling
+(add-hook 'prog-mode-hook 'flyspell-prog-mode) ; spell check comments and
+                                               ; strings when programming
+(add-hook 'git-commit-mode-hook 'flyspell-mode) ; spell check git commit
+                                                ; messages
 
 ;;;; TERMINAL
 
@@ -311,12 +303,7 @@
 (setenv "GOPATH" "/Users/coda/Projects/go")
 
 (require 'go-mode)
-
-;; use goimports instead of gofmt
-(setq gofmt-command "goimports")
-
-;; always run goimports before saving .go files
-(add-hook 'before-save-hook 'gofmt-before-save)
+(setq gofmt-command "goimports")        ; use goimports instead of gofmt
 
 (defun coda/configure-go-mode ()
   ;; improve imenu results
@@ -325,11 +312,9 @@
           ("func" "^func *\\(.*\\) {" 1)))
   (imenu-add-to-menubar "Index")
 
-  ;; use go-eldoc
-  (go-eldoc-setup)
-
-  ;; only use gocode as company backend
-  (set (make-local-variable 'company-backends) '(company-go)))
+  (add-hook 'before-save-hook 'gofmt-before-save) ; always run gofmt
+  (go-eldoc-setup)                                ; use go-eldoc
+  (set (make-local-variable 'company-backends) '(company-go))) ; use gocode exclusively
 
 (add-hook 'go-mode-hook 'coda/configure-go-mode)
 
@@ -397,9 +382,8 @@
 (define-key global-map [remap find-tag]              'helm-etags-select)
 (define-key global-map [remap xref-find-definitions] 'helm-etags-select)
 
-
-;; unmap upcase-region, since it always screws with undo
-(global-unset-key (kbd "C-x C-u"))
+(global-unset-key (kbd "C-x C-u"))      ; unmap upcase-region, since it always
+                                        ; screws with undo
 
 ;;;; HASKELL
 
