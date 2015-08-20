@@ -6,6 +6,7 @@
 (depends-on "anzu")
 (depends-on "async")
 (depends-on "better-defaults")
+(depends-on "browse-at-remote")
 (depends-on "cask")
 (depends-on "clojure-mode")
 (depends-on "coffee-mode")
