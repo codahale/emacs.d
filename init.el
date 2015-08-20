@@ -10,28 +10,29 @@
 (require 'pallet)
 (pallet-mode t)
 
-;;;; INITIAL
+;;;; GLOBAL
 
 (setq-default gc-cons-threshold 10000000) ; speed up startup
 (setq ns-use-srgb-colorspace t)           ; don't look like crap on Mac
 (load-theme 'zenburn t)                   ; use zenburn theme
 
-;; Turn off mouse interface early in startup to avoid momentary display
-(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
-(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
-(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
+(setq inhibit-splash-screen t)          ; don't show the splash screen
+(setq inhibit-startup-message t)        ; don't show startup messages
+(setq inhibit-startup-echo-area-message t) ; don't echo anything
 
-;; chill Winston
-(setq inhibit-startup-message t)
-(setq inhibit-startup-echo-area-message t)
+(set-terminal-coding-system 'utf-8)     ; always use UTF-8
+(set-keyboard-coding-system 'utf-8)     ; it is the future
+(prefer-coding-system 'utf-8)
 
-;;;; GLOBAL
+(setq-default tab-width 4)              ; a tab is 4 spaces
+(setq ring-bell-function 'ignore)       ; don't blink constantly
+(add-hook 'before-save-hook
+          'delete-trailing-whitespace)  ; always delete trailing whitespace
+(setq insert-directory-program "gls")   ; use core-utils on Mac
+(setq require-final-newline t)          ; always add a final newline
+(defalias 'yes-or-no-p 'y-or-n-p)       ; accept "y" for "yes"
 
-(require 'aggressive-indent)
-(global-aggressive-indent-mode t)
-
-;; don't show all the damn modes
-(require 'rich-minority)
+(require 'rich-minority)                ; don't show all the damn minor modes
 (setq rm-blacklist (quote (
                            " WS"
                            " FIC"
@@ -56,37 +57,36 @@
                            " =>"
                            )))
 
-;; use smart-mode-line
 (require 'smart-mode-line)
-(setq sml/theme 'respectful)
+(setq sml/theme 'respectful)            ; make smart-mode-line respect the theme
 (sml/setup)
 
-;; highlight uncommitted changed
-(global-diff-hl-mode)
-
-;; enable which-key
-(which-key-mode)
-
-;; use popwin
-(require 'popwin)
-(popwin-mode 1)
-
-;; it's cool if yasnippet doesn't say everything it's thinking
 (require 'yasnippet)
-(setq yas-verbosity 1)
-(yas-global-mode)
+(setq yas-verbosity 1)                  ; tone down yasnippet logging
+(yas-global-mode)                       ; use yasnippet everywhere
 
-;; show total matches in modeline
-(global-anzu-mode t)
+(global-diff-hl-mode)                   ; highlight uncommitted changes
+(which-key-mode)                        ; display help for partial key bindings
+(require 'popwin) (popwin-mode 1)       ; manage temporary windows
+(global-anzu-mode t)                    ; show total # of matches in modeline
+(smartparens-global-mode t)             ; use smartparens everywhere
+(electric-indent-mode t)                ; auto-indent things
+(global-discover-mode t)                ; add contextual menus for things
+(global-hl-line-mode)                   ; highlight the current line
+(delete-selection-mode t)               ; delete selections when yanking etc
+(projectile-global-mode t)              ; use projectile when possible
+(global-aggressive-indent-mode t)       ; always aggressively indent
+(global-undo-tree-mode)                 ; use undo-tree
+(windmove-default-keybindings 'super)   ; bind windmove to s-{arrows}
+(setq ad-redefinition-action 'accept)   ; stop logging weird crap
 
-;; highlight current symbol in prog-mode
-(add-hook 'prog-mode-hook 'highlight-symbol-mode)
-
-;; use smartparens everywhere
-(smartparens-global-mode t)
-
-;; rely on electric indents, since they're improving
-(electric-indent-mode t)
+;; prog-mode specifics
+(add-hook 'prog-mode-hook 'linum-mode)  ; show line numbers
+(add-hook 'prog-mode-hook 'column-number-mode) ; show column numbers
+(add-hook 'prog-mode-hook 'fic-mode)           ; highlight TODOs
+(add-hook 'prog-mode-hook 'highlight-symbol-mode) ; highlight current symbol
+(add-hook 'prog-mode-hook 'eldoc-mode)            ; always use eldoc
+(add-hook 'prog-mode-hook 'rainbow-delimiters-mode) ; enable rainbow delimiters
 
 ;; use whitespace mode, and mark lines longer than 80 characters
 (require 'whitespace)
@@ -109,75 +109,12 @@
   (setq whitespace-line-column 100))
 (add-hook 'rust-mode-hook 'coda/set-rust-fill-column)
 
-;; add context menus for things
-(global-discover-mode t)
-
-;; use line and column numbers in prog-mode
-(add-hook 'prog-mode-hook 'linum-mode)
-(add-hook 'prog-mode-hook 'column-number-mode)
-
-;; highlight the current line
-(global-hl-line-mode)
-
-;; highlight fixme comments
-(add-hook 'prog-mode-hook 'fic-mode)
-
-;; always use ElDoc in prog-mode
-(add-hook 'prog-mode-hook 'eldoc-mode)
-
-;; overwrite selections
-(delete-selection-mode t)
-
-;; use projectile everywhere
-(projectile-global-mode t)
-
-;; group ibuffer by vc root
-(add-hook 'ibuffer-hook 'ibuffer-vc-set-filter-groups-by-vc-root)
-
 ;; enable flycheck everywhere
 (require 'flycheck)
 (add-hook 'after-init-hook #'global-flycheck-mode)
 (add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode)
 (eval-after-load 'flycheck
   '(define-key flycheck-mode-map (kbd "C-c ! h") 'helm-flycheck))
-
-;; a tab is 4 spaces wide
-(setq-default tab-width 4)
-
-;; don't show the welcome message
-(setq inhibit-splash-screen t)
-
-;; shut up shut up shut up
-(setq ring-bell-function 'ignore)
-
-;; always delete trailing whitespace
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
-
-;; use core-utils for dired
-(setq insert-directory-program "gls")
-
-;; always prefer UTF-8
-(set-terminal-coding-system 'utf-8)
-(set-keyboard-coding-system 'utf-8)
-(prefer-coding-system 'utf-8)
-
-;; always add a trailing newline - POSIX
-(setq require-final-newline t)
-
-;; no need to be so verbose
-(defalias 'yes-or-no-p 'y-or-n-p)
-
-;; use undo-tree
-(global-undo-tree-mode)
-
-;; bind windmove to super-arrows
-(windmove-default-keybindings 'super)
-
-;; enable rainbow delimiters
-(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
-
-;; silence warnings about ad-handle-definition
-(setq ad-redefinition-action 'accept)
 
 ;;;; C/C++
 
