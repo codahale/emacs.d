@@ -198,10 +198,8 @@
 ;;;; COMPANY
 
 (require 'company)
-(setq company-idle-delay nil)           ; only auto-complete on key binding
-
-(define-key company-mode-map [remap hippie-expand] 'helm-company)
-(define-key company-active-map [remap hippie-expand] 'helm-company)
+(define-key company-mode-map [remap hippie-expand] 'completion-at-point)
+(define-key company-active-map [remap hippie-expand] 'completion-at-point)
 (add-hook 'after-init-hook 'global-company-mode)
 
 ;; strictly limit completion in Go, since it's totally accurate
