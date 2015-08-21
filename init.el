@@ -202,12 +202,6 @@
 (define-key company-active-map [remap hippie-expand] 'completion-at-point)
 (add-hook 'after-init-hook 'global-company-mode)
 
-;; strictly limit completion in Go, since it's totally accurate
-(defadvice company-go (around fix-company-go-prefix activate)
-  ad-do-it
-  (when (eql (ad-get-arg 0) 'prefix)
-    (setq ad-return-value (company-grab-word))))
-
 ;;;; SPELLING
 
 (require 'ispell)
