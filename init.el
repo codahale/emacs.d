@@ -198,22 +198,17 @@
 ;;;; COMPANY
 
 (require 'company)
-
-
-(setq company-tooltip-limit 20)         ; use a bigger popup window
 (setq company-idle-delay nil)           ; only auto-complete on key binding
 
-;; take over hippie-expand
-(defun coda/enable-company-mode ()
-  (company-mode 1)
-  (define-key (current-local-map) [remap hippie-expand] 'helm-company))
-(add-hook 'prog-mode-hook 'coda/enable-company-mode)
+(define-key company-mode-map [remap hippie-expand] 'helm-company)
+(define-key company-active-map [remap hippie-expand] 'helm-company)
+(add-hook 'after-init-hook 'global-company-mode)
 
 ;; strictly limit completion in Go, since it's totally accurate
 (defadvice company-go (around fix-company-go-prefix activate)
-      ad-do-it
-      (when (eql (ad-get-arg 0) 'prefix)
-        (setq ad-return-value (company-grab-word))))
+  ad-do-it
+  (when (eql (ad-get-arg 0) 'prefix)
+    (setq ad-return-value (company-grab-word))))
 
 ;;;; SPELLING
 
