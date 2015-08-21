@@ -136,8 +136,6 @@
   (imenu-add-to-menubar "Index"))
 (add-hook 'emacs-lisp-mode-hook 'coda/imenu-elisp-sections)
 
-(add-hook 'lisp-mode-hook 'paredit-mode) ; use paredit
-
 ;;;; HELM
 
 (require 'helm)
