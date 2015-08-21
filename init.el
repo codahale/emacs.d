@@ -63,7 +63,7 @@
 (sml/setup)
 
 (require 'yasnippet)
-(setq yas-verbosity 1)                  ; tone down yasnippet logging
+(setq yas-verbosity 0)                  ; tone down yasnippet logging
 (yas-global-mode)                       ; use yasnippet everywhere
 
 (global-diff-hl-mode)                   ; highlight uncommitted changes
