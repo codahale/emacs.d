@@ -306,6 +306,12 @@
 (eval-after-load 'flycheck
   '(add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
 
+(require 'racer)
+(setq racer-cmd "/Users/coda/Projects/rust/racer/target/release/racer")
+(setq racer-rust-src-path "/Users/coda/Projects/rust/rust/src/")
+(add-hook 'rust-mode-hook #'racer-mode)
+(add-hook 'racer-mode-hook #'eldoc-mode)
+
 ;;;; JAVASCRIPT
 
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
