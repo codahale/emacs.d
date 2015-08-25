@@ -30,7 +30,6 @@
  '(projectile-globally-ignored-directories
    (quote
     (".idea" ".eunit" ".git" ".hg" ".fslckout" ".bzr" "_darcs" ".tox" ".svn" "build" "Godeps")))
- '(sp-base-key-bindings (quote sp))
  '(vc-annotate-background "#2B2B2B")
  '(vc-annotate-color-map
    (quote
