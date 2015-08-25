@@ -70,7 +70,7 @@
 (which-key-mode)                        ; display help for partial key bindings
 (require 'popwin) (popwin-mode 1)       ; manage temporary windows
 (global-anzu-mode t)                    ; show total # of matches in modeline
-(smartparens-global-mode t)             ; use smartparens everywhere
+(autopair-global-mode t)                ; autopair everywhere
 (electric-indent-mode t)                ; auto-indent things
 (global-discover-mode t)                ; add contextual menus for things
 (global-hl-line-mode)                   ; highlight the current line
@@ -117,18 +117,12 @@
 (eval-after-load 'flycheck
   '(define-key flycheck-mode-map (kbd "C-c ! h") 'helm-flycheck))
 
-(require 'smartparens)
-(sp-pair "'" nil
-         :unless '(sp-point-after-word-p)) ; don't pair mid-word apostrophes
-
 ;;;; C/C++
 
 (add-hook 'c-mode-hook 'cppcm-reload-all)
 (add-hook 'c++-mode-hook 'cppcm-reload-all)
 
 ;;;; ELISP
-
-(sp-local-pair 'emacs-lisp-mode "'" nil :actions nil) ; fix smartparen symbols
 
 ;; surface Elisp sections in imenu
 (defun coda/imenu-elisp-sections ()
