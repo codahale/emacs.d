@@ -100,11 +100,6 @@
 (setq-default fill-column 80)
 (setq-default whitespace-line-column 80)
 
-(defun coda/set-markdown-fill-column ()
-  (setq fill-column 72)
-  (setq whitespace-line-column 72))
-(add-hook 'markdown-mode-hook 'coda/set-markdown-fill-column)
-
 (defun coda/set-rust-fill-column ()
   (setq fill-column 100)
   (setq whitespace-line-column 100))
