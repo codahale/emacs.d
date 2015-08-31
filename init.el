@@ -394,3 +394,12 @@
 
 (add-to-list 'company-backends 'company-ghc)
 (custom-set-variables '(company-ghc-show-info t))
+
+;;;; CLOJURE
+
+(require 'cider)
+(setq cider-repl-use-clojure-font-lock t)
+(setq nrepl-hide-special-buffers t)
+(add-hook 'cider-repl-mode-hook 'cider-repl-toggle-pretty-printing)
+
+;;;; END
