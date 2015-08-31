@@ -66,6 +66,7 @@
 (depends-on "scala-mode")
 (depends-on "shm")
 (depends-on "shut-up")
+(depends-on "slamhound")
 (depends-on "smart-mode-line")
 (depends-on "smooth-scrolling")
 (depends-on "toml-mode")
