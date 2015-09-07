@@ -56,6 +56,7 @@
                            " WK"
                            " SP"
                            " =>"
+                           " Paredit"
                            )))
 
 (require 'smart-mode-line)
@@ -124,6 +125,7 @@
   (setq imenu-generic-expression '(("Sections" "^;;;; \\(.+\\)" 1)))
   (imenu-add-to-menubar "Index"))
 (add-hook 'emacs-lisp-mode-hook 'coda/imenu-elisp-sections)
+(add-hook 'emacs-lisp-mode-hook 'paredit-mode)
 
 ;;;; HELM
 
@@ -401,5 +403,6 @@
 (setq cider-repl-use-clojure-font-lock t)
 (setq nrepl-hide-special-buffers t)
 (add-hook 'cider-repl-mode-hook 'cider-repl-toggle-pretty-printing)
+(add-hook 'clojure-mode-hook 'paredit-mode)
 
 ;;;; END
