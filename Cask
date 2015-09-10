@@ -29,7 +29,6 @@
 (depends-on "expand-region")
 (depends-on "fic-mode")
 (depends-on "flycheck")
-(depends-on "flycheck-clojure")
 (depends-on "flycheck-color-mode-line")
 (depends-on "flycheck-haskell")
 (depends-on "flycheck-pos-tip")

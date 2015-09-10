@@ -399,7 +399,6 @@
 
 ;;;; CLOJURE
 
-(eval-after-load 'flycheck '(flycheck-clojure-setup))
 (add-hook 'clojure-mode-hook 'paredit-mode)
 
 (require 'cider)
