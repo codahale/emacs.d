@@ -399,10 +399,15 @@
 
 ;;;; CLOJURE
 
+(eval-after-load 'flycheck '(flycheck-clojure-setup))
+(add-hook 'clojure-mode-hook 'paredit-mode)
+(add-hook 'clojure-mode-hook (lambda ()
+                               (clj-refactor-mode 1)
+                               (cljr-add-keybindings-with-prefix "C-c m")))
+
 (require 'cider)
+(add-hook 'cider-repl-mode-hook 'paredit-mode)
 (setq cider-repl-use-clojure-font-lock t)
 (setq cider-repl-use-pretty-printing t)
-(add-hook 'clojure-mode-hook 'paredit-mode)
-(add-hook 'cider-repl-mode-hook 'paredit-mode)
 
 ;;;; END
