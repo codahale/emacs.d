@@ -12,7 +12,6 @@
 (depends-on "cider")
 (depends-on "clojure-cheatsheet")
 (depends-on "clojure-mode")
-(depends-on "coffee-mode")
 (depends-on "comment-dwim-2")
 (depends-on "company")
 (depends-on "company-cabal")
