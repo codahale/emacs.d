@@ -401,8 +401,8 @@
 
 (require 'cider)
 (setq cider-repl-use-clojure-font-lock t)
-(setq nrepl-hide-special-buffers t)
-(add-hook 'cider-repl-mode-hook 'cider-repl-toggle-pretty-printing)
+(setq cider-repl-use-pretty-printing t)
 (add-hook 'clojure-mode-hook 'paredit-mode)
+(add-hook 'cider-repl-mode-hook 'paredit-mode)
 
 ;;;; END
