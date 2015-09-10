@@ -10,8 +10,6 @@
 (depends-on "browse-at-remote")
 (depends-on "cask")
 (depends-on "cider")
-(depends-on "clj-refactor")
-(depends-on "cljr-helm")
 (depends-on "clojure-cheatsheet")
 (depends-on "clojure-mode")
 (depends-on "coffee-mode")
