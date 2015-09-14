@@ -5,7 +5,6 @@
 (depends-on "aggressive-indent")
 (depends-on "anzu")
 (depends-on "async")
-(depends-on "autopair")
 (depends-on "better-defaults")
 (depends-on "browse-at-remote")
 (depends-on "cask")

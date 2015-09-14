@@ -71,7 +71,7 @@
 (which-key-mode)                        ; display help for partial key bindings
 (require 'popwin) (popwin-mode 1)       ; manage temporary windows
 (global-anzu-mode t)                    ; show total # of matches in modeline
-(autopair-global-mode t)                ; autopair everywhere
+(electric-pair-mode t)                  ; automatically pair quotes and such
 (electric-indent-mode t)                ; auto-indent things
 (global-discover-mode t)                ; add contextual menus for things
 (global-hl-line-mode)                   ; highlight the current line
