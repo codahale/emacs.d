@@ -397,6 +397,12 @@
 (add-to-list 'company-backends 'company-ghc)
 (custom-set-variables '(company-ghc-show-info t))
 
+;;;; PAREDIT
+
+(require 'paredit)
+(define-key paredit-mode-map (kbd "M-{") 'paredit-wrap-curly)
+(define-key paredit-mode-map (kbd "M-[") 'paredit-wrap-square)
+
 ;;;; CLOJURE
 
 (add-hook 'clojure-mode-hook 'paredit-mode)
