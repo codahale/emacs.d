@@ -72,7 +72,6 @@
 (depends-on "smart-mode-line")
 (depends-on "smooth-scrolling")
 (depends-on "toml-mode")
-(depends-on "typed-clojure-mode")
 (depends-on "undo-tree")
 (depends-on "web-mode")
 (depends-on "which-key")

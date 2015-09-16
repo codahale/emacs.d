@@ -408,7 +408,6 @@
 
 (add-hook 'clojure-mode-hook 'paredit-mode)
 (add-hook 'clojure-mode-hook 'highlight-parentheses-mode)
-(add-hook 'clojure-mode-hook 'typed-clojure-mode)
 
 (require 'cider)
 (add-hook 'cider-repl-mode-hook 'paredit-mode)
