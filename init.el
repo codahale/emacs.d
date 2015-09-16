@@ -126,6 +126,7 @@
   (imenu-add-to-menubar "Index"))
 (add-hook 'emacs-lisp-mode-hook 'coda/imenu-elisp-sections)
 (add-hook 'emacs-lisp-mode-hook 'paredit-mode)
+(add-hook 'emacs-lisp-mode-hook 'highlight-parentheses-mode)
 
 ;;;; HELM
 
@@ -180,7 +181,7 @@
   ;; don't scroll like a maniac
   (setq mouse-wheel-scroll-amount '(1))
   (setq mouse-wheel-progressive-speed nil)
-)
+  )
 (if (memq window-system '(mac ns)) (coda/configure-cocoa))
 
 ;;;; COMPANY
@@ -406,6 +407,8 @@
 ;;;; CLOJURE
 
 (add-hook 'clojure-mode-hook 'paredit-mode)
+(add-hook 'clojure-mode-hook 'highlight-parentheses-mode)
+(add-hook 'clojure-mode-hook 'typed-clojure-mode)
 
 (require 'cider)
 (add-hook 'cider-repl-mode-hook 'paredit-mode)
