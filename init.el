@@ -72,7 +72,6 @@
 (require 'popwin) (popwin-mode 1)       ; manage temporary windows
 (global-anzu-mode t)                    ; show total # of matches in modeline
 (electric-pair-mode t)                  ; automatically pair quotes and such
-(electric-indent-mode t)                ; auto-indent things
 (global-discover-mode t)                ; add contextual menus for things
 (global-hl-line-mode)                   ; highlight the current line
 (delete-selection-mode t)               ; delete selections when yanking etc
