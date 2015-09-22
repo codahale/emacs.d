@@ -63,10 +63,6 @@
 (setq sml/theme 'respectful)            ; make smart-mode-line respect the theme
 (sml/setup)
 
-(require 'yasnippet)
-(setq yas-verbosity 0)                  ; tone down yasnippet logging
-(yas-global-mode)                       ; use yasnippet everywhere
-
 (global-diff-hl-mode)                   ; highlight uncommitted changes
 (which-key-mode)                        ; display help for partial key bindings
 (require 'popwin) (popwin-mode 1)       ; manage temporary windows

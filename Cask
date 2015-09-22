@@ -77,5 +77,4 @@
 (depends-on "which-key")
 (depends-on "with-editor")
 (depends-on "yaml-mode")
-(depends-on "yasnippet")
 (depends-on "zenburn-theme")
