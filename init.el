@@ -412,5 +412,6 @@
 (add-hook 'cider-repl-mode-hook 'paredit-mode)
 (setq cider-repl-use-clojure-font-lock t)
 (setq cider-repl-use-pretty-printing t)
+(set-variable 'cider-prompt-for-symbol nil)
 
 ;;;; END
