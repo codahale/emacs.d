@@ -37,7 +37,6 @@
 (depends-on "git-commit")
 (depends-on "go-eldoc")
 (depends-on "go-mode")
-(depends-on "go-snippets")
 (depends-on "haskell-mode")
 (depends-on "helm")
 (depends-on "helm-ag")
