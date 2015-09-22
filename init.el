@@ -414,9 +414,12 @@
   (interactive)
   (save-some-buffers)
   (cider-interactive-eval
-   "(user/reset)"))
+   "(if (resolve 'user/reset)
+        (user/reset)
+        (when (resolve 'clojure.tools.namespace.repl.refresh-all)
+              (clojure.tools.namespace.repl/refresh-all)))"))
 
-(define-key cider-mode-map (kbd "C-c r") 'cider-repl-reset)
-(define-key clojure-mode-map (kbd "C-c r") 'cider-repl-reset)
+(define-key cider-mode-map (kbd "C-c C-x") 'cider-repl-reset)
+(define-key clojure-mode-map (kbd "C-c C-x") 'cider-repl-reset)
 
 ;;;; END
