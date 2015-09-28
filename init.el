@@ -108,6 +108,12 @@
 (eval-after-load 'flycheck
   '(define-key flycheck-mode-map (kbd "C-c ! h") 'helm-flycheck))
 
+;; don't aggressively indent some modes
+(require 'aggressive-indent)
+(add-to-list 'aggressive-indent-excluded-modes 'html-mode)
+(add-to-list 'aggressive-indent-excluded-modes 'sql-mode)
+(add-to-list 'aggressive-indent-excluded-modes 'web-mode)
+
 ;;;; C/C++
 
 (add-hook 'c-mode-hook 'cppcm-reload-all)
