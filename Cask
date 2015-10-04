@@ -18,6 +18,7 @@
 (depends-on "company-go")
 (depends-on "company-inf-ruby")
 (depends-on "company-racer")
+(depends-on "company-web")
 (depends-on "cpputils-cmake")
 (depends-on "diff-hl")
 (depends-on "direx")
