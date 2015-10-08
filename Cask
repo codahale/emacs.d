@@ -24,6 +24,7 @@
 (depends-on "diff-hl")
 (depends-on "direx")
 (depends-on "discover")
+(depends-on "discover-clj-refactor")
 (depends-on "emoji-cheat-sheet-plus")
 (depends-on "enh-ruby-mode")
 (depends-on "exec-path-from-shell")

@@ -432,6 +432,7 @@
 
 (define-key cider-mode-map (kbd "C-c C-x") 'cider-repl-reset)
 (define-key clojure-mode-map (kbd "C-c C-x") 'cider-repl-reset)
+(define-key clojure-mode-map (kbd "C-c r") 'cljr-helm)
 
 (defun coda-clojure-mode-hook ()
   (clj-refactor-mode 1)
