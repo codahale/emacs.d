@@ -30,6 +30,7 @@
 (depends-on "exec-path-from-shell")
 (depends-on "expand-region")
 (depends-on "fic-mode")
+(depends-on "flx")
 (depends-on "flycheck")
 (depends-on "flycheck-color-mode-line")
 (depends-on "flycheck-haskell")
