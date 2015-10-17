@@ -26,6 +26,7 @@
  '(legalese-default-author "Coda Hale")
  '(legalese-default-copyright "coda.hale@gmail.com")
  '(magit-push-always-verify nil)
+ '(paradox-github-token t)
  '(projectile-completion-system (quote helm))
  '(projectile-globally-ignored-directories
    (quote

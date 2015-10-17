@@ -59,6 +59,7 @@
 (depends-on "markdown-mode")
 (depends-on "move-text")
 (depends-on "pallet")
+(depends-on "paradox")
 (depends-on "php-mode")
 (depends-on "popwin")
 (depends-on "projectile")
