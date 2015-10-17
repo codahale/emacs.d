@@ -44,7 +44,6 @@
 (depends-on "helm")
 (depends-on "helm-ag")
 (depends-on "helm-descbinds")
-(depends-on "helm-flx")
 (depends-on "helm-flycheck")
 (depends-on "helm-hoogle")
 (depends-on "helm-projectile")

@@ -139,8 +139,6 @@
 
 ;;;; HELM
 
-(helm-flx-mode +1)
-
 (require 'helm)
 (require 'helm-config)
 (require 'helm-files)
