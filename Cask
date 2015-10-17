@@ -68,6 +68,7 @@
 (depends-on "rich-minority")
 (depends-on "rust-mode")
 (depends-on "scala-mode")
+(depends-on "shell-pop")
 (depends-on "shm")
 (depends-on "shut-up")
 (depends-on "slamhound")

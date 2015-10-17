@@ -30,6 +30,13 @@
  '(projectile-globally-ignored-directories
    (quote
     (".idea" ".eunit" ".git" ".hg" ".fslckout" ".bzr" "_darcs" ".tox" ".svn" "build" "Godeps")))
+ '(shell-pop-full-span t)
+ '(shell-pop-shell-type
+   (quote
+    ("ansi-term" "*ansi-term*"
+     (lambda nil
+       (ansi-term shell-pop-term-shell)))))
+ '(shell-pop-universal-key "C-t")
  '(vc-annotate-background "#2B2B2B")
  '(vc-annotate-color-map
    (quote
