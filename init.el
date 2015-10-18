@@ -317,7 +317,7 @@
 
 (global-set-key (kbd "C-c c")       'compile)
 (global-set-key (kbd "C-c g")       'magit-status)
-(global-set-key (kbd "C-c l p")     'paradox-list-packages)
+(global-set-key (kbd "C-c l p")     'list-packages)
 (global-set-key (kbd "C-c r")       'recompile)
 
 ;; helm bindings
