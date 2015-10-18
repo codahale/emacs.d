@@ -196,8 +196,8 @@
 ;;;; COMPANY
 
 (require 'company)
-(define-key company-mode-map [remap hippie-expand] 'helm-company)
-(define-key company-active-map [remap hippie-expand] 'helm-company)
+(define-key company-mode-map [remap hippie-expand] 'company-complete)
+(define-key company-active-map [remap hippie-expand] 'company-complete)
 (add-hook 'after-init-hook 'global-company-mode)
 
 ;;;; SPELLING
