@@ -258,18 +258,7 @@
 (add-hook 'text-mode-hook 'flyspell-mode) ; automatically check spelling
 (add-hook 'prog-mode-hook 'flyspell-prog-mode) ; spell check comments and
                                                ; strings when programming
-(add-hook 'git-commit-mode-hook 'flyspell-mode) ; spell check git commit
-                                                ; messages
-
-;;;; TERMINAL
-
-(require 'shell-pop)
-
-(defadvice ansi-term (after advise-ansi-term-coding-system)
-  (set-buffer-process-coding-system 'utf-8-unix 'utf-8-unix))
-(ad-activate 'ansi-term)
-(add-hook 'term-mode-hook (lambda()
-                            (setq yas-dont-activate t)))
+(add-hook 'git-commit-mode-hook 'flyspell-mode) ; spell check git commits
 
 ;;;; GO
 
