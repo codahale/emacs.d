@@ -14,6 +14,11 @@
 
 ;;;; GLOBAL
 
+(setq backup-directory-alist            ; store backup files in tmp
+      `((".*" . ,temporary-file-directory)))
+(setq auto-save-file-name-transforms    ; store autosave files in tmp
+      `((".*" ,temporary-file-directory t)))
+
 (setq ns-use-srgb-colorspace t)           ; don't look like crap on Mac
 (load-theme 'zenburn t)                   ; use zenburn theme
 
