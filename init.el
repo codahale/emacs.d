@@ -400,9 +400,6 @@
 (use-package shell-pop
   :ensure t)
 
-(use-package shut-up
-  :ensure t)
-
 (use-package slamhound
   :ensure t)
 
