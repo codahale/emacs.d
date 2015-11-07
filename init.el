@@ -105,9 +105,6 @@
   (define-key paredit-mode-map (kbd "M-[") 'paredit-wrap-square)
   (add-hook 'emacs-lisp-mode-hook 'paredit-mode))
 
-(use-package ag
-  :ensure t)
-
 (use-package aggressive-indent
   :ensure t
   :config
@@ -161,11 +158,6 @@
     (yas-minor-mode 1) ; for adding require/use/import
     (cljr-add-keybindings-with-prefix "C-c C-m"))
   (add-hook 'clojure-mode-hook #'coda-clojure-mode-hook))
-
-(use-package comment-dwim-2
-  :ensure t
-  :config
-  (global-set-key (kbd "M-;") 'comment-dwim-2))
 
 (use-package company
   :ensure t
