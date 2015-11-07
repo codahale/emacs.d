@@ -1,26 +1,31 @@
-;;;; INITIALIZATION
+;;; don't GC so often
+(setq-default gc-cons-threshold 10000000)
 
-(setq-default gc-cons-threshold 10000000) ; trade memory for speed
-
-(require 'cask)                         ; load cask & initialize packages
-(cask-initialize)
+(require 'package)
+(setq package-enable-at-startup nil)
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.org/packages/") t)
 (package-initialize)
 
-(require 'pallet)
-(pallet-mode t)                         ; manage all packages via cask
+;;; bootstrap `use-package'
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+(require 'use-package)
 
 (setq custom-file "~/.emacs.d/custom.el") ; load custom settings
 (load custom-file 'noerror)
-
-;;;; GLOBAL
 
 (setq backup-directory-alist            ; store backup files in tmp
       `((".*" . ,temporary-file-directory)))
 (setq auto-save-file-name-transforms    ; store autosave files in tmp
       `((".*" ,temporary-file-directory t)))
 
-(setq ns-use-srgb-colorspace t)           ; don't look like crap on Mac
-(load-theme 'zenburn t)                   ; use zenburn theme
+(setq ns-use-srgb-colorspace t)         ; don't look like crap on Mac
+(use-package zenburn-theme
+  :ensure t
+  :config
+  (load-theme 'zenburn t))
 
 (setq inhibit-splash-screen t)          ; don't show the splash screen
 (setq inhibit-startup-message t)        ; don't show startup messages
@@ -38,148 +43,7 @@
 (setq require-final-newline t)          ; always add a final newline
 (defalias 'yes-or-no-p 'y-or-n-p)       ; accept "y" for "yes"
 
-(require 'rich-minority)                ; don't show all the damn minor modes
-(setq rm-blacklist (quote (
-                           " WS"
-                           " FIC"
-                           " pair"
-                           " ElDoc"
-                           " yas"
-                           " Projectile"
-                           " MRev"
-                           " company"
-                           " Fly"
-                           " Undo-Tree"
-                           " Anzu"
-                           " hl-s"
-                           " VHl"
-                           " HI"
-                           " HI2"
-                           " Abbrev"
-                           " Interactive"
-                           " Helm"
-                           " WK"
-                           " SP"
-                           " =>"
-                           " Paredit"
-                           )))
-
-(require 'smart-mode-line)
-(setq sml/theme 'respectful)            ; make smart-mode-line respect the theme
-(sml/setup)
-
-(global-diff-hl-mode)                   ; highlight uncommitted changes
-(which-key-mode)                        ; display help for partial key bindings
-(require 'popwin) (popwin-mode 1)       ; manage temporary windows
-(global-anzu-mode t)                    ; show total # of matches in modeline
-(electric-pair-mode t)                  ; automatically pair quotes and such
-(global-discover-mode t)                ; add contextual menus for things
-(global-hl-line-mode)                   ; highlight the current line
-(delete-selection-mode t)               ; delete selections when yanking etc
-(projectile-global-mode t)              ; use projectile when possible
-(global-aggressive-indent-mode t)       ; always aggressively indent
-(global-undo-tree-mode)                 ; use undo-tree
-(windmove-default-keybindings 'super)   ; bind windmove to s-{arrows}
-(setq ad-redefinition-action 'accept)   ; stop logging weird crap
-
-;; prog-mode specifics
-(add-hook 'prog-mode-hook 'linum-mode)  ; show line numbers
-(add-hook 'prog-mode-hook 'column-number-mode) ; show column numbers
-(add-hook 'prog-mode-hook 'fic-mode)           ; highlight TODOs
-(add-hook 'prog-mode-hook 'highlight-symbol-mode) ; highlight current symbol
-(add-hook 'prog-mode-hook 'eldoc-mode)            ; always use eldoc
-(add-hook 'prog-mode-hook 'rainbow-delimiters-mode) ; enable rainbow delimiters
-
-;; use whitespace mode, and mark lines longer than 80 characters
-(require 'whitespace)
-(global-whitespace-mode)
-(setq whitespace-style '(face empty lines-tail trailing))
-(setq whitespace-line-column 80)
-(setq whitespace-global-modes '(not git-commit-mode))
-
-;; also fill paragraphs to 80 characters
-(setq-default fill-column 80)
-(setq-default whitespace-line-column 80)
-
-(defun coda/set-rust-fill-column ()
-  (setq fill-column 100)
-  (setq whitespace-line-column 100))
-(add-hook 'rust-mode-hook 'coda/set-rust-fill-column)
-
-;; enable flycheck everywhere
-(require 'flycheck)
-(add-hook 'after-init-hook #'global-flycheck-mode)
-(add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode)
-(eval-after-load 'flycheck
-  '(define-key flycheck-mode-map (kbd "C-c ! h") 'helm-flycheck))
-
-;; don't aggressively indent some modes
-(require 'aggressive-indent)
-(add-to-list 'aggressive-indent-excluded-modes 'html-mode)
-(add-to-list 'aggressive-indent-excluded-modes 'sql-mode)
-(add-to-list 'aggressive-indent-excluded-modes 'web-mode)
-
-;;;; WEB MODE
-
-(require 'web-mode)
-(setq web-mode-markup-indent-offset 2)
-(setq web-mode-enable-auto-pairing t)
-(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
-
-;;;; C/C++
-
-(add-hook 'c-mode-hook 'cppcm-reload-all)
-(add-hook 'c++-mode-hook 'cppcm-reload-all)
-
-;;;; ELISP
-
-;; surface Elisp sections in imenu
-(defun coda/imenu-elisp-sections ()
-  (setq imenu-generic-expression '(("Sections" "^;;;; \\(.+\\)" 1)))
-  (imenu-add-to-menubar "Index"))
-(add-hook 'emacs-lisp-mode-hook 'coda/imenu-elisp-sections)
-(add-hook 'emacs-lisp-mode-hook 'paredit-mode)
-(add-hook 'emacs-lisp-mode-hook 'highlight-parentheses-mode)
-
-;;;; HELM
-
-(require 'helm)
-(require 'helm-config)
-(require 'helm-files)
-(require 'helm-net)
-(require 'projectile)
-
-;; The default "C-x c" is quite close to "C-x C-c", which quits Emacs.
-;; Changed to "C-c h". Note: We must set "C-c h" globally, because we
-;; cannot change `helm-command-prefix-key' once `helm-config' is loaded.
-(global-set-key (kbd "C-c h") 'helm-command-prefix)
-(global-unset-key (kbd "C-x c"))
-
-(when (executable-find "curl")
-  (setq helm-net-prefer-curl t))
-
-(setq helm-split-window-in-side-p            t ; open helm buffer inside current window, not occupy whole other window
-      helm-move-to-line-cycle-in-source      t ; move to end or beginning of source when reaching top or bottom of source.
-      helm-ff-search-library-in-sexp         t ; search for library in `require' and `declare-function' sexp.
-      helm-scroll-amount                     8 ; scroll 8 lines other window using M-<next>/M-<prior>
-      helm-ff-file-name-history-use-recentf  t
-      helm-ff-transformer-show-only-basename nil
-      helm-adaptive-history-file             "~/.emacs.d/helm-history")
-
-(define-key helm-find-files-map (kbd "C-d") 'helm-ff-persistent-delete)
-(define-key helm-buffer-map (kbd "C-d")     'helm-buffer-run-kill-persistent)
-
-(helm-descbinds-install)                ; integrate w/ describe-bindings
-(helm-projectile-on)                    ; integrate w/ projectile
-(helm-adaptive-mode t)                  ; use adaptive mode to rank common items
-(helm-mode 1)                           ; enable helm!
-
-;;;; COCOA
-
 (defun coda/configure-cocoa ()
-  (exec-path-from-shell-initialize)     ; pull PATH from shell environment
-
   ;; open up maximized-ish
   (let ((px (display-pixel-width))
         (py (display-pixel-height))
@@ -194,234 +58,391 @@
 
   ;; don't scroll like a maniac
   (setq mouse-wheel-scroll-amount '(1))
-  (setq mouse-wheel-progressive-speed nil)
-  )
+  (setq mouse-wheel-progressive-speed nil))
 (if (memq window-system '(mac ns)) (coda/configure-cocoa))
 
-;;;; COMPANY
+(electric-pair-mode t)                  ; automatically pair quotes and such
+(global-hl-line-mode)                   ; highlight the current line
+(delete-selection-mode t)               ; delete selections when yanking etc
+(windmove-default-keybindings 'super)   ; bind windmove to s-{arrows}
+(setq ad-redefinition-action 'accept)   ; stop logging weird crap
 
-(require 'company)
-(define-key company-mode-map [remap hippie-expand] 'company-complete)
-(define-key company-active-map [remap hippie-expand] 'company-complete)
-(add-hook 'after-init-hook 'global-company-mode)
+;; prog-mode specifics
+(add-hook 'prog-mode-hook 'linum-mode)  ; show line numbers
+(add-hook 'prog-mode-hook 'column-number-mode) ; show column numbers
+(add-hook 'prog-mode-hook 'eldoc-mode)            ; always use eldoc
 
-;;;; SPELLING
+;; use whitespace mode, and mark lines longer than 80 characters
+(require 'whitespace)
+(global-whitespace-mode)
+(setq whitespace-style '(face empty lines-tail trailing))
+(setq whitespace-line-column 80)
+(setq whitespace-global-modes '(not git-commit-mode))
 
-(require 'ispell)
-
-(defun flyspell-detect-ispell-args (&optional RUN-TOGETHER)
-  "if RUN-TOGETHER is true, spell check the CamelCase words"
-  (let (args)
-    (cond
-     ((string-match  "aspell$" ispell-program-name)
-      ;; force the English dictionary, support Camel Case spelling check (tested with aspell 0.6)
-      (setq args (list "--sug-mode=ultra" "--lang=en_US"))
-      (if RUN-TOGETHER
-          (setq args (append args '("--run-together" "--run-together-limit=5" "--run-together-min=2")))))
-     ((string-match "hunspell$" ispell-program-name)
-      (setq args nil)))
-    args
-    ))
-
-(cond
- ((executable-find "aspell")
-  (setq ispell-program-name "aspell"))
- ((executable-find "hunspell")
-  (setq ispell-program-name "hunspell")
-  ;; just reset dictionary to the safe one "en_US" for hunspell.  if we need use
-  ;; different dictionary, we specify it in command line arguments
-  (setq ispell-local-dictionary "en_US")
-  (setq ispell-local-dictionary-alist
-        '(("en_US" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil nil nil utf-8))))
- (t (setq ispell-program-name nil)))
-
-;; ispell-cmd-args is useless, it's the list of *extra* arguments we will append
-;; to the ispell process when "ispell-word" is called.  ispell-extra-args is the
-;; command arguments which will *always* be used when start ispell process
-(setq ispell-extra-args (flyspell-detect-ispell-args t))
-;; (setq ispell-cmd-args (flyspell-detect-ispell-args))
-(defadvice ispell-word (around my-ispell-word activate)
-  (let ((old-ispell-extra-args ispell-extra-args))
-    (ispell-kill-ispell t)
-    (setq ispell-extra-args (flyspell-detect-ispell-args))
-    ad-do-it
-    (setq ispell-extra-args old-ispell-extra-args)
-    (ispell-kill-ispell t)
-    ))
-
-(defadvice flyspell-auto-correct-word (around my-flyspell-auto-correct-word activate)
-  (let ((old-ispell-extra-args ispell-extra-args))
-    (ispell-kill-ispell t)
-    ;; use emacs original arguments
-    (setq ispell-extra-args (flyspell-detect-ispell-args))
-    ad-do-it
-    ;; restore our own ispell arguments
-    (setq ispell-extra-args old-ispell-extra-args)
-    (ispell-kill-ispell t)
-    ))
+;; also fill paragraphs to 80 characters
+(setq-default fill-column 80)
+(setq-default whitespace-line-column 80)
 
 (add-hook 'text-mode-hook 'flyspell-mode) ; automatically check spelling
 (add-hook 'prog-mode-hook 'flyspell-prog-mode) ; spell check comments and
-                                               ; strings when programming
-(add-hook 'git-commit-mode-hook 'flyspell-mode) ; spell check git commits
+                                        ; strings when programming
 
-;;;; GO
+(defun coda/imenu-elisp-sections ()
+  (setq imenu-generic-expression '(("Sections" "^;;;; \\(.+\\)" 1)))
+  (imenu-add-to-menubar "Index"))
+(add-hook 'emacs-lisp-mode-hook 'coda/imenu-elisp-sections)
 
-;; hard-code GOROOT and GOPATH for now
-(setenv "GOROOT" "/usr/local/go")
-(setenv "GOPATH" "/Users/coda/Projects/go")
+(global-set-key (kbd "C-c c")   'compile)
+(global-set-key (kbd "C-c l p") 'list-packages)
+(global-set-key (kbd "C-c r")   'recompile)
 
-(require 'go-mode)
-(setq gofmt-command "goimports")        ; use goimports instead of gofmt
+;; Packages!
 
-(defun coda/configure-go-mode ()
-  ;; improve imenu results
-  (setq imenu-generic-expression
-        '(("type" "^type *\\([^ \t\n\r\f]*\\)" 1)
-          ("func" "^func *\\(.*\\) {" 1)))
-  (imenu-add-to-menubar "Index")
+(use-package paredit
+  :ensure t
+  :config
+  (define-key paredit-mode-map (kbd "M-{") 'paredit-wrap-curly)
+  (define-key paredit-mode-map (kbd "M-[") 'paredit-wrap-square)
+  (add-hook 'emacs-lisp-mode-hook 'paredit-mode))
 
-  (add-hook 'before-save-hook 'gofmt-before-save) ; always run gofmt
-  (go-eldoc-setup)                                ; use go-eldoc
-  (set (make-local-variable 'company-backends) '(company-go))) ; use gocode exclusively
+(use-package ag
+  :ensure t)
 
-(add-hook 'go-mode-hook 'coda/configure-go-mode)
+(use-package aggressive-indent
+  :ensure t
+  :config
+  (global-aggressive-indent-mode)
+  (add-to-list 'aggressive-indent-excluded-modes 'html-mode)
+  (add-to-list 'aggressive-indent-excluded-modes 'sql-mode)
+  (add-to-list 'aggressive-indent-excluded-modes 'web-mode))
 
-;;;; RUST
+(use-package anzu
+  :ensure t
+  :config
+  (global-anzu-mode t))
 
-(eval-after-load 'flycheck
-  '(add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
+(use-package better-defaults
+  :ensure t)
 
-(require 'racer)
-(setq racer-cmd "/Users/coda/Projects/rust/racer/target/release/racer")
-(setq racer-rust-src-path "/Users/coda/Projects/rust/rust/src/")
-(add-hook 'rust-mode-hook #'racer-mode)
-(add-hook 'racer-mode-hook #'eldoc-mode)
+(use-package browse-at-remote
+  :ensure t)
 
-;;;; JAVASCRIPT
+(use-package cider
+  :ensure t
+  :config
+  (add-hook 'cider-repl-mode-hook 'paredit-mode)
+  (setq cider-repl-use-clojure-font-lock t)
+  (setq cider-repl-use-pretty-printing t)
+  (set-variable 'cider-prompt-for-symbol nil)
 
-(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+  (defun cider-repl-reset ()
+    (interactive)
+    (save-some-buffers)
+    (cider-interactive-eval
+     "(reloaded.repl/reset)"))
 
-;;;; KEYBINDINGS
+  (define-key cider-mode-map (kbd "C-c C-x") 'cider-repl-reset)
+  (define-key clojure-mode-map (kbd "C-c C-x") 'cider-repl-reset))
 
-;; M-up and M-down
-(move-text-default-bindings)
+(use-package cljr-helm
+  :ensure t
+  :config
+  (define-key clojure-mode-map (kbd "C-c r") 'cljr-helm))
 
-(global-set-key (kbd "M-;")         'comment-dwim-2)
+(use-package clojure-cheatsheet
+  :ensure t)
 
-(global-set-key (kbd "C-c c")       'compile)
-(global-set-key (kbd "C-c g")       'magit-status)
-(global-set-key (kbd "C-c l p")     'list-packages)
-(global-set-key (kbd "C-c r")       'recompile)
+(use-package clojure-mode
+  :ensure t
+  :config
+  (add-hook 'clojure-mode-hook 'paredit-mode)
+  (defun coda-clojure-mode-hook ()
+    (clj-refactor-mode 1)
+    (yas-minor-mode 1) ; for adding require/use/import
+    (cljr-add-keybindings-with-prefix "C-c C-m"))
+  (add-hook 'clojure-mode-hook #'coda-clojure-mode-hook))
 
-;; helm bindings
-(global-set-key (kbd "C-c M-x")     'execute-extended-command) ; old M-x
-(global-set-key (kbd "C-x C-d")     'helm-browse-project)
-(global-set-key (kbd "C-h C-f")     'helm-apropos)
-(global-set-key (kbd "C-h r")       'helm-info-emacs)
-(global-set-key (kbd "C-h i")       'helm-info-at-point)
-(global-set-key (kbd "C-:")         'helm-eval-expression-with-eldoc)
-(global-set-key (kbd "C-,")         'helm-calcul-expression)
-(global-set-key (kbd "C-x C-b")     'helm-buffers-list)
-(global-set-key (kbd "C-c f")       'helm-recentf)
-(global-set-key (kbd "C-x C-f")     'helm-find-files)
-(global-set-key (kbd "M-x")         'helm-M-x)
-(global-set-key (kbd "M-y")         'helm-show-kill-ring)
-(global-set-key (kbd "C-c i")       'helm-imenu)
-(global-set-key (kbd "C-c o")       'helm-swoop)
-(global-set-key (kbd "C-x b")       'helm-mini)
-(global-set-key (kbd "C-x C-f")     'helm-find-files)
-(global-set-key (kbd "C-c h o")     'helm-occur)
+(use-package comment-dwim-2
+  :ensure t
+  :config
+  (global-set-key (kbd "M-;") 'comment-dwim-2))
 
-(define-key global-map [remap jump-to-register]      'helm-register)
-(define-key global-map [remap list-buffers]          'helm-buffers-list)
-(define-key global-map [remap dabbrev-expand]        'helm-dabbrev)
-(define-key global-map [remap find-tag]              'helm-etags-select)
-(define-key global-map [remap xref-find-definitions] 'helm-etags-select)
+(use-package company
+  :ensure t
+  :config
+  (define-key company-mode-map [remap hippie-expand] 'company-complete)
+  (define-key company-active-map [remap hippie-expand] 'company-complete)
+  (add-hook 'after-init-hook 'global-company-mode))
 
-(global-unset-key (kbd "C-x C-u"))      ; unmap upcase-region, since it always
-                                        ; screws with undo
+(use-package company-web
+  :ensure t)
 
-;;;; HASKELL
+(use-package cpputils-cmake
+  :ensure t
+  :config
+  (add-hook 'c-mode-hook 'cppcm-reload-all)
+  (add-hook 'c++-mode-hook 'cppcm-reload-all))
 
-(add-hook 'haskell-mode-hook 'turn-on-hi2)
-(add-hook 'haskell-mode-hook #'hindent-mode)
-(add-hook 'haskell-mode-hook 'interactive-haskell-mode)
+(use-package diff-hl
+  :ensure t
+  :config
+  (global-diff-hl-mode))
 
-(defun coda-haskell-pointfree-region ()
-  "Executes the Haskell pointfree too on the marked region."
-  (interactive)
-  (let ((pfcmd (format "pointfree %s"
-                       (shell-quote-argument (buffer-substring-no-properties
-                                              (region-beginning)
-                                              (region-end))))))
-    (message (format "%s" (shell-command-to-string pfcmd)))))
+(use-package discover
+  :ensure t
+  :config
+  (global-discover-mode t))
 
-(autoload 'ghc-init "ghc" nil t)
-(autoload 'ghc-debug "ghc" nil t)
-(add-hook 'haskell-mode-hook (lambda () (ghc-init)))
-(eval-after-load 'flycheck
-  '(add-hook 'flycheck-mode-hook #'flycheck-haskell-setup))
+(use-package discover-clj-refactor
+  :ensure t)
 
-(custom-set-variables
-  '(haskell-process-suggest-remove-import-lines t)
-  '(haskell-process-auto-import-loaded-modules t)
-  '(haskell-process-log t)
-  '(haskell-tags-on-save t)
-  '(haskell-process-type 'cabal-repl))
+(use-package emoji-cheat-sheet-plus
+  :ensure t)
 
-(require 'haskell-mode)
-(require 'haskell-cabal)
+(use-package enh-ruby-mode
+  :ensure t)
 
-(eval-after-load 'haskell-mode '(progn
-  (define-key haskell-mode-map (kbd "C-c C-l") 'haskell-process-load-or-reload)
-  (define-key haskell-mode-map (kbd "C-c C-z") 'haskell-interactive-switch)
-  (define-key haskell-mode-map (kbd "C-c C-n C-t") 'haskell-process-do-type)
-  (define-key haskell-mode-map (kbd "C-c C-n C-i") 'haskell-process-do-info)
-  (define-key haskell-mode-map (kbd "C-c C-n C-c") 'haskell-process-cabal-build)
-  (define-key haskell-mode-map (kbd "C-c C-n c") 'haskell-process-cabal)
-  (define-key haskell-mode-map (kbd "SPC") 'haskell-mode-contextual-space)
-  (define-key haskell-mode-map (kbd "C-c C-p") 'coda-haskell-pointfree-region)))
-(eval-after-load 'haskell-cabal '(progn
-  (define-key haskell-cabal-mode-map (kbd "C-c C-z") 'haskell-interactive-switch)
-  (define-key haskell-cabal-mode-map (kbd "C-c C-k") 'haskell-interactive-mode-clear)
-  (define-key haskell-cabal-mode-map (kbd "C-c C-c") 'haskell-process-cabal-build)
-  (define-key haskell-cabal-mode-map (kbd "C-c c") 'haskell-process-cabal)))
+(use-package exec-path-from-shell
+  :ensure t
+  :config
+  (exec-path-from-shell-initialize))
 
-(add-to-list 'company-backends 'company-ghc)
-(custom-set-variables '(company-ghc-show-info t))
+(use-package expand-region
+  :ensure t)
 
-;;;; PAREDIT
+(use-package fic-mode
+  :ensure t
+  :config
+  (add-hook 'prog-mode-hook 'fic-mode))
 
-(require 'paredit)
-(define-key paredit-mode-map (kbd "M-{") 'paredit-wrap-curly)
-(define-key paredit-mode-map (kbd "M-[") 'paredit-wrap-square)
+(use-package flycheck
+  :ensure t
+  :config
+  (add-hook 'after-init-hook #'global-flycheck-mode))
 
-;;;; CLOJURE
+(use-package flycheck-color-mode-line
+  :ensure t
+  :config
+  (add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode))
 
-(add-hook 'clojure-mode-hook 'paredit-mode)
-(add-hook 'clojure-mode-hook 'highlight-parentheses-mode)
+(use-package flycheck-pos-tip
+  :ensure t)
 
-(require 'cider)
-(add-hook 'cider-repl-mode-hook 'paredit-mode)
-(setq cider-repl-use-clojure-font-lock t)
-(setq cider-repl-use-pretty-printing t)
-(set-variable 'cider-prompt-for-symbol nil)
+(use-package flyspell-lazy
+  :ensure t)
 
-(defun cider-repl-reset ()
-  (interactive)
-  (save-some-buffers)
-  (cider-interactive-eval
-   "(reloaded.repl/reset)"))
+(use-package git-commit
+  :ensure t
+  :config
+  (add-hook 'git-commit-mode-hook 'flyspell-mode))
 
-(define-key cider-mode-map (kbd "C-c C-x") 'cider-repl-reset)
-(define-key clojure-mode-map (kbd "C-c C-x") 'cider-repl-reset)
-(define-key clojure-mode-map (kbd "C-c r") 'cljr-helm)
+(use-package go-mode
+  :ensure t)
 
-(defun coda-clojure-mode-hook ()
-  (clj-refactor-mode 1)
-  (yas-minor-mode 1) ; for adding require/use/import
-  (cljr-add-keybindings-with-prefix "C-c C-m"))
-(add-hook 'clojure-mode-hook #'coda-clojure-mode-hook)
+(use-package helm
+  :ensure t
+  :config
+  ;; The default "C-x c" is quite close to "C-x C-c", which quits Emacs.
+  ;; Changed to "C-c h". Note: We must set "C-c h" globally, because we
+  ;; cannot change `helm-command-prefix-key' once `helm-config' is loaded.
+  (global-set-key (kbd "C-c h") 'helm-command-prefix)
+  (global-unset-key (kbd "C-x c"))
 
-;;;; END
+  (require 'helm)
+  (require 'helm-config)
+  (require 'helm-files)
+  (require 'helm-net)
+
+  (setq
+   ;; open helm buffer inside current window, not occupy whole other window
+   helm-split-window-in-side-p            t
+   ;; move to end or beginning of source when reaching top or bottom of source.
+   helm-move-to-line-cycle-in-source      t
+   ;; scroll 8 lines other window using M-<next>/M-<prior>
+   helm-scroll-amount                     8
+   helm-ff-file-name-history-use-recentf  t
+   helm-ff-transformer-show-only-basename nil
+   helm-adaptive-history-file             "~/.emacs.d/helm-history")
+
+  (define-key helm-find-files-map (kbd "C-d") 'helm-ff-persistent-delete)
+  (define-key helm-buffer-map (kbd "C-d")     'helm-buffer-run-kill-persistent)
+
+  (global-set-key (kbd "C-c M-x")     'execute-extended-command) ; old M-x
+  (global-set-key (kbd "C-x C-d")     'helm-browse-project)
+  (global-set-key (kbd "C-h C-f")     'helm-apropos)
+  (global-set-key (kbd "C-h r")       'helm-info-emacs)
+  (global-set-key (kbd "C-h i")       'helm-info-at-point)
+  (global-set-key (kbd "C-:")         'helm-eval-expression-with-eldoc)
+  (global-set-key (kbd "C-,")         'helm-calcul-expression)
+  (global-set-key (kbd "C-x C-b")     'helm-buffers-list)
+  (global-set-key (kbd "C-c f")       'helm-recentf)
+  (global-set-key (kbd "C-x C-f")     'helm-find-files)
+  (global-set-key (kbd "M-x")         'helm-M-x)
+  (global-set-key (kbd "M-y")         'helm-show-kill-ring)
+  (global-set-key (kbd "C-c i")       'helm-imenu)
+  (global-set-key (kbd "C-x b")       'helm-mini)
+  (global-set-key (kbd "C-x C-f")     'helm-find-files)
+  (global-set-key (kbd "C-c h o")     'helm-occur)
+
+  (define-key global-map [remap jump-to-register]      'helm-register)
+  (define-key global-map [remap list-buffers]          'helm-buffers-list)
+  (define-key global-map [remap dabbrev-expand]        'helm-dabbrev)
+  (define-key global-map [remap find-tag]              'helm-etags-select)
+  (define-key global-map [remap xref-find-definitions] 'helm-etags-select)
+
+  (helm-adaptive-mode t)
+  (helm-mode 1))
+
+(use-package helm-ag
+  :ensure t)
+
+(use-package helm-descbinds
+  :ensure t
+  :config
+  (helm-descbinds-mode))
+
+(use-package helm-flycheck
+  :ensure t
+  :config
+  (eval-after-load 'flycheck
+    '(define-key flycheck-mode-map (kbd "C-c ! h") 'helm-flycheck)))
+
+(use-package helm-projectile
+  :ensure t
+  :config
+  (helm-projectile-on))
+
+(use-package helm-swoop
+  :ensure t
+  :config
+  (global-set-key (kbd "C-c o") 'helm-swoop))
+
+(use-package highlight-parentheses
+  :ensure t
+  :config
+  (add-hook 'clojure-mode-hook 'highlight-parentheses-mode)
+  (add-hook 'emacs-lisp-mode-hook 'highlight-parentheses-mode))
+
+(use-package highlight-symbol
+  :ensure t
+  :config
+  (add-hook 'prog-mode-hook 'highlight-symbol-mode))
+
+(use-package inf-ruby
+  :ensure t)
+
+(use-package js2-mode
+  :ensure t
+  :config
+  (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode)))
+
+(use-package json-mode
+  :ensure t)
+
+(use-package magit
+  :ensure t
+  :config
+  (global-set-key (kbd "C-c g") 'magit-status))
+
+(use-package markdown-mode
+  :ensure t)
+
+(use-package move-text
+  :ensure t
+  :config
+  (move-text-default-bindings))
+
+(use-package popwin
+  :ensure t
+  :config
+  (popwin-mode 1))
+
+(use-package projectile
+  :ensure t
+  :config
+  (projectile-global-mode t))
+
+(use-package rainbow-delimiters
+  :ensure t
+  :config
+  (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
+
+(use-package rich-minority
+  :ensure t
+  :config
+  (setq rm-blacklist (quote (" WS"
+                             " FIC"
+                             " pair"
+                             " ElDoc"
+                             " yas"
+                             " Projectile"
+                             " MRev"
+                             " company"
+                             " Fly"
+                             " Undo-Tree"
+                             " Anzu"
+                             " hl-s"
+                             " VHl"
+                             " HI"
+                             " HI2"
+                             " Abbrev"
+                             " Interactive"
+                             " Helm"
+                             " WK"
+                             " SP"
+                             " =>"
+                             " Paredit"
+                             " hl-p"))))
+
+(use-package rust-mode
+  :ensure t
+  :config
+  (defun coda/set-rust-fill-column ()
+    (setq fill-column 100)
+    (setq whitespace-line-column 100))
+  (add-hook 'rust-mode-hook 'coda/set-rust-fill-column))
+
+(use-package scala-mode
+  :ensure t)
+
+(use-package shell-pop
+  :ensure t)
+
+(use-package shut-up
+  :ensure t)
+
+(use-package slamhound
+  :ensure t)
+
+(use-package smart-mode-line
+  :ensure t
+  :config
+  (setq sml/theme 'respectful)
+  (sml/setup))
+
+(use-package smooth-scrolling
+  :ensure t)
+
+(use-package toml-mode
+  :ensure t)
+
+(use-package undo-tree
+  :ensure t
+  :config
+  (global-undo-tree-mode))
+
+(use-package web-mode
+  :ensure t
+  :config
+  (setq web-mode-markup-indent-offset 2)
+  (setq web-mode-enable-auto-pairing t)
+  (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode)))
+
+(use-package which-key
+  :ensure t
+  :config
+  (which-key-mode))
+
+(use-package yaml-mode
+  :ensure t)
