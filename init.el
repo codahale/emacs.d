@@ -132,6 +132,11 @@
   (setq cider-repl-use-pretty-printing t)
   (set-variable 'cider-prompt-for-symbol nil)
 
+  ;; treat Schema defn/fn as regular defn/fn
+  (put-clojure-indent 's/defn :defn)
+  (put-clojure-indent 's/fn :defn)
+  (put 's/defn 'clojure-doc-string-elt 2)
+
   (defun cider-repl-reset ()
     (interactive)
     (save-some-buffers)
