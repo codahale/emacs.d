@@ -136,6 +136,7 @@
   (put-clojure-indent 's/defn :defn)
   (put-clojure-indent 's/fn :defn)
   (put 's/defn 'clojure-doc-string-elt 2)
+  (put 's/defschema 'clojure-doc-string-elt 2)
 
   (defun cider-repl-reset ()
     (interactive)
