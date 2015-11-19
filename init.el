@@ -158,6 +158,10 @@
 (use-package clojure-mode
   :ensure t
   :config
+  (add-to-list 'auto-mode-alist '("\\.edn$" . clojure-mode))
+  (add-to-list 'auto-mode-alist '("\\.boot$" . clojure-mode))
+  (add-to-list 'auto-mode-alist '("\\.cljs.*$" . clojure-mode))
+
   (add-hook 'clojure-mode-hook 'paredit-mode)
   (defun coda-clojure-mode-hook ()
     (clj-refactor-mode 1)
