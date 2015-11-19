@@ -165,6 +165,9 @@
     (cljr-add-keybindings-with-prefix "C-c C-m"))
   (add-hook 'clojure-mode-hook #'coda-clojure-mode-hook))
 
+(use-package clojure-mode-extra-font-locking
+  :ensure t)
+
 (use-package company
   :ensure t
   :config
