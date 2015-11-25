@@ -397,7 +397,8 @@
                              " SP"
                              " =>"
                              " Paredit"
-                             " hl-p"))))
+                             " hl-p"
+                             " cljr"))))
 
 (use-package rust-mode
   :ensure t
