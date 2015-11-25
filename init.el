@@ -231,7 +231,15 @@
   (add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode))
 
 (use-package flycheck-pos-tip
-  :ensure t)
+  :ensure t
+  :config
+  (eval-after-load 'flycheck
+    '(setq flycheck-display-errors-function #'flycheck-pos-tip-error-messages)))
+
+(use-package flycheck-clojure
+  :ensure t
+  :config
+  (eval-after-load 'flycheck '(flycheck-clojure-setup)))
 
 (use-package flyspell-lazy
   :ensure t)
