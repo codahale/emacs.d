@@ -451,6 +451,7 @@
   (setq web-mode-markup-indent-offset 2)
   (setq web-mode-enable-auto-pairing t)
   (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.soy\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode)))
 
 (use-package which-key
