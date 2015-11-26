@@ -142,7 +142,10 @@
     (interactive)
     (save-some-buffers)
     (cider-interactive-eval
-     "(reloaded.repl/reset)"))
+     (concat "(when-let [f (or "
+             "              (resolve 'reloaded.repl/reset)"
+             "              (resolve 'clojure.tools.namespace.repl/refresh))]"
+             " (f))")))
 
   (define-key cider-mode-map (kbd "C-c C-x") 'cider-repl-reset)
   (define-key clojure-mode-map (kbd "C-c C-x") 'cider-repl-reset))
