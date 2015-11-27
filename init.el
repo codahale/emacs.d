@@ -22,10 +22,10 @@
       `((".*" ,temporary-file-directory t)))
 
 (setq ns-use-srgb-colorspace t)         ; don't look like crap on Mac
-(use-package noctilux-theme
+(use-package zenburn-theme
   :ensure t
   :config
-  (load-theme 'noctilux t))
+  (load-theme 'zenburn t))
 
 (setq inhibit-splash-screen t)          ; don't show the splash screen
 (setq inhibit-startup-message t)        ; don't show startup messages
