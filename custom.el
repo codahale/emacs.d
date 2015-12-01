@@ -9,6 +9,7 @@
  '(flycheck-disabled-checkers
    (quote
     (emacs-lisp-checkdoc ruby-rubylint clojure-cider-typed clojure-cider-eastwood)))
+ '(imenu-auto-rescan t)
  '(js-indent-level 2)
  '(magit-push-always-verify nil)
  '(projectile-completion-system (quote helm))
