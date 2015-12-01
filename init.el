@@ -87,6 +87,9 @@
 (add-hook 'prog-mode-hook 'flyspell-prog-mode) ; spell check comments and
                                         ; strings when programming
 
+(require 'recentf)
+(setq recentf-max-saved-items 200) ; keep more items in recentf
+
 (defun coda/imenu-elisp-sections ()
   (setq imenu-generic-expression '(("Sections" "^;;;; \\(.+\\)" 1)))
   (imenu-add-to-menubar "Index"))
