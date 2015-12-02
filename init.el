@@ -1,46 +1,31 @@
-;;; don't GC so often
-(setq-default gc-cons-threshold 10000000)
-
-(require 'package)
-(setq package-enable-at-startup nil)
-(add-to-list 'package-archives
-             '("melpa" . "http://melpa.org/packages/") t)
-(package-initialize)
+;;; load custom settings
+(setq custom-file "~/.emacs.d/custom.el")
+(load custom-file 'noerror)
 
 ;;; bootstrap `use-package'
+(package-initialize)
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
 (require 'use-package)
 
-(setq custom-file "~/.emacs.d/custom.el") ; load custom settings
-(load custom-file 'noerror)
-
-(setq backup-directory-alist            ; store backup files in tmp
-      `((".*" . ,temporary-file-directory)))
-(setq auto-save-file-name-transforms    ; store autosave files in tmp
+;;; store autosave files in tmp
+(setq auto-save-file-name-transforms
       `((".*" ,temporary-file-directory t)))
 
-(setq ns-use-srgb-colorspace t)         ; don't look like crap on Mac
 (use-package zenburn-theme
   :ensure t
   :config
   (load-theme 'zenburn t))
 
-(setq inhibit-splash-screen t)          ; don't show the splash screen
-(setq inhibit-startup-message t)        ; don't show startup messages
-(setq inhibit-startup-echo-area-message t) ; don't echo anything
-
 (set-terminal-coding-system 'utf-8)     ; always use UTF-8
 (set-keyboard-coding-system 'utf-8)     ; it is the future
 (prefer-coding-system 'utf-8)
 
-(setq-default tab-width 4)              ; a tab is 4 spaces
 (setq ring-bell-function 'ignore)       ; don't blink constantly
 (add-hook 'before-save-hook
           'delete-trailing-whitespace)  ; always delete trailing whitespace
 (setq insert-directory-program "gls")   ; use core-utils on Mac
-(setq require-final-newline t)          ; always add a final newline
 (defalias 'yes-or-no-p 'y-or-n-p)       ; accept "y" for "yes"
 
 (defun coda/configure-cocoa ()
@@ -65,41 +50,24 @@
 (global-hl-line-mode)                   ; highlight the current line
 (delete-selection-mode t)               ; delete selections when yanking etc
 (windmove-default-keybindings 'super)   ; bind windmove to s-{arrows}
-(setq ad-redefinition-action 'accept)   ; stop logging weird crap
 
-;; prog-mode specifics
+;;; prog-mode specifics
 (add-hook 'prog-mode-hook 'linum-mode)  ; show line numbers
 (add-hook 'prog-mode-hook 'column-number-mode) ; show column numbers
 (add-hook 'prog-mode-hook 'eldoc-mode)            ; always use eldoc
 
-;; use whitespace mode, and mark lines longer than 80 characters
-(require 'whitespace)
+;;; use whitespace mode, and mark lines longer than 80 characters
 (global-whitespace-mode)
-(setq whitespace-style '(face empty lines-tail trailing))
-(setq whitespace-line-column 80)
-(setq whitespace-global-modes '(not git-commit-mode))
 
-;; also fill paragraphs to 80 characters
-(setq-default fill-column 80)
-(setq-default whitespace-line-column 80)
-
-(add-hook 'text-mode-hook 'flyspell-mode) ; automatically check spelling
-(add-hook 'prog-mode-hook 'flyspell-prog-mode) ; spell check comments and
-                                        ; strings when programming
-
-(require 'recentf)
-(setq recentf-max-saved-items 200) ; keep more items in recentf
-
-(defun coda/imenu-elisp-sections ()
-  (setq imenu-generic-expression '(("Sections" "^;;;; \\(.+\\)" 1)))
-  (imenu-add-to-menubar "Index"))
-(add-hook 'emacs-lisp-mode-hook 'coda/imenu-elisp-sections)
+;;; automatically check spelling
+(add-hook 'text-mode-hook 'flyspell-mode)
+(add-hook 'prog-mode-hook 'flyspell-prog-mode)
 
 (global-set-key (kbd "C-c c")   'compile)
 (global-set-key (kbd "C-c l p") 'list-packages)
 (global-set-key (kbd "C-c r")   'recompile)
 
-;; Packages!
+;;; Packages!
 
 (use-package paredit
   :ensure t
@@ -266,25 +234,7 @@
   ;; cannot change `helm-command-prefix-key' once `helm-config' is loaded.
   (global-set-key (kbd "C-c h") 'helm-command-prefix)
   (global-unset-key (kbd "C-x c"))
-
-  (require 'helm)
   (require 'helm-config)
-  (require 'helm-files)
-  (require 'helm-net)
-
-  (setq
-   ;; open helm buffer inside current window, not occupy whole other window
-   helm-split-window-in-side-p            t
-   ;; move to end or beginning of source when reaching top or bottom of source.
-   helm-move-to-line-cycle-in-source      t
-   ;; scroll 8 lines other window using M-<next>/M-<prior>
-   helm-scroll-amount                     8
-   helm-ff-file-name-history-use-recentf  t
-   helm-ff-transformer-show-only-basename nil
-   helm-adaptive-history-file             "~/.emacs.d/helm-history")
-
-  (define-key helm-find-files-map (kbd "C-d") 'helm-ff-persistent-delete)
-  (define-key helm-buffer-map (kbd "C-d")     'helm-buffer-run-kill-persistent)
 
   (global-set-key (kbd "C-c M-x")     'execute-extended-command) ; old M-x
   (global-set-key (kbd "C-x C-d")     'helm-browse-project)
@@ -415,12 +365,7 @@
                              " cljr"))))
 
 (use-package rust-mode
-  :ensure t
-  :config
-  (defun coda/set-rust-fill-column ()
-    (setq fill-column 100)
-    (setq whitespace-line-column 100))
-  (add-hook 'rust-mode-hook 'coda/set-rust-fill-column))
+  :ensure t)
 
 (use-package scala-mode
   :ensure t)
