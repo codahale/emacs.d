@@ -13,10 +13,10 @@
 (setq auto-save-file-name-transforms
       `((".*" ,temporary-file-directory t)))
 
-(use-package zenburn-theme
+(use-package flatland-theme
   :ensure t
   :config
-  (load-theme 'zenburn t))
+  (load-theme 'flatland t))
 
 (set-terminal-coding-system 'utf-8)     ; always use UTF-8
 (set-keyboard-coding-system 'utf-8)     ; it is the future
