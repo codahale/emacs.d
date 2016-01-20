@@ -380,8 +380,10 @@
   (setq sml/theme 'respectful)
   (sml/setup))
 
-(use-package smooth-scrolling
-  :ensure t)
+(use-package smooth-scroll
+  :config
+  (smooth-scroll-mode 1)
+  (setq smooth-scroll/vscroll-step-size 5))
 
 (use-package toml-mode
   :ensure t)
