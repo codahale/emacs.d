@@ -24,6 +24,8 @@
  '(inhibit-startup-screen t)
  '(js-indent-level 2)
  '(magit-push-always-verify nil)
+ '(neo-smart-open t)
+ '(neo-theme (quote nerd))
  '(package-archives
    (quote
     (("gnu" . "http://elpa.gnu.org/packages/")

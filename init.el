@@ -319,6 +319,11 @@
   :config
   (move-text-default-bindings))
 
+(use-package neotree
+  :ensure t
+  :config
+  (global-set-key (kbd "C-c t") 'neotree-toggle))
+
 (use-package popwin
   :ensure t
   :config
