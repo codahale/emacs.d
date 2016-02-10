@@ -99,9 +99,6 @@
   :ensure t
   :config
   (add-hook 'cider-repl-mode-hook 'paredit-mode)
-  (setq cider-repl-use-clojure-font-lock t)
-  (setq cider-repl-use-pretty-printing t)
-  (set-variable 'cider-prompt-for-symbol nil)
 
   ;; treat Schema defn/fn as regular defn/fn
   (put-clojure-indent 's/defn :defn)
