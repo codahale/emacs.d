@@ -319,7 +319,7 @@
 (use-package neotree
   :ensure t
   :config
-  (global-set-key (kbd "C-c t") 'neotree-toggle))
+  (global-set-key (kbd "C-c d") 'neotree-toggle))
 
 (use-package popwin
   :ensure t
