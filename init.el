@@ -116,11 +116,6 @@
   (define-key cider-mode-map (kbd "C-c C-x") 'cider-repl-reset)
   (define-key clojure-mode-map (kbd "C-c C-x") 'cider-repl-reset))
 
-(use-package cljr-helm
-  :ensure t
-  :config
-  (define-key clojure-mode-map (kbd "C-c r") 'cljr-helm))
-
 (use-package clojure-cheatsheet
   :ensure t)
 
@@ -130,13 +125,7 @@
   (add-to-list 'auto-mode-alist '("\\.edn$" . clojure-mode))
   (add-to-list 'auto-mode-alist '("\\.boot$" . clojure-mode))
   (add-to-list 'auto-mode-alist '("\\.cljs.*$" . clojure-mode))
-
-  (add-hook 'clojure-mode-hook 'paredit-mode)
-  (defun coda-clojure-mode-hook ()
-    (clj-refactor-mode 1)
-    (yas-minor-mode 1) ; for adding require/use/import
-    (cljr-add-keybindings-with-prefix "C-c C-m"))
-  (add-hook 'clojure-mode-hook #'coda-clojure-mode-hook))
+  (add-hook 'clojure-mode-hook 'paredit-mode))
 
 (use-package clojure-mode-extra-font-locking
   :ensure t)
@@ -166,9 +155,6 @@
   :ensure t
   :config
   (global-discover-mode t))
-
-(use-package discover-clj-refactor
-  :ensure t)
 
 (use-package emoji-cheat-sheet-plus
   :ensure t)
@@ -361,8 +347,7 @@
                              " SP"
                              " =>"
                              " Paredit"
-                             " hl-p"
-                             " cljr"))))
+                             " hl-p"))))
 
 (use-package rust-mode
   :ensure t)
