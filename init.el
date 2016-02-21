@@ -207,6 +207,15 @@
 (use-package go-mode
   :ensure t)
 
+(use-package hardcore-mode
+  :ensure t
+  :init
+  (setq too-hardcore-backspace t)
+  (setq too-hardcore-return t)
+  :config
+
+  (global-hardcore-mode))
+
 (use-package helm
   :ensure t
   :config
