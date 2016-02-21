@@ -213,7 +213,6 @@
   (setq too-hardcore-backspace t)
   (setq too-hardcore-return t)
   :config
-
   (global-hardcore-mode))
 
 (use-package helm
